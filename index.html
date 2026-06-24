@@ -7,21 +7,12 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-   
 </head>
 <body>
 
-    <!-- Шапка -->
-    <header>
-        <section class="hero">
-    <div class="hero-content">
-        <h1>Ласкаво просимо до Ліцею №38</h1>
-        <p>Місце, де народжується успіх, розкриваються таланти та будується майбутнє.</p>
-        <a href="#news" class="cta-button">Переглянути новини</a>
-    </div>
-</section>
+    <header class="glass-header">
         <div class="header-top">
             <button class="menu-btn" onclick="toggleSidebar()">
                 <span class="hamburger-icon">☰</span> Меню
@@ -35,7 +26,6 @@
         </div>
     </header>
 
-    <!-- Бокове меню та затемнення фону -->
     <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
     <nav class="sidebar" id="sidebar">
         <div class="sidebar-header">
@@ -95,63 +85,98 @@
         </ul>
     </nav>
 
-    <!-- Галерея -->
-    <div class="carousel-container">
-        <div class="carousel-track">
-            <div class="photo-item">Фото 1</div>
-            <div class="photo-item">Фото 2</div>
-            <div class="photo-item">Фото 3</div>
-            <div class="photo-item">Фото 4</div>
-            <div class="photo-item">Фото 5</div>
+    <main class="main-container">
+        
+        <section class="welcome-section">
+            <div class="welcome-header">
+                <h2>Створюємо майбутнє разом</h2>
+                <p>Сучасний освітній простір для розвитку талантів, інновацій та досягнення успіху.</p>
+            </div>
             
-            <div class="photo-item">Фото 1</div>
-            <div class="photo-item">Фото 2</div>
-            <div class="photo-item">Фото 3</div>
-            <div class="photo-item">Фото 4</div>
-            <div class="photo-item">Фото 5</div>
+            <div class="bento-grid">
+                <a href="#" class="bento-card highlight-card">
+                    <div class="card-icon">💻</div>
+                    <h3>Електронний журнал</h3>
+                    <p>Миттєвий доступ до розкладу, оцінок та домашніх завдань.</p>
+                    <span class="card-arrow">→</span>
+                </a>
+                <a href="#" class="bento-card">
+                    <div class="card-icon">👨‍👩‍👧‍👦</div>
+                    <h3>Батькам</h3>
+                    <p>Правила, харчування та безпека.</p>
+                </a>
+                <a href="#" class="bento-card">
+                    <div class="card-icon">🏆</div>
+                    <h3>Досягнення</h3>
+                    <p>Гордість нашого ліцею.</p>
+                </a>
+                <a href="admission-1.html" class="bento-card">
+                    <div class="card-icon">🎒</div>
+                    <h3>Вступ 2026</h3>
+                    <p>Правила прийому до 1 та 10 класів.</p>
+                </a>
+            </div>
+        </section>
+
+        <section class="gallery-section">
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <div class="photo-item">Фасад ліцею</div>
+                    <div class="photo-item">Кабінет інформатики</div>
+                    <div class="photo-item">Спортзал</div>
+                    <div class="photo-item">DLC Центр</div>
+                    <div class="photo-item">Шкільне свято</div>
+                    <div class="photo-item">Фасад ліцею</div>
+                    <div class="photo-item">Кабінет інформатики</div>
+                    <div class="photo-item">Спортзал</div>
+                    <div class="photo-item">DLC Центр</div>
+                    <div class="photo-item">Шкільне свято</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mission-section">
+            <div class="mission-content">
+                <p>Наша візія: ліцей успішних щасливих учнів, мотивованих кваліфікованих педагогів та відкритих до співпраці батьків.</p>
+                <p class="mission-highlight">Місія: успішна дитина - щаслива родина.</p>
+            </div>
+        </section>
+
+        <section class="news-section">
+            <div class="section-title-wrapper">
+                <h2 class="section-title">Життя ліцею</h2>
+            </div>
+            <div class="news-grid">
+                <div class="news-card fb-widget-placeholder">
+                    <div class="fb-icon">f</div>
+                    <p>Тут буде інтегровано офіційну стрічку Facebook Ліцею №38</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="modern-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>Ліцей №38 ім. Івана Павловського</h3>
+                <p>м. Полтава</p>
+            </div>
+            <div class="footer-links-wrapper">
+                <h4>Швидкі посилання</h4>
+                <div class="links-grid">
+                    <a href="#" class="footer-link">Контакти</a>
+                    <a href="transparency.html" class="footer-link">Прозорість</a>
+                    <a href="procurement.html" class="footer-link">Закупівлі</a>
+                    <a href="#" class="footer-link">Статут</a>
+                </div>
+            </div>
         </div>
-    </div>
-
-    <!-- Місія -->
-    <section class="mission-section">
-        <p>Наша візія: ліцей успішних щасливих учнів, мотивованих кваліфікованих педагогів та відкритих до співпраці батьків.<br>
-        <span class="highlight">Місія: успішна дитина - щаслива родина.</span></p>
-    </section>
-
-    <!-- Секція новин (Тепер із заголовком) -->
-    <section class="news-section">
-        <h2 class="section-title">Останні новини</h2>
-        <div class="fb-placeholder">
-            Тут буде віджет Facebook сторінки
-        </div>
-    </section>
-
-    <!-- Підвал -->
-    <footer class="footer-links">
-        <h3 style="color: var(--primary-blue);">Корисні посилання</h3>
-        <div class="links-grid">
-            <div class="link-item"></div>
-            <div class="link-item"></div>
-            <div class="link-item"></div>
-            <div class="link-item"></div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Ліцей №38 Полтавської міської ради. Всі права захищено.</p>
         </div>
     </footer>
 
-    <!-- Скрипти для роботи меню -->
-    <script>
-        // Відкриття та закриття бокового меню
-        function toggleSidebar() {
-            document.getElementById('sidebar').classList.toggle('active');
-            document.getElementById('sidebarOverlay').classList.toggle('active');
-        }
-
-        // Відкриття та закриття підменю (Акордеон)
-        function toggleSub(event) {
-            event.preventDefault(); // Запобігає переходу за посиланням
-            let parentLi = event.target.closest('.has-children');
-            parentLi.classList.toggle('open');
-        }
-    </script>
-
+    <script src="script.js"></script>
 </body>
 </html>
