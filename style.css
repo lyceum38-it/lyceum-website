@@ -1,86 +1,64 @@
+/* --- ЗМІННІ (Колірна палітра 2026 року) --- */
 :root {
-    --primary-blue: #2c4a87; /* Трохи темніший синій, як на меню */
+    --primary-blue: #1e3a8a; /* Глибокий синій */
     --primary-light: #3b82f6;
-    --accent-pink: #d81b60;
-    --bg-color: #f4f7f6;
+    --accent-pink: #e11d48; /* Яскравий акцент */
+    --accent-gradient: linear-gradient(135deg, #1e3a8a, #e11d48);
+    --bg-color: #f8fafc; /* Дуже світлий сіро-блакитний фон */
     --white: #ffffff;
-    --text-main: #2d3748;
+    --text-main: #334155;
+    --text-muted: #64748b;
     --border-color: #e2e8f0;
-    --shadow-soft: 0 4px 15px rgba(0, 0, 0, 0.05);
+    
+    /* Сучасні тіні */
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
+    --shadow-lg: 0 10px 25px -3px rgba(0,0,0,0.05), 0 4px 6px -2px rgba(0,0,0,0.02);
+    --shadow-hover: 0 20px 25px -5px rgba(30, 58, 138, 0.1), 0 10px 10px -5px rgba(30, 58, 138, 0.04);
 }
 
+/* --- БАЗОВІ НАЛАШТУВАННЯ --- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body { 
     font-family: 'Montserrat', sans-serif; 
     background-color: var(--bg-color); 
     color: var(--text-main); 
-    line-height: 1.5;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* 1. Шапка - компактніша */
-header {
-    background-color: var(--white);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+.main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* --- 1. ШАПКА (Glassmorphism) --- */
+.glass-header {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px); /* Ефект розмиття фону */
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.8);
     position: sticky;
     top: 0;
     z-index: 100;
-}
-/* Hero Секція з ефектом затінення */
-.hero {
-    height: 60vh;
-    background: linear-gradient(rgba(44, 74, 135, 0.8), rgba(44, 74, 135, 0.8)), 
-                url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2070&auto=format&fit=crop');
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: white;
-    padding: 0 20px;
+    transition: all 0.3s ease;
 }
 
-.hero h1 { font-size: 3rem; margin-bottom: 20px; }
-.hero p { font-size: 1.5rem; margin-bottom: 30px; }
-
-.cta-button {
-    background: var(--accent-pink);
-    color: white;
-    padding: 15px 30px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: transform 0.3s, background 0.3s;
-}
-
-.cta-button:hover {
-    transform: scale(1.1);
-    background: #ad1457;
-}
-
-/* Ефект появи елементів */
-.news-section {
-    animation: fadeIn 1s ease-in;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
 .header-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 2%; /* Менше пустих місць */
+    padding: 12px 20px;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-/* Кнопка відкриття меню */
 .menu-btn {
-    background: none;
-    border: none;
+    background: var(--white);
+    border: 1px solid var(--border-color);
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -89,197 +67,196 @@ header {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     font-size: 1rem;
-    padding: 10px;
-    border-radius: 8px;
-    transition: background 0.2s;
+    padding: 8px 16px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.2s ease;
 }
-.menu-btn:hover { background: #f0f4f8; }
-.hamburger-icon { font-size: 1.5rem; line-height: 1; }
+.menu-btn:hover { 
+    background: var(--bg-color);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+.hamburger-icon { font-size: 1.4rem; line-height: 1; }
 
 .logo-placeholder {
-    width: 70px; height: 70px; /* Трохи менші логотипи */
-    background: #e2e8f0; border-radius: 50%;
+    width: 60px; height: 60px;
+    background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+    border-radius: 16px; /* Замість круга - сучасний скруглений квадрат */
     display: flex; align-items: center; justify-content: center;
-    font-size: 10px; color: #64748b;
+    font-size: 11px; font-weight: 600; color: var(--text-muted);
+    box-shadow: inset 0 2px 4px rgba(255,255,255,0.8), var(--shadow-sm);
 }
 
 .school-title { text-align: center; flex-grow: 1; margin: 0 15px; }
-.school-title h1 { color: var(--primary-blue); font-size: 1.5rem; font-weight: 700; margin-bottom: 2px; }
-.school-title h2 { color: var(--accent-pink); font-size: 0.9rem; font-weight: 500; text-transform: uppercase; }
+.school-title h1 { color: var(--primary-blue); font-size: 1.6rem; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 2px; }
+.school-title h2 { color: var(--accent-pink); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
 
-/* 2. Бокове меню (Sidebar) */
-.sidebar-overlay {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.5); z-index: 999;
-    opacity: 0; visibility: hidden; transition: 0.3s;
+/* --- 2. СЕКЦІЯ ПРИВІТАННЯ ТА BENTO GRID --- */
+.welcome-section { padding: 40px 0 60px; }
+
+.welcome-header { text-align: center; margin-bottom: 50px; }
+.welcome-header h2 { font-size: 2.8rem; font-weight: 800; color: var(--primary-blue); margin-bottom: 15px; letter-spacing: -1px; }
+.welcome-header p { font-size: 1.2rem; color: var(--text-muted); max-width: 700px; margin: 0 auto; }
+
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
+    gap: 24px;
 }
-.sidebar-overlay.active { opacity: 1; visibility: visible; }
 
-.sidebar {
-    position: fixed; top: 0; left: -350px; width: 320px; height: 100%;
-    background: var(--white); z-index: 1000;
-    box-shadow: 2px 0 15px rgba(0,0,0,0.1);
-    overflow-y: auto; transition: left 0.3s ease;
-}
-.sidebar.active { left: 0; }
+/* Головна картка (Електронний журнал) займає 2 колонки на ПК */
+.highlight-card { grid-column: span 2; grid-row: span 2; display: flex; flex-direction: column; justify-content: center; }
+.highlight-card h3 { font-size: 1.8rem !important; }
+.highlight-card p { font-size: 1.1rem !important; }
 
-.sidebar-header {
-    display: flex; justify-content: flex-end; padding: 15px;
-    border-bottom: 1px solid var(--border-color);
-}
-.close-btn { background: none; border: none; font-size: 1.8rem; color: var(--primary-blue); cursor: pointer; }
-
-.sidebar-menu { list-style: none; }
-.sidebar-menu li { border-bottom: 1px solid var(--border-color); }
-.sidebar-menu a {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 15px 20px; color: var(--text-main); text-decoration: none;
-    font-size: 0.95rem; font-weight: 500; transition: background 0.2s;
-}
-.sidebar-menu a:hover { background: #f8fafc; color: var(--primary-blue); }
-
-/* Активний пункт меню (Головна) */
-.sidebar-menu li.active > a { background-color: var(--primary-blue); color: var(--white); }
-
-/* Підменю (Акордеон) */
-.submenu { list-style: none; display: none; background: #f8fafc; }
-.submenu a { padding: 12px 20px 12px 40px; font-size: 0.85rem; border-bottom: 1px solid #e2e8f0; }
-.has-children > a::after { content: '▼'; font-size: 0.7rem; color: #94a3b8; transition: transform 0.3s; }
-.has-children.open > a::after { transform: rotate(180deg); }
-.has-children.open > .submenu { display: block; }
-
-/* 3. Безкінечна карусель фотографій */
-.carousel-container {
-    width: 100%;
+.bento-card {
+    background: var(--white);
+    border-radius: 24px;
+    padding: 35px 25px;
+    text-decoration: none;
+    color: var(--text-main);
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(255,255,255,0.5);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
     overflow: hidden;
-    padding: 20px 0;
-    background-color: var(--white);
-    white-space: nowrap;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-    margin-bottom: 30px;
+    z-index: 1;
 }
 
-.carousel-track {
-    display: inline-flex;
-    gap: 15px;
-    /* Анімація триває 30 секунд, йде лінійно і безкінечно */
-    animation: scroll-left 30s linear infinite;
+.bento-card::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--accent-gradient); opacity: 0; z-index: -1;
+    transition: opacity 0.4s ease;
 }
 
-/* Зупинка каруселі при наведенні мишки */
-.carousel-container:hover .carousel-track {
-    animation-play-state: paused;
+.bento-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-hover); border-color: transparent; }
+.bento-card:hover::before { opacity: 0.03; /* Ледь помітний градієнтний відблиск при наведенні */ }
+
+.card-icon { font-size: 3rem; margin-bottom: 20px; transition: transform 0.4s ease; }
+.bento-card:hover .card-icon { transform: scale(1.1) rotate(5deg); }
+
+.bento-card h3 { color: var(--primary-blue); font-size: 1.3rem; font-weight: 700; margin-bottom: 12px; }
+.bento-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; }
+
+.card-arrow {
+    position: absolute; bottom: 30px; right: 30px;
+    font-size: 1.5rem; color: var(--accent-pink);
+    opacity: 0; transform: translateX(-10px); transition: all 0.3s ease;
 }
+.highlight-card:hover .card-arrow { opacity: 1; transform: translateX(0); }
+
+/* --- 3. ГАЛЕРЕЯ (КАРУСЕЛЬ З ЕФЕКТОМ МАСКИ) --- */
+.gallery-section { margin-bottom: 60px; }
+
+.carousel-container {
+    width: 100%; overflow: hidden; padding: 20px 0;
+    /* Маска створює ефект плавного розчинення країв каруселі */
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.carousel-track { display: inline-flex; gap: 20px; animation: scroll-left 40s linear infinite; }
+.carousel-container:hover .carousel-track { animation-play-state: paused; }
 
 .photo-item {
-    flex-shrink: 0;
-    width: 280px;
-    height: 180px;
-    background: linear-gradient(135deg, #e2e8f0, #94a3b8);
-    border-radius: 12px;
-    box-shadow: var(--shadow-soft);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    font-weight: 600;
-    font-size: 1.2rem;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-}
-
-@keyframes scroll-left {
-    0% { transform: translateX(0); }
-    /* Зсуваємо на половину ширини треку, щоб створити ідеальну петлю */
-    100% { transform: translateX(-50%); }
-}
-
-/* 4. Візія та Місія - компактніше */
-.mission-section {
-    background: var(--white); padding: 30px 20px;
-    margin: 15px 5%; border-radius: 12px;
-    box-shadow: var(--shadow-soft); text-align: center;
-}
-.mission-section p {
-    font-family: 'Caveat', cursive; font-size: 1.8rem;
-    color: var(--primary-blue); line-height: 1.3; margin: 0 auto;
-}
-.highlight { color: var(--accent-pink); }
-
-/* 5. Новини (Оновлено) */
-.news-section {
-    padding: 30px 20px; text-align: center; max-width: 600px; margin: 0 auto;
-}
-.section-title {
-    color: var(--primary-blue); font-size: 1.6rem; font-weight: 700;
-    margin-bottom: 20px; border-bottom: 3px solid var(--accent-pink);
-    display: inline-block; padding-bottom: 5px;
-}
-.fb-placeholder {
-    width: 100%; max-width: 500px; height: 600px; margin: 0 auto;
-    background: var(--white); border-radius: 12px; box-shadow: var(--shadow-soft);
+    flex-shrink: 0; width: 320px; height: 200px;
+    background: linear-gradient(135deg, var(--primary-blue), #475569);
+    border-radius: 20px; box-shadow: var(--shadow-md);
     display: flex; align-items: center; justify-content: center;
-    color: #94a3b8; border: 1px dashed #cbd5e1;
+    color: var(--white); font-weight: 600; font-size: 1.2rem; text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+}
+.photo-item:hover { transform: scale(1.03); }
+
+@keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+/* --- 4. МІСІЯ --- */
+.mission-section { margin-bottom: 60px; }
+.mission-content {
+    background: var(--white); padding: 50px 40px; border-radius: 24px;
+    box-shadow: var(--shadow-lg); text-align: center; border-left: 6px solid var(--primary-light);
+}
+.mission-content p { font-family: 'Caveat', cursive; font-size: 2rem; color: var(--text-main); margin-bottom: 15px; }
+.mission-highlight { color: var(--accent-pink) !important; font-size: 2.5rem !important; font-weight: 700; }
+
+/* --- 5. НОВИНИ --- */
+.news-section { margin-bottom: 80px; }
+.section-title-wrapper { text-align: center; margin-bottom: 40px; }
+.section-title {
+    color: var(--primary-blue); font-size: 2rem; font-weight: 800;
+    display: inline-block; position: relative;
+}
+.section-title::after {
+    content: ''; position: absolute; width: 50%; height: 4px;
+    background: var(--accent-pink); bottom: -10px; left: 25%; border-radius: 2px;
 }
 
-/* 6. Підвал */
-.footer-links { background-color: var(--white); padding: 30px 20px; text-align: center; margin-top: 30px; }
-.links-grid { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 15px; }
-.link-item { width: 120px; height: 50px; background-color: var(--bg-color); border-radius: 6px; }
-/* ========================================= */
-/* 📱 АДАПТИВНІСТЬ (Смартфони та планшети)   */
-/* ========================================= */
-@media (max-width: 768px) {
-    /* 1. Шапка: робимо її компактною, назву переносимо під логотипи */
-    .header-top { 
-        flex-wrap: wrap; 
-        padding: 10px; 
-    }
-    .menu-btn { 
-        order: 1; /* Кнопка меню перша */
-        padding: 5px;
-        font-size: 0.9rem;
-    }
-    .logo-placeholder { 
-        width: 50px; height: 50px; 
-        font-size: 8px; 
-    }
-    /* Логотипи ставимо по боках, а назву розтягуємо на 100% ширини під ними */
-    .school-title { 
-        order: 3; 
-        width: 100%; 
-        margin-top: 15px; 
-    }
-    .school-title h1 { font-size: 1.2rem; }
-    .school-title h2 { font-size: 0.8rem; }
+.fb-widget-placeholder {
+    width: 100%; max-width: 600px; height: 500px; margin: 0 auto;
+    background: var(--white); border-radius: 24px; box-shadow: var(--shadow-lg);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    color: var(--text-muted); border: 2px dashed var(--border-color);
+}
+.fb-icon {
+    width: 60px; height: 60px; background: #1877F2; color: white; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; font-size: 2rem; font-weight: bold; margin-bottom: 20px;
+}
 
-    /* 2. Бокове меню: на телефоні воно виїжджатиме на весь екран */
-    .sidebar { 
-        width: 100%; /* Займає 100% ширини замість 320px */
-        left: -100%; 
-    }
+/* --- 6. ПІДВАЛ (Темний сучасний) --- */
+.modern-footer { background: var(--primary-blue); color: var(--white); padding: 60px 20px 20px; margin-top: auto; }
+.footer-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; margin-bottom: 40px; }
+.footer-brand h3 { font-size: 1.5rem; margin-bottom: 10px; font-weight: 700; }
+.footer-brand p { color: #94a3b8; }
+.footer-links-wrapper h4 { margin-bottom: 20px; color: var(--accent-pink); font-size: 1.1rem; }
+.links-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.footer-link { color: #cbd5e1; text-decoration: none; transition: color 0.2s; }
+.footer-link:hover { color: var(--white); text-decoration: underline; text-decoration-color: var(--accent-pink); text-underline-offset: 4px; }
+.footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); color: #94a3b8; font-size: 0.9rem; }
 
-    /* 3. Галерея (Карусель): зменшуємо розмір карток */
-    .carousel-container { padding: 10px 0; }
-    .photo-item { 
-        width: 220px; 
-        height: 140px; 
-        font-size: 1rem;
-    }
+/* --- 7. БОКОВЕ МЕНЮ (Не змінено базову логіку, покращено вигляд) --- */
+.sidebar-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(4px); z-index: 999; opacity: 0; visibility: hidden; transition: 0.3s; }
+.sidebar-overlay.active { opacity: 1; visibility: visible; }
+.sidebar { position: fixed; top: 0; left: -400px; width: 350px; height: 100%; background: var(--white); z-index: 1000; box-shadow: var(--shadow-lg); overflow-y: auto; transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+.sidebar.active { left: 0; }
+.sidebar-header { display: flex; justify-content: flex-end; padding: 20px; border-bottom: 1px solid var(--border-color); }
+.close-btn { background: var(--bg-color); width: 40px; height: 40px; border-radius: 50%; border: none; font-size: 1.2rem; color: var(--text-main); cursor: pointer; transition: all 0.2s; }
+.close-btn:hover { background: #fee2e2; color: var(--accent-pink); transform: rotate(90deg); }
+.sidebar-menu { list-style: none; padding: 10px 0; }
+.sidebar-menu li { border-bottom: 1px solid var(--border-color); }
+.sidebar-menu a { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; color: var(--text-main); text-decoration: none; font-size: 1rem; font-weight: 500; transition: all 0.2s; }
+.sidebar-menu a:hover { background: var(--bg-color); color: var(--primary-blue); padding-left: 30px; }
+.sidebar-menu li.active > a { background: var(--bg-color); color: var(--primary-blue); border-left: 4px solid var(--accent-pink); padding-left: 20px; font-weight: 700; }
+.submenu { list-style: none; display: none; background: #f8fafc; box-shadow: inset 0 2px 4px rgba(0,0,0,0.02); }
+.submenu a { padding: 14px 24px 14px 45px; font-size: 0.9rem; border-bottom: 1px solid #f1f5f9; }
+.has-children > a::after { content: '▼'; font-size: 0.6rem; color: var(--text-muted); transition: transform 0.3s; }
+.has-children.open > a::after { transform: rotate(180deg); color: var(--primary-blue); }
+.has-children.open > .submenu { display: block; animation: slideDown 0.3s ease-out; }
 
-    /* 4. Місія: зменшуємо величезний шрифт для маленьких екранів */
-    .mission-section { 
-        padding: 20px 15px; 
-        margin: 15px 10px; 
-    }
-    .mission-section p { font-size: 1.4rem; }
+/* Анімації */
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* 5. Віджет ФБ: не даємо йому вилізти за межі екрана */
-    .fb-placeholder { 
-        width: 100%; 
-        height: 400px; /* На мобільному робимо трохи нижчим */
-    }
+/* --- 📱 АДАПТИВНІСТЬ --- */
+@media (max-width: 900px) {
+    .bento-grid { grid-template-columns: 1fr 1fr; }
+    .highlight-card { grid-column: span 2; }
+    .welcome-header h2 { font-size: 2.2rem; }
+}
 
-    /* 6. Підвал: складаємо кнопки в стовпчик або сітку 2х2 */
-    .links-grid { gap: 10px; }
-    .link-item { width: 45%; height: 45px; } /* Кнопки займають по 45% ширини екрана */
+@media (max-width: 600px) {
+    .header-top { padding: 10px; }
+    .school-title h1 { font-size: 1.1rem; }
+    .school-title h2 { font-size: 0.75rem; }
+    .logo-placeholder { width: 45px; height: 45px; }
+    
+    .bento-grid { grid-template-columns: 1fr; }
+    .highlight-card { grid-column: span 1; grid-row: span 1; }
+    .welcome-header h2 { font-size: 1.8rem; }
+    .mission-content p { font-size: 1.5rem; }
+    .mission-highlight { font-size: 1.8rem !important; }
+    
+    .sidebar { width: 100%; left: -100%; }
+    .footer-content { flex-direction: column; gap: 20px; }
 }
