@@ -15,16 +15,6 @@
 
     <!-- Шапка -->
     <header>
-        <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
-<nav class="sidebar" id="sidebar">
-    <div class="sidebar-header">
-        <button class="close-btn" onclick="toggleSidebar()">✕</button>
-    </div>
-    <ul class="sidebar-menu">
-        <li><a href="index.html">Головна</a></li>
-        <li class="active"><a href="procurement.html">Закупівлі</a></li>
-        </ul>
-</nav>
         <div class="header-top">
             <button class="menu-btn" onclick="toggleSidebar()">
                 <span class="hamburger-icon">☰</span> Меню
@@ -37,6 +27,64 @@
             <div class="logo-placeholder">Лого</div>
         </div>
     </header>
+     <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <button class="close-btn" onclick="toggleSidebar()">✕</button>
+        </div>
+        <ul class="sidebar-menu">
+            <li class="active"><a href="#">Головна</a></li>
+            <li><a href="procurement.html">Закупівлі</a></li>
+            <li><a href="announcements.html">Оголошення</a></li>
+            <li><a href="#">Новини</a></li>
+            <li><a href="#">Громадські обговорення</a></li>
+            
+            <li class="has-children">
+                <a href="#" onclick="toggleSub(event)">Про школу</a>
+                <ul class="submenu">
+                    <li><a href="#">Благодійність</a></li>
+                    <li><a href="#">Історія</a></li>
+                    <li><a href="#">Символіка</a></li>
+                    <li><a href="#">ЗМІ про нас</a></li>
+                    <li><a href="#">Колектив</a></li>
+                </ul>
+            </li>
+            
+            <li><a href="#">Набір до 1 класу</a></li>
+            <li><a href="#">Набір до 10 класу</a></li>
+            
+            <li class="has-children">
+                <a href="#" onclick="toggleSub(event)">Освітній процес</a>
+                <ul class="submenu">
+                    <li><a href="#">Режим роботи</a></li>
+                    <li><a href="#">Інноваційна діяльність</a></li>
+                    <li><a href="#">Олімпіади, МАН, конкурси</a></li>
+                    <li><a href="#">Форми навчання</a></li>
+                    <li><a href="#">НМТ + ДПА</a></li>
+                    <li><a href="#">Атестація</a></li>
+                </ul>
+            </li>
+            
+            <li><a href="#">Критерії оцінювання</a></li>
+            <li><a href="#">Прозорість та інформаційна відкритість</a></li>
+            
+            <li class="has-children">
+                <a href="#" onclick="toggleSub(event)">Виховна робота</a>
+                <ul class="submenu">
+                    <li><a href="#">Класним керівникам</a></li>
+                    <li><a href="#">Творчі студії</a></li>
+                    <li><a href="#">Самоврядування</a></li>
+                </ul>
+            </li>
+            
+            <li class="has-children">
+                <a href="#" onclick="toggleSub(event)">Проектна діяльність</a>
+                <ul class="submenu">
+                    <li><a href="#">DLC (Цифровий освітній центр)</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
 <main style="padding: 40px 20px; max-width: 900px; margin: 0 auto;">
     <h2 class="section-title">Закупівлі ліцею</h2>
     <p>На цій сторінці ви знайдете інформацію про тендери, плани закупівель та звіти про використання коштів.</p>
