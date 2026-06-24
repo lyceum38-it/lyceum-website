@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ліцей №38 імені Івана Павловського</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-blue: #2c4a87; /* Трохи темніший синій, як на меню */
+            --primary-light: #3b82f6;
+            --accent-pink: #d81b60;
+            --bg-color: #f4f7f6;
+            --white: #ffffff;
+            --text-main: #2d3748;
+            --border-color: #e2e8f0;
+            --shadow-soft: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            background-color: var(--bg-color); 
+            color: var(--text-main); 
+            line-height: 1.5;
+        }
+
+        /* 1. Шапка - компактніша */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 2%; /* Менше пустих місць */
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Кнопка відкриття меню */
+        .menu-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-blue);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 10px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+        .menu-btn:hover { background: #f0f4f8; }
+        .hamburger-icon { font-size: 1.5rem; line-height: 1; }
+
+        .logo-placeholder {
+            width: 70px; height: 70px; /* Трохи менші логотипи */
+            background: #e2e8f0; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 10px; color: #64748b;
+        }
+
+        .school-title { text-align: center; flex-grow: 1; margin: 0 15px; }
+        .school-title h1 { color: var(--primary-blue); font-size: 1.5rem; font-weight: 700; margin-bottom: 2px; }
+        .school-title h2 { color: var(--accent-pink); font-size: 0.9rem; font-weight: 500; text-transform: uppercase; }
+
+        /* 2. Бокове меню (Sidebar) */
+        .sidebar-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5); z-index: 999;
+            opacity: 0; visibility: hidden; transition: 0.3s;
+        }
+        .sidebar-overlay.active { opacity: 1; visibility: visible; }
+
+        .sidebar {
+            position: fixed; top: 0; left: -350px; width: 320px; height: 100%;
+            background: var(--white); z-index: 1000;
+            box-shadow: 2px 0 15px rgba(0,0,0,0.1);
+            overflow-y: auto; transition: left 0.3s ease;
+        }
+        .sidebar.active { left: 0; }
+
+        .sidebar-header {
+            display: flex; justify-content: flex-end; padding: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .close-btn { background: none; border: none; font-size: 1.8rem; color: var(--primary-blue); cursor: pointer; }
+
+        .sidebar-menu { list-style: none; }
+        .sidebar-menu li { border-bottom: 1px solid var(--border-color); }
+        .sidebar-menu a {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 20px; color: var(--text-main); text-decoration: none;
+            font-size: 0.95rem; font-weight: 500; transition: background 0.2s;
+        }
+        .sidebar-menu a:hover { background: #f8fafc; color: var(--primary-blue); }
+        
+        /* Активний пункт меню (Головна) */
+        .sidebar-menu li.active > a { background-color: var(--primary-blue); color: var(--white); }
+
+        /* Підменю (Акордеон) */
+        .submenu { list-style: none; display: none; background: #f8fafc; }
+        .submenu a { padding: 12px 20px 12px 40px; font-size: 0.85rem; border-bottom: 1px solid #e2e8f0; }
+        .has-children > a::after { content: '▼'; font-size: 0.7rem; color: #94a3b8; transition: transform 0.3s; }
+        .has-children.open > a::after { transform: rotate(180deg); }
+        .has-children.open > .submenu { display: block; }
+
+        /* 3. Безкінечна карусель фотографій */
+        .carousel-container {
+            width: 100%;
+            overflow: hidden;
+            padding: 20px 0;
+            background-color: var(--white);
+            white-space: nowrap;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+            margin-bottom: 30px;
+        }
+        
+        .carousel-track {
+            display: inline-flex;
+            gap: 15px;
+            /* Анімація триває 30 секунд, йде лінійно і безкінечно */
+            animation: scroll-left 30s linear infinite;
+        }
+        
+        /* Зупинка каруселі при наведенні мишки */
+        .carousel-container:hover .carousel-track {
+            animation-play-state: paused;
+        }
+
+        .photo-item {
+            flex-shrink: 0;
+            width: 280px;
+            height: 180px;
+            background: linear-gradient(135deg, #e2e8f0, #94a3b8);
+            border-radius: 12px;
+            box-shadow: var(--shadow-soft);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 600;
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+
+        @keyframes scroll-left {
+            0% { transform: translateX(0); }
+            /* Зсуваємо на половину ширини треку, щоб створити ідеальну петлю */
+            100% { transform: translateX(-50%); }
+        }
+
+        /* 4. Візія та Місія - компактніше */
+        .mission-section {
+            background: var(--white); padding: 30px 20px;
+            margin: 15px 5%; border-radius: 12px;
+            box-shadow: var(--shadow-soft); text-align: center;
+        }
+        .mission-section p {
+            font-family: 'Caveat', cursive; font-size: 1.8rem;
+            color: var(--primary-blue); line-height: 1.3; margin: 0 auto;
+        }
+        .highlight { color: var(--accent-pink); }
+
+        /* 5. Новини (Оновлено) */
+        .news-section {
+            padding: 30px 20px; text-align: center; max-width: 600px; margin: 0 auto;
+        }
+        .section-title {
+            color: var(--primary-blue); font-size: 1.6rem; font-weight: 700;
+            margin-bottom: 20px; border-bottom: 3px solid var(--accent-pink);
+            display: inline-block; padding-bottom: 5px;
+        }
+        .fb-placeholder {
+            width: 100%; max-width: 500px; height: 600px; margin: 0 auto;
+            background: var(--white); border-radius: 12px; box-shadow: var(--shadow-soft);
+            display: flex; align-items: center; justify-content: center;
+            color: #94a3b8; border: 1px dashed #cbd5e1;
+        }
+
+        /* 6. Підвал */
+        .footer-links { background-color: var(--white); padding: 30px 20px; text-align: center; margin-top: 30px; }
+        .links-grid { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 15px; }
+        .link-item { width: 120px; height: 50px; background-color: var(--bg-color); border-radius: 6px; }
+/* ========================================= */
+        /* 📱 АДАПТИВНІСТЬ (Смартфони та планшети)   */
+        /* ========================================= */
+        @media (max-width: 768px) {
+            /* 1. Шапка: робимо її компактною, назву переносимо під логотипи */
+            .header-top { 
+                flex-wrap: wrap; 
+                padding: 10px; 
+            }
+            .menu-btn { 
+                order: 1; /* Кнопка меню перша */
+                padding: 5px;
+                font-size: 0.9rem;
+            }
+            .logo-placeholder { 
+                width: 50px; height: 50px; 
+                font-size: 8px; 
+            }
+            /* Логотипи ставимо по боках, а назву розтягуємо на 100% ширини під ними */
+            .school-title { 
+                order: 3; 
+                width: 100%; 
+                margin-top: 15px; 
+            }
+            .school-title h1 { font-size: 1.2rem; }
+            .school-title h2 { font-size: 0.8rem; }
+
+            /* 2. Бокове меню: на телефоні воно виїжджатиме на весь екран */
+            .sidebar { 
+                width: 100%; /* Займає 100% ширини замість 320px */
+                left: -100%; 
+            }
+
+            /* 3. Галерея (Карусель): зменшуємо розмір карток */
+            .carousel-container { padding: 10px 0; }
+            .photo-item { 
+                width: 220px; 
+                height: 140px; 
+                font-size: 1rem;
+            }
+
+            /* 4. Місія: зменшуємо величезний шрифт для маленьких екранів */
+            .mission-section { 
+                padding: 20px 15px; 
+                margin: 15px 10px; 
+            }
+            .mission-section p { font-size: 1.4rem; }
+
+            /* 5. Віджет ФБ: не даємо йому вилізти за межі екрана */
+            .fb-placeholder { 
+                width: 100%; 
+                height: 400px; /* На мобільному робимо трохи нижчим */
+            }
+
+            /* 6. Підвал: складаємо кнопки в стовпчик або сітку 2х2 */
+            .links-grid { gap: 10px; }
+            .link-item { width: 45%; height: 45px; } /* Кнопки займають по 45% ширини екрана */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Шапка -->
+    <header>
+        <div class="header-top">
+            <button class="menu-btn" onclick="toggleSidebar()">
+                <span class="hamburger-icon">☰</span> Меню
+            </button>
+            <div class="logo-placeholder">Герб</div>
+            <div class="school-title">
+                <h1>Ліцей №38 імені Івана Павловського</h1>
+                <h2>Полтавської міської ради</h2>
+            </div>
+            <div class="logo-placeholder">Лого</div>
+        </div>
+    </header>
+
+    <!-- Бокове меню та затемнення фону -->
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <button class="close-btn" onclick="toggleSidebar()">✕</button>
+        </div>
+        <ul class="sidebar-menu">
+            <li class="active"><a href="#">Головна</a></li>
+            <li><a href="#">Закупівлі</a></li>
+            <li><a href="#">Оголошення</a></li>
+            <li><a href="#">Новини</a></li>
+            <li><a href="#">Громадські обговорення</a></li>
+            
+            <li class="has-children">
+                <a href="#" onclick="toggleSub(event)">Про школу</a>
+                <ul class="submenu">
+                    <li><a href="#">Благодійність</a></li>
+                    <li><a href="#">Історія</a></li>
+                    <li><a href="#">Символіка</a></li>
+                    <li><a href="#">ЗМІ про нас</a></li>
+                    <li><a href="#">Колектив</a></li>
+                </ul>
+            </li>
+            
+            <li><a href="#">Набір до 1 класу</a></li>
+            <li><a href="#">Набір до 10 класу</a></li>
+            
+            <li class="has-children">
+                <a href="#" onclick="toggleSub(event)">Освітній процес</a>
+                <ul class="submenu">
+                    <li><a href="#">Режим роботи</a></li>
+                    <li><a href="#">Інноваційна діяльність</a></li>
+                    <li><a href="#">Олімпіади, МАН, конкурси</a></li>
+                    <li><a href="#">Форми навчання</a></li>
+                    <li><a href="#">НМТ + ДПА</a></li>
+                    <li><a href="#">Атестація</a></li>
+                </ul>
+            </li>
+            
+            <li><a href="#">Критерії оцінювання</a></li>
+            <li><a href="#">Прозорість та інформаційна відкритість</a></li>
+            
+            <li class="has-children">
+                <a href="#" onclick="toggleSub(event)">Виховна робота</a>
+                <ul class="submenu">
+                    <li><a href="#">Класним керівникам</a></li>
+                    <li><a href="#">Творчі студії</a></li>
+                    <li><a href="#">Самоврядування</a></li>
+                </ul>
+            </li>
+            
+            <li class="has-children">
+                <a href="#" onclick="toggleSub(event)">Проектна діяльність</a>
+                <ul class="submenu">
+                    <li><a href="#">DLC (Цифровий освітній центр)</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Галерея -->
+    <div class="carousel-container">
+        <div class="carousel-track">
+            <div class="photo-item">Фото 1</div>
+            <div class="photo-item">Фото 2</div>
+            <div class="photo-item">Фото 3</div>
+            <div class="photo-item">Фото 4</div>
+            <div class="photo-item">Фото 5</div>
+            
+            <div class="photo-item">Фото 1</div>
+            <div class="photo-item">Фото 2</div>
+            <div class="photo-item">Фото 3</div>
+            <div class="photo-item">Фото 4</div>
+            <div class="photo-item">Фото 5</div>
+        </div>
+    </div>
+
+    <!-- Місія -->
+    <section class="mission-section">
+        <p>Наша візія: ліцей успішних щасливих учнів, мотивованих кваліфікованих педагогів та відкритих до співпраці батьків.<br>
+        <span class="highlight">Місія: успішна дитина - щаслива родина.</span></p>
+    </section>
+
+    <!-- Секція новин (Тепер із заголовком) -->
+    <section class="news-section">
+        <h2 class="section-title">Останні новини</h2>
+        <div class="fb-placeholder">
+            Тут буде віджет Facebook сторінки
+        </div>
+    </section>
+
+    <!-- Підвал -->
+    <footer class="footer-links">
+        <h3 style="color: var(--primary-blue);">Корисні посилання</h3>
+        <div class="links-grid">
+            <div class="link-item"></div>
+            <div class="link-item"></div>
+            <div class="link-item"></div>
+            <div class="link-item"></div>
+        </div>
+    </footer>
+
+    <!-- Скрипти для роботи меню -->
+    <script>
+        // Відкриття та закриття бокового меню
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('active');
+            document.getElementById('sidebarOverlay').classList.toggle('active');
+        }
+
+        // Відкриття та закриття підменю (Акордеон)
+        function toggleSub(event) {
+            event.preventDefault(); // Запобігає переходу за посиланням
+            let parentLi = event.target.closest('.has-children');
+            parentLi.classList.toggle('open');
+        }
+    </script>
+
+</body>
+</html>
