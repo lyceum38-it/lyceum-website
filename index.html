@@ -7,173 +7,102 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/uk_UA/sdk.js#xfbml=1&version=v20.0" nonce="abc12345"></script>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/uk_UA/sdk.js#xfbml=1&version=v20.0"></script>
+
     <header class="glass-header">
-        <div class="header-top">
-            <button class="menu-btn" onclick="toggleSidebar()">
-                <span class="hamburger-icon">☰</span> Меню
-            </button>
-            <div class="logo-placeholder">Герб</div>
-            <div class="school-title">
-                <h1>Ліцей №38 імені Івана Павловського</h1>
-                <h2>Полтавської міської ради</h2>
+        <div class="container nav-wrapper">
+            <div class="logo">
+                <span class="logo-icon">✨</span>
+                <div class="logo-text">
+                    <strong>Ліцей №38</strong>
+                    <span>ім. І. Павловського</span>
+                </div>
             </div>
-            <div class="logo-placeholder">Лого</div>
+            
+            <nav class="desktop-nav">
+                <a href="#about">Про нас</a>
+                <a href="#classes">Профільні класи</a>
+                <a href="#news">Новини</a>
+            </nav>
+            
+            <a href="#contact" class="btn-outline">Зв'язок ↗</a>
         </div>
     </header>
 
-    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
-    <nav class="sidebar" id="sidebar">
-        <div class="sidebar-header">
-            <button class="close-btn" onclick="toggleSidebar()">✕</button>
-        </div>
-        <ul class="sidebar-menu">
-            <li class="active"><a href="index.html">Головна</a></li>
-            <li><a href="procurement.html">Закупівлі</a></li>
-            <li><a href="announcements.html">Оголошення</a></li>
-            <li><a href="#">Новини</a></li>
-            <li><a href="#">Громадські обговорення</a></li>
-            
-            <li class="has-children">
-                <a href="#" onclick="toggleSub(event)">Про школу</a>
-                <ul class="submenu">
-                    <li><a href="#">Благодійність</a></li>
-                    <li><a href="#">Історія</a></li>
-                    <li><a href="#">Символіка</a></li>
-                    <li><a href="#">ЗМІ про нас</a></li>
-                    <li><a href="#">Колектив</a></li>
-                </ul>
-            </li>
-            
-            <li><a href="#">Набір до 1 класу</a></li>
-            <li><a href="#">Набір до 10 класу</a></li>
-            
-            <li class="has-children">
-                <a href="#" onclick="toggleSub(event)">Освітній процес</a>
-                <ul class="submenu">
-                    <li><a href="#">Режим роботи</a></li>
-                    <li><a href="#">Інноваційна діяльність</a></li>
-                    <li><a href="#">Олімпіади, МАН, конкурси</a></li>
-                    <li><a href="#">Форми навчання</a></li>
-                    <li><a href="#">НМТ + ДПА</a></li>
-                    <li><a href="#">Атестація</a></li>
-                </ul>
-            </li>
-            
-            <li><a href="#">Критерії оцінювання</a></li>
-            <li><a href="#">Прозорість та інформаційна відкритість</a></li>
-            
-            <li class="has-children">
-                <a href="#" onclick="toggleSub(event)">Виховна робота</a>
-                <ul class="submenu">
-                    <li><a href="#">Класним керівникам</a></li>
-                    <li><a href="#">Творчі студії</a></li>
-                    <li><a href="#">Самоврядування</a></li>
-                </ul>
-            </li>
-            
-            <li class="has-children">
-                <a href="#" onclick="toggleSub(event)">Проектна діяльність</a>
-                <ul class="submenu">
-                    <li><a href="#">DLC (Цифровий освітній центр)</a></li>
-                </ul>
-            </li>
-        </ul>
-    </nav>
+    <main>
+        <section class="hero container">
+            <div class="hero-text reveal">
+                <div class="badge">Більше ніж школа</div>
+                <h1>РОЗКРИЙ СВІЙ ПОТЕНЦІАЛ <span class="highlight">→</span> РАЗОМ З НАШИМ <br><span class="text-blue">ЛІЦЕЄМ</span></h1>
+                <p>Сучасні методики, інноваційні технології та дружня атмосфера для найкращих результатів.</p>
+                <button class="btn-primary">Приєднатися ↗</button>
+            </div>
+        </section>
 
-<main class="main-container">
-        
-        <!-- Нова Hero-секція у стилі референсу -->
-        <section class="hero-modern">
-            <div class="hero-content">
-                <span class="badge">Ліцей №38</span>
-                <h1>Не просто школа,<br><span class="text-highlight">це справжня родина</span></h1>
-                <p>Наші викладачі роблять процес навчання максимально ефективним, інноваційним та цікавим для кожної дитини.</p>
-                <a href="#admission" class="btn-primary">Приєднатися до нас</a>
+        <section id="classes" class="classes-section container">
+            <div class="section-header reveal">
+                <h2>Наші профілі</h2>
+                <p>Обирай напрямок, який допоможе тобі стати професіоналом.</p>
             </div>
             
-            <div class="hero-image-wrapper">
-                <!-- ВАЖЛИВО: Для ідеального ефекту сюди треба завантажити фото учнів без фону (PNG). 
-                     Поки що тут стоїть тимчасове гарне фото -->
-                <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=1000&auto=format&fit=crop" alt="Учні ліцею" class="main-hero-img">
-                
-                <!-- Плаваючі елементи як на картинці -->
-                <div class="floating-tag tag-left">
-                    <span class="icon">🇬🇧</span> Сучасність
+            <div class="bento-grid">
+                <div class="bento-card blue-card reveal">
+                    <div class="card-header">
+                        <h3>Інформатика</h3>
+                        <span class="arrow-icon">↗</span>
+                    </div>
+                    <p>Програмування, вебдизайн та створення власних проєктів.</p>
+                    <div class="card-image-placeholder">💻</div>
                 </div>
-                <div class="floating-tag tag-right">
-                    <span class="icon">💻</span> Інновації
+
+                <div class="bento-card light-card reveal" style="transition-delay: 0.1s;">
+                    <div class="card-header">
+                        <h3>Іноземні мови</h3>
+                        <span class="arrow-icon">↗</span>
+                    </div>
+                    <p>Поглиблене вивчення та практика живого спілкування.</p>
+                    <div class="card-image-placeholder">🇬🇧</div>
+                </div>
+
+                <div class="bento-card light-card reveal" style="transition-delay: 0.2s;">
+                    <div class="card-header">
+                        <h3>Математика</h3>
+                        <span class="arrow-icon">↗</span>
+                    </div>
+                    <p>Розвиток аналітичного мислення та логіки.</p>
+                    <div class="card-image-placeholder">🧮</div>
                 </div>
             </div>
         </section>
 
-        <!-- Секція переваг (білий фон, картки в ряд) -->
-        <section class="features-section">
-            <div class="features-header">
-                <h2>Ліцей №38 — один із найкращих<br>навчальних закладів міста</h2>
-                <p>Ми працюємо вже багато років, створюючи комфортне середовище для розвитку.</p>
-            </div>
-            
-            <div class="cards-wrapper">
-                <a href="#" class="feature-card">
-                    <div class="card-icon blue-icon">💻</div>
-                    <h3>Електронний журнал</h3>
-                    <p>Миттєвий доступ до розкладу та оцінок.</p>
-                </a>
+        <section id="news" class="news-section container reveal">
+            <div class="news-container">
+                <div class="news-text">
+                    <h2>Будьте в курсі <span class="text-blue">подій</span></h2>
+                    <p>Слідкуйте за життям ліцею, анонсами заходів та досягненнями наших учнів на офіційній сторінці.</p>
+                    <div class="decorative-star">✳</div>
+                </div>
                 
-                <a href="#" class="feature-card">
-                    <div class="card-icon red-icon">👨‍👩‍👧‍👦</div>
-                    <h3>Батькам</h3>
-                    <p>Контроль, харчування та безпека учнів.</p>
-                </a>
-                
-                <a href="#" class="feature-card offset-card">
-                    <div class="card-icon yellow-icon">🏆</div>
-                    <h3>Досягнення</h3>
-                    <p>Перемоги на олімпіадах та конкурсах.</p>
-                </a>
-            </div>
-        </section>
-
-        <!-- Друга градієнтна секція (як з дівчинкою на референсі) -->
-        <section class="programs-section">
-            <div class="programs-content">
-                <h2>Ви можете обрати<br>найкращий профіль</h2>
-                <div class="profiles-grid">
-                    <div class="profile-item"><span class="flag">🧮</span> Інформатика</div>
-                    <div class="profile-item"><span class="flag">🇬🇧</span> Іноземні мови</div>
-                    <div class="profile-item"><span class="flag">🧬</span> Біологія</div>
+                <div class="fb-wrapper">
+                    <div class="fb-page" 
+                         data-href="https://www.facebook.com/facebook" 
+                         data-tabs="timeline" 
+                         data-width="400" 
+                         data-height="500" 
+                         data-small-header="false" 
+                         data-adapt-container-width="true" 
+                         data-hide-cover="false" 
+                         data-show-facepile="true">
+                    </div>
                 </div>
             </div>
         </section>
-
     </main>
-
-    <footer class="modern-footer">
-        <div class="footer-content">
-            <div class="footer-brand">
-                <h3>Ліцей №38 ім. Івана Павловського</h3>
-                <p>м. Полтава</p>
-            </div>
-            <div class="footer-links-wrapper">
-                <h4>Швидкі посилання</h4>
-                <div class="links-grid">
-                    <a href="#" class="footer-link">Контакти</a>
-                    <a href="transparency.html" class="footer-link">Прозорість</a>
-                    <a href="procurement.html" class="footer-link">Закупівлі</a>
-                    <a href="#" class="footer-link">Статут</a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Ліцей №38 Полтавської міської ради. Всі права захищено.</p>
-        </div>
-    </footer>
 
     <script src="script.js"></script>
 </body>
