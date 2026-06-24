@@ -1,1 +1,67 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ліцей №38 імені Івана Павловського</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+   
+</head>
+<body>
 
+    <!-- Шапка -->
+    <header>
+        <div class="header-top">
+            <button class="menu-btn" onclick="toggleSidebar()">
+                <span class="hamburger-icon">☰</span> Меню
+            </button>
+            <div class="logo-placeholder">Герб</div>
+            <div class="school-title">
+                <h1>Ліцей №38 імені Івана Павловського</h1>
+                <h2>Полтавської міської ради</h2>
+            </div>
+            <div class="logo-placeholder">Лого</div>
+        </div>
+    </header>
+<main style="padding: 40px 20px; max-width: 900px; margin: 0 auto;">
+    <h2 class="section-title">Закупівлі ліцею</h2>
+    <p>На цій сторінці ви знайдете інформацію про тендери, плани закупівель та звіти про використання коштів.</p>
+    
+    <div style="margin-top: 20px; background: #fff; padding: 20px; border-radius: 8px; box-shadow: var(--shadow-soft);">
+        <p>Список актуальних закупівель на 2026 рік буде оновлено найближчим часом.</p>
+    </div>
+</main>
+
+    <!-- Підвал -->
+    <footer class="footer-links">
+        <h3 style="color: var(--primary-blue);">Корисні посилання</h3>
+        <div class="links-grid">
+            <div class="link-item"></div>
+            <div class="link-item"></div>
+            <div class="link-item"></div>
+            <div class="link-item"></div>
+        </div>
+    </footer>
+
+    <!-- Скрипти для роботи меню -->
+    <script>
+        // Відкриття та закриття бокового меню
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('active');
+            document.getElementById('sidebarOverlay').classList.toggle('active');
+        }
+
+        // Відкриття та закриття підменю (Акордеон)
+        function toggleSub(event) {
+            event.preventDefault(); // Запобігає переходу за посиланням
+            let parentLi = event.target.closest('.has-children');
+            parentLi.classList.toggle('open');
+        }
+    </script>
+
+</body>
+</html>
