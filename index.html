@@ -7,7 +7,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -17,83 +17,125 @@
     <header class="glass-header">
         <div class="container nav-wrapper">
             <div class="logo">
-                <span class="logo-icon">✨</span>
+                <div class="logo-circle">#38</div>
                 <div class="logo-text">
-                    <strong>Ліцей №38</strong>
-                    <span>ім. І. Павловського</span>
+                    <strong>Ліцей №38 ім. І. Павловського</strong>
+                    <span>Полтавської міської ради</span>
                 </div>
             </div>
             
-            <nav class="desktop-nav">
-                <a href="#about">Про нас</a>
-                <a href="#classes">Профільні класи</a>
-                <a href="#news">Новини</a>
-            </nav>
-            
-            <a href="#contact" class="btn-outline">Зв'язок ↗</a>
+            <button class="menu-toggle" id="menuToggle">
+                <span class="hamburger"></span>
+                Меню
+            </button>
         </div>
     </header>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>Меню сайту</h3>
+            <button class="close-btn" id="closeMenu">✕</button>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="#" class="active">Головна</a></li>
+            <li><a href="#">Закупівлі</a></li>
+            <li><a href="#">Оголошення</a></li>
+            <li><a href="#">Новини</a></li>
+            <li><a href="#">Громадські обговорення</a></li>
+            
+            <li class="has-dropdown">
+                <a href="#" class="dropdown-toggle">Про школу <span class="arrow">▼</span></a>
+                <ul class="submenu">
+                    <li><a href="#">Благодійність</a></li>
+                    <li><a href="#">Історія</a></li>
+                    <li><a href="#">Символіка</a></li>
+                    <li><a href="#">ЗМІ про нас</a></li>
+                    <li><a href="#">Колектив</a></li>
+                </ul>
+            </li>
+
+            <li><a href="#">Набір до 1 класу</a></li>
+            <li><a href="#">Набір до 10 класу</a></li>
+
+            <li class="has-dropdown">
+                <a href="#" class="dropdown-toggle">Освітній процес <span class="arrow">▼</span></a>
+                <ul class="submenu">
+                    <li><a href="#">Режим роботи</a></li>
+                    <li><a href="#">Інноваційна діяльність</a></li>
+                    <li><a href="#">Олімпіади, МАН, конкурси</a></li>
+                    <li><a href="#">Форми навчання</a></li>
+                    <li><a href="#">НМТ + ДПА</a></li>
+                    <li><a href="#">Атестація</a></li>
+                </ul>
+            </li>
+
+            <li><a href="#">Критерії оцінювання</a></li>
+            <li><a href="#">Прозорість та інф. відкритість</a></li>
+
+            <li class="has-dropdown">
+                <a href="#" class="dropdown-toggle">Виховна робота <span class="arrow">▼</span></a>
+                <ul class="submenu">
+                    <li><a href="#">Класним керівникам</a></li>
+                    <li><a href="#">Творчі студії</a></li>
+                    <li><a href="#">Самоврядування</a></li>
+                </ul>
+            </li>
+
+            <li class="has-dropdown">
+                <a href="#" class="dropdown-toggle">Проєктна діяльність <span class="arrow">▼</span></a>
+                <ul class="submenu">
+                    <li><a href="#">DLC (Цифровий освітній центр)</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
 
     <main>
         <section class="hero container">
             <div class="hero-text reveal">
-                <div class="badge">Більше ніж школа</div>
-                <h1>РОЗКРИЙ СВІЙ ПОТЕНЦІАЛ <span class="highlight">→</span> РАЗОМ З НАШИМ <br><span class="text-blue">ЛІЦЕЄМ</span></h1>
-                <p>Сучасні методики, інноваційні технології та дружня атмосфера для найкращих результатів.</p>
-                <button class="btn-primary">Приєднатися ↗</button>
+                <div class="badges-wrapper">
+                    <span class="badge green-badge">Освіта майбутнього</span>
+                    <span class="badge pink-badge">Полтава</span>
+                </div>
+                <h1>ЛІЦЕЙ УСПІШНИХ ТА <br><span class="highlight-navy">ЩАСЛИВИХ УЧНІВ</span></h1>
+                <p>Сучасний простір, де інновації зустрічаються з традиціями, а навчання стає захопливим процесом.</p>
             </div>
         </section>
 
-        <section id="classes" class="classes-section container">
-            <div class="section-header reveal">
-                <h2>Наші профілі</h2>
-                <p>Обирай напрямок, який допоможе тобі стати професіоналом.</p>
-            </div>
-            
-            <div class="bento-grid">
-                <div class="bento-card blue-card reveal">
-                    <div class="card-header">
-                        <h3>Інформатика</h3>
-                        <span class="arrow-icon">↗</span>
-                    </div>
-                    <p>Програмування, вебдизайн та створення власних проєктів.</p>
-                    <div class="card-image-placeholder">💻</div>
+        <section class="mission-section container">
+            <div class="bento-grid-2">
+                <div class="bento-card navy-card reveal">
+                    <div class="card-icon pink-text">🎯</div>
+                    <h3>Наша візія</h3>
+                    <p>Ліцей успішних щасливих учнів, умотивованих кваліфікованих педагогів та відкритих до співпраці батьків.</p>
                 </div>
-
-                <div class="bento-card light-card reveal" style="transition-delay: 0.1s;">
-                    <div class="card-header">
-                        <h3>Іноземні мови</h3>
-                        <span class="arrow-icon">↗</span>
-                    </div>
-                    <p>Поглиблене вивчення та практика живого спілкування.</p>
-                    <div class="card-image-placeholder">🇬🇧</div>
-                </div>
-
-                <div class="bento-card light-card reveal" style="transition-delay: 0.2s;">
-                    <div class="card-header">
-                        <h3>Математика</h3>
-                        <span class="arrow-icon">↗</span>
-                    </div>
-                    <p>Розвиток аналітичного мислення та логіки.</p>
-                    <div class="card-image-placeholder">🧮</div>
+                
+                <div class="bento-card green-card reveal" style="transition-delay: 0.2s;">
+                    <div class="card-icon navy-text">🌟</div>
+                    <h3>Наша місія</h3>
+                    <p class="large-text">Успішна дитина — щаслива родина.</p>
                 </div>
             </div>
         </section>
 
-        <section id="news" class="news-section container reveal">
+        <section class="news-section container reveal">
             <div class="news-container">
                 <div class="news-text">
-                    <h2>Будьте в курсі <span class="text-blue">подій</span></h2>
-                    <p>Слідкуйте за життям ліцею, анонсами заходів та досягненнями наших учнів на офіційній сторінці.</p>
-                    <div class="decorative-star">✳</div>
+                    <h2>Останні <span class="highlight-pink">новини</span></h2>
+                    <p>Слідкуйте за життям ліцею, анонсами заходів та досягненнями наших учнів на офіційній сторінці у Facebook.</p>
+                    <div class="decorative-shapes">
+                        <div class="circle-green"></div>
+                        <div class="circle-pink"></div>
+                    </div>
                 </div>
                 
                 <div class="fb-wrapper">
                     <div class="fb-page" 
                          data-href="https://www.facebook.com/facebook" 
                          data-tabs="timeline" 
-                         data-width="400" 
-                         data-height="500" 
+                         data-width="500" 
+                         data-height="600" 
                          data-small-header="false" 
                          data-adapt-container-width="true" 
                          data-hide-cover="false" 
