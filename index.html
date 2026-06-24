@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/uk_UA/sdk.js#xfbml=1&version=v20.0" nonce="abc12345"></script>
     <header class="glass-header">
         <div class="header-top">
             <button class="menu-btn" onclick="toggleSidebar()">
@@ -145,12 +146,19 @@
         <section class="news-section">
             <div class="section-title-wrapper">
                 <h2 class="section-title">Життя ліцею</h2>
-            </div>
-            <div class="news-grid">
-                <div class="news-card fb-widget-placeholder">
-                    <div class="fb-icon">f</div>
-                    <p>Тут буде інтегровано офіційну стрічку Facebook Ліцею №38</p>
-                </div>
+            <div class="fb-page" 
+     data-href="ВАШЕ_ПОСИЛАННЯ_НА_FACEBOOK" 
+     data-tabs="timeline" 
+     data-width="500" 
+     data-height="600" 
+     data-small-header="false" 
+     data-adapt-container-width="true" 
+     data-hide-cover="false" 
+     data-show-facepile="true">
+     <blockquote cite="https://www.facebook.com/profile.php?id=61566362163102&locale=uk_UA" class="fb-xfbml-parse-ignore">
+        <a href="ВАШЕ_ПОСИЛАННЯ_НА_FACEBOOK">Ваша сторінка ліцею</a>
+     </blockquote>
+</div>
             </div>
         </section>
 
