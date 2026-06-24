@@ -15,6 +15,16 @@
 
     <!-- Шапка -->
     <header>
+        <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+<nav class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <button class="close-btn" onclick="toggleSidebar()">✕</button>
+    </div>
+    <ul class="sidebar-menu">
+        <li><a href="index.html">Головна</a></li>
+        <li class="active"><a href="procurement.html">Закупівлі</a></li>
+        </ul>
+</nav>
         <div class="header-top">
             <button class="menu-btn" onclick="toggleSidebar()">
                 <span class="hamburger-icon">☰</span> Меню
