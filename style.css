@@ -276,3 +276,14 @@ body {
     .classes-section { padding: 30px; }
     .desktop-nav { display: none; }
 }
+/* Класи для JS анімації появи */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
