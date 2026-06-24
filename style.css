@@ -513,3 +513,69 @@ body {
         height: 400px;
     }
 }
+/* --- Панель швидкого доступу --- */
+.quick-access {
+    margin-top: 20px;
+    margin-bottom: 80px;
+    position: relative;
+    z-index: 10; /* Щоб кнопки були клікабельними поверх інших ефектів */
+}
+
+.quick-links-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Дозволяє кнопкам переноситися на нові рядки на телефонах */
+    gap: 15px;
+}
+
+.quick-link-btn {
+    background: white;
+    color: var(--primary-navy);
+    padding: 16px 32px;
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    border: 2px solid transparent;
+    transition: var(--transition);
+}
+
+/* Ефект при наведенні мишки */
+.quick-link-btn:hover {
+    border-color: var(--accent-green);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(46, 139, 87, 0.15);
+    color: var(--accent-green);
+}
+
+/* Анімація стрілочки */
+.quick-link-btn .arrow {
+    transition: transform 0.3s ease;
+    font-size: 1.2rem;
+}
+
+.quick-link-btn:hover .arrow {
+    transform: translateX(5px);
+}
+
+/* Оновлення карток місії (щоб компенсувати відсутність іконок) */
+.mission-section .bento-card h3 {
+    font-size: 2rem; /* Трохи збільшимо заголовки, щоб заповнити простір */
+    margin-bottom: 20px;
+}
+
+/* Адаптивність для кнопок на мобільних */
+@media (max-width: 768px) {
+    .quick-links-wrapper {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .quick-link-btn {
+        justify-content: space-between; /* Розносить текст і стрілку по краях екрану */
+    }
+}
