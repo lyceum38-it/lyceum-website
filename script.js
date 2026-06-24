@@ -1,23 +1,51 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Налаштування Intersection Observer для анімації появи (scroll reveal)
+    // 1. Логіка бічного меню (Sidebar)
+    const menuToggle = document.getElementById('menuToggle');
+    const closeMenu = document.getElementById('closeMenu');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+
+    function toggleMenu() {
+        sidebar.classList.toggle('active');
+        overlay.classList.toggle('active');
+        document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
+    }
+
+    menuToggle.addEventListener('click', toggleMenu);
+    closeMenu.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', toggleMenu);
+
+    // 2. Логіка випадаючих списків у меню (Акордеон)
+    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+    
+    dropdownToggles.forEach(toggle => {
+        toggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            const parentLi = this.parentElement;
+            
+            // Закриваємо інші відкриті меню, якщо потрібно (опціонально)
+            // document.querySelectorAll('.has-dropdown.open').forEach(item => {
+            //     if(item !== parentLi) item.classList.remove('open');
+            // });
+
+            parentLi.classList.toggle('open');
+        });
+    });
+
+    // 3. Анімація появи елементів при скролі
     const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.15
+        threshold: 0.15,
+        rootMargin: "0px 0px -50px 0px"
     };
 
-    const observer = new IntersectionObserver((entries, observer) => {
+    const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // Додаємо клас для активації CSS анімації
                 entry.target.classList.add('active');
-                // Припиняємо спостереження після появи
-                observer.unobserve(entry.target);
+                observer.unobserve(entry.target); // Анімуємо лише один раз
             }
         });
     }, observerOptions);
 
-    // Знаходимо всі елементи з класом reveal і починаємо за ними стежити
-    const revealElements = document.querySelectorAll('.reveal');
-    revealElements.forEach(el => observer.observe(el));
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 });
