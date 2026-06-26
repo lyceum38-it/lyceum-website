@@ -8,7 +8,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -85,7 +84,7 @@
                 </ul>
             </li>
 
-            <li><a href="#">Критерії оцінювання</a></li>
+            <li><a href="#" onclick="navigate('education'); closeSidebar();">Критерії оцінювання</a></li>
 
             <li class="has-dropdown">
                 <a href="#" class="dropdown-toggle">Виховна робота <span class="arrow">▼</span></a>
@@ -158,7 +157,7 @@
                     <div style="display: flex; flex-direction: column; justify-content: space-between;">
                         <div>
                             <h2 class="section-title">Останні <span style="color: var(--accent-pink);">новини</span></h2>
-                            <p style="color: var(--text-light); margin-bottom: 30px;">Слідкуйте за життям ліцею, анонсами заходів та досягненнями наших учнів.</p>
+                            <p style="color: var(--text-light); margin-bottom: 30px;">Слідкуйте за життям ліцею, анонсами заходів та досягненнями учнів.</p>
                         </div>
                         <div style="background: var(--bg-main); padding: 30px; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
                             <h3 style="font-size: 1.3rem; color: var(--primary-navy); margin-bottom: 15px;">📍 Швидкий зв'язок</h3>
@@ -180,28 +179,106 @@
                 <h1 class="section-title">Прозорість та інформаційна відкритість</h1>
                 <p class="section-subtitle" style="margin: 0 0 40px 0; max-width: 800px;">Інформація розміщена відповідно до статті 30 Закону України «Про освіту».</p>
                 
-                <div class="grid grid-3">
+                <div class="grid grid-2" style="margin-bottom: 30px;">
+                    <div class="card" style="border-top: 5px solid var(--accent-pink);">
+                        <h3 class="card-title">Кадровий склад</h3>
+                        <div style="font-size: 3rem; font-weight: 800; color: var(--accent-pink); line-height: 1;">97</div>
+                        <p style="font-weight: 600; margin-bottom: 15px;">Вчителів загалом</p>
+                        <ul style="list-style: none; color: var(--text-light); font-size: 0.95rem; line-height: 1.6;">
+                            <li>• 21 — вчитель-методист</li>
+                            <li>• 9 — старший вчитель</li>
+                            <li>• 51 — вища категорія</li>
+                            <li>• 21 — І категорія, 18 — ІІ категорія</li>
+                            <li>• 6 — спеціаліст</li>
+                        </ul>
+                        <div style="margin-top: 15px; padding: 10px; background: rgba(46, 139, 87, 0.1); color: var(--accent-green); border-radius: 8px; font-weight: 600;">
+                            ✓ Станом на сьогодні вакансії відсутні
+                        </div>
+                    </div>
+
+                    <div class="card" style="border-top: 5px solid var(--primary-navy);">
+                        <h3 class="card-title">Учнівський контингент</h3>
+                        <div style="font-size: 3rem; font-weight: 800; color: var(--primary-navy); line-height: 1;">1711</div>
+                        <p style="font-weight: 600; margin-bottom: 15px;">Фактична кількість дітей</p>
+                        <div style="margin-bottom: 20px; padding: 10px; border-left: 4px solid var(--primary-navy); background: var(--bg-main);">
+                            <strong>Ліцензований обсяг:</strong> 1296 дітей
+                        </div>
+                        <h3 class="card-title" style="margin-top: auto; font-size: 1.1rem;">Мова освітнього процесу</h3>
+                        <div style="font-size: 1.2rem; font-weight: 700; color: var(--text-dark);">🇺🇦 Українська</div>
+                    </div>
+                </div>
+
+                <div class="grid grid-2" style="margin-bottom: 40px;">
                     <div class="card">
-                        <h3 class="card-title">Установчі документи</h3>
+                        <h3 class="card-title">Органи управління закладом</h3>
+                        <div style="width: 100%; border-radius: 12px; overflow: hidden; margin-top: 15px;">
+                            <img src="ОРГАНИ_УПРАВЛІННЯ_ЗАКЛАДОМ_ОСВІТИ.pptx – копія.pptx.png" alt="Схема органів управління" style="width: 100%; height: auto;">
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="card-title">Умови доступності</h3>
+                        <p style="color: var(--text-light); margin-bottom: 15px; font-size: 0.95rem;">Будівля Ліцею №38 має два окремі входи, що дає можливість уникати скупчення дітей. Для дітей з ООП обладнано ліфт. Станом на 01.09 інклюзивні класи відсутні.</p>
+                        <div style="width: 100%; border-radius: 12px; overflow: hidden; margin-bottom: 15px;">
+                            <img src="image_c7780d.png" alt="Доступність" style="width: 100%; height: auto;">
+                        </div>
+                        <a href="#" data-doc="dostupnist-info" class="btn btn-outline" style="width: 100%; text-align: center;">Детальна інформація</a>
+                    </div>
+                </div>
+
+                <h2 style="font-size: 1.8rem; color: var(--primary-navy); margin-bottom: 20px;">Запобігання та протидія насильству</h2>
+                <div style="max-width: 1000px; margin-bottom: 40px;">
+                    <details>
+                        <summary>Психосоціальна підтримка учасників освітнього процесу</summary>
+                        <div class="details-content" style="display: flex; flex-direction: column; gap: 10px;">
+                            <a href="#" data-doc="stress-help" class="btn btn-outline">Як допомогти собі справитися з наслідками стресу</a>
+                            <a href="#" data-doc="child-care" class="btn btn-outline">Турбота про дітей під час конфліктів та міграції</a>
+                            <a href="#" data-doc="child-rights" class="btn btn-outline">Забезпечення прав дітей на захист від насильства</a>
+                        </div>
+                    </details>
+                    
+                    <details>
+                        <summary>Вирішення конфліктів та медіація</summary>
+                        <div class="details-content" style="display: flex; flex-direction: column; gap: 10px;">
+                            <a href="#" data-doc="mediation" class="btn btn-outline">Базові навички медіації однолітків</a>
+                            <a href="#" data-doc="mediation-book" class="btn btn-outline">Посібник: Вирішення конфліктів із застосуванням примирних процедур</a>
+                            <a href="#" data-doc="free-school" class="btn btn-outline">Впровадження моделі «Школа вільна від насильства»</a>
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary>Безпека дітей в цифровому середовищі (Інтернет)</summary>
+                        <div class="details-content" style="display: flex; flex-direction: column; gap: 10px;">
+                            <a href="#" data-doc="digital-rights" class="btn btn-outline">Буклет «Дізнайся про свої права в цифровому середовищі»</a>
+                            <a href="#" data-doc="digital-parents" class="btn btn-outline">Брошура «Батьківство в цифрову епоху»</a>
+                            <div style="margin-top: 15px; font-weight: 600; color: var(--primary-navy);">Відеоуроки (YouTube):</div>
+                            <div class="grid grid-2" style="gap: 10px;">
+                                <a href="#" data-doc="vid-1" class="btn btn-outline">1. Захист дітей онлайн</a>
+                                <a href="#" data-doc="vid-2" class="btn btn-outline">2. Сексуальний шантаж</a>
+                                <a href="#" data-doc="vid-3" class="btn btn-outline">3. Секстинг</a>
+                                <a href="#" data-doc="vid-4" class="btn btn-outline">4. Секс-чатинг</a>
+                                <a href="#" data-doc="vid-5" class="btn btn-outline">5. Грумінг</a>
+                                <a href="#" data-doc="vid-6" class="btn btn-outline">6. Зображення сексуального характеру (помста)</a>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="grid grid-2">
+                    <div class="card">
+                        <h3 class="card-title">Установчі та фінансові документи</h3>
                         <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
                             <a href="#" data-doc="statut" class="btn btn-outline">Статут ліцею</a>
-                            <a href="#" data-doc="structure" class="btn btn-outline">Структура та органи управління</a>
                             <a href="#" data-doc="licenzia" class="btn btn-outline">Ліцензії на освітню діяльність</a>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <h3 class="card-title">Фінансова звітність</h3>
-                        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
                             <a href="#" data-doc="koshtorys" class="btn btn-outline">Кошторис закладу</a>
                             <a href="#" data-doc="finance-zvit" class="btn btn-outline">Звіт про використання коштів</a>
-                            <a href="#" data-doc="zakupivli" class="btn btn-outline">Інформація про закупівлі</a>
                         </div>
                     </div>
                     <div class="card">
-                        <h3 class="card-title">Протидія булінгу</h3>
+                        <h3 class="card-title">Правила поведінки</h3>
                         <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
-                            <a href="#" data-doc="buling-plan" class="btn btn-outline">План заходів з протидії</a>
-                            <a href="#" data-doc="buling-zayava" class="btn btn-outline">Порядок подання заяв</a>
+                            <a href="#" data-doc="rules-1-4" class="btn btn-outline">Правила для здобувачів 1-4 класів</a>
+                            <a href="#" data-doc="rules-5-11" class="btn btn-outline">Правила для здобувачів 5-11 класів</a>
                         </div>
                     </div>
                 </div>
@@ -212,8 +289,6 @@
             <section class="container section">
                 <span class="badge badge-pink" style="margin-bottom: 15px;">Про Ліцей</span>
                 <h1 class="section-title">Історія та колектив</h1>
-                <p class="section-subtitle" style="margin: 0 0 40px 0; max-width: 800px;">Наш навчальний заклад має багату історію та сформовані традиції.</p>
-                
                 <div class="grid grid-3">
                     <div class="card" style="text-align: center;">
                         <div style="height: 200px; background: var(--border-color); border-radius: 12px; margin-bottom: 15px; display:flex; align-items:center; justify-content:center;">[Фото Директора]</div>
@@ -233,16 +308,15 @@
             <section class="container section">
                 <span class="badge badge-green" style="margin-bottom: 15px;">Освітній процес</span>
                 <h1 class="section-title">Навчання та Розклад</h1>
-                
                 <div class="grid grid-2" style="margin-bottom: 50px;">
                     <div class="card" style="border-top: 5px solid var(--primary-navy);">
                         <h3 class="card-title">Освітні програми</h3>
-                        <p style="color: var(--text-light); margin-bottom: 20px;">Перелік освітніх програм, що реалізуються в закладі освіти.</p>
+                        <p style="color: var(--text-light); margin-bottom: 20px;">Перелік програм, що реалізуються в закладі освіти.</p>
                         <a href="#" data-doc="osvitni-programy" class="btn btn-outline" style="width:fit-content;">Переглянути документ</a>
                     </div>
                     <div class="card" style="border-top: 5px solid var(--accent-green);">
                         <h3 class="card-title">Критерії оцінювання</h3>
-                        <p style="color: var(--text-light); margin-bottom: 20px;">Орієнтовні вимоги до оцінювання навчальних досягнень здобувачів освіти.</p>
+                        <p style="color: var(--text-light); margin-bottom: 20px;">Вимоги до оцінювання навчальних досягнень учнів.</p>
                         <a href="#" data-doc="kriterii" class="btn btn-outline" style="width:fit-content;">Завантажити критерії</a>
                     </div>
                 </div>
@@ -280,12 +354,26 @@
                 <div style="max-width: 800px;">
                     <details>
                         <summary>Які документи потрібні для вступу до 1 класу?</summary>
-                        <div class="details-content">Заява батьків, копія свідоцтва про народження, медична довідка встановленого зразка. Територія обслуговування закріплена за ліцеєм.</div>
+                        <div class="details-content">Заява батьків, копія свідоцтва про народження, медична довідка встановленого зразка.</div>
                     </details>
                     <details>
                         <summary>Як відбувається зарахування до 10 профільного класу?</summary>
-                        <div class="details-content">Зарахування відбувається на конкурсній основі за результатами співбесіди та середнього балу свідоцтва про базову освіту.</div>
+                        <div class="details-content">Зарахування відбувається на конкурсній основі за результатами співбесіди та свідоцтва.</div>
                     </details>
+                </div>
+            </section>
+        </div>
+
+        <div id="news" class="screen">
+            <section class="container section">
+                <h1 class="section-title" style="margin-bottom: 40px;">Всі новини ліцею</h1>
+                <div class="grid grid-3">
+                    <div class="card">
+                        <div style="height: 180px; background: var(--border-color); border-radius: 8px; margin-bottom: 15px;"></div>
+                        <span class="badge badge-navy" style="width: fit-content; margin-bottom: 10px;">Подія</span>
+                        <h3 class="card-title">Свято першого дзвоника</h3>
+                        <p style="color: var(--text-light); font-size: 0.9rem;">Урочистості з нагоди початку нового навчального року...</p>
+                    </div>
                 </div>
             </section>
         </div>
@@ -304,10 +392,6 @@
                             <label class="form-label">Email або телефон</label>
                             <input type="text" class="form-control" placeholder="Контакти для відповіді">
                         </div>
-                        <div class="form-group">
-                            <label class="form-label">Повідомлення</label>
-                            <textarea class="form-control" rows="4" placeholder="Текст вашого звернення..."></textarea>
-                        </div>
                         <button class="btn btn-primary" style="width: 100%; margin-top: 10px;">Надіслати</button>
                     </div>
                     <div>
@@ -315,8 +399,8 @@
                             [Карта Полтави]
                         </div>
                         <h3 class="card-title">Наші реквізити</h3>
-                        <p style="color: var(--text-light); margin-bottom: 5px;"><strong>Адреса:</strong> м. Полтава</p>
-                        <p style="color: var(--text-light); margin-bottom: 5px;"><strong>Телефон:</strong> +38 (000) 000-00-00</p>
+                        <p style="color: var(--text-light);"><strong>Адреса:</strong> м. Полтава</p>
+                        <p style="color: var(--text-light);"><strong>Телефон:</strong> +38 (000) 000-00-00</p>
                         <p style="color: var(--text-light);"><strong>Email:</strong> school38@ukr.net</p>
                     </div>
                 </div>
