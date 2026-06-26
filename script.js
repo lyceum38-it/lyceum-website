@@ -1,178 +1,146 @@
-// ==========================================================================
-// 1. SPA НАВІГАЦІЯ
-// ==========================================================================
-function navigate(targetId) {
-    document.querySelectorAll('.screen').forEach(screen => screen.classList.remove('active'));
-    const targetScreen = document.getElementById(targetId);
-    if(targetScreen) targetScreen.classList.add('active');
-    
-    document.querySelectorAll('.desktop-nav a').forEach(link => {
-        link.classList.remove('active');
-        if(link.getAttribute('onclick').includes(targetId)) link.classList.add('active');
-    });
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-function closeSidebar() {
-    document.getElementById('sidebar').classList.remove('active');
-    document.getElementById('sidebarOverlay').classList.remove('active');
-    document.body.style.overflow = '';
-}
-
 document.addEventListener("DOMContentLoaded", () => {
     
-    // --- Сайдбар Логіка ---
+    // ==========================================================================
+    // 1. FULLSCREEN MENU LOGIC
+    // ==========================================================================
     const menuToggle = document.getElementById('menuToggle');
-    const sidebar = document.getElementById('sidebar');
-    const overlay = document.getElementById('sidebarOverlay');
-    
+    const fullscreenMenu = document.getElementById('fullscreenMenu');
+    const header = document.querySelector('.main-header');
+
     function toggleMenu() {
-        sidebar.classList.toggle('active');
-        overlay.classList.toggle('active');
-        document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
-    }
-    menuToggle?.addEventListener('click', toggleMenu);
-    document.getElementById('closeMenu')?.addEventListener('click', toggleMenu);
-    overlay?.addEventListener('click', toggleMenu);
-    
-    document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
-        toggle.addEventListener('click', function(e) {
-            e.preventDefault();
-            this.parentElement.classList.toggle('open');
-        });
-    });
-
-    // ==========================================================================
-    // 2. ІНТЕРАКТИВНІ АНІМАЦІЇ (Mousemove, Ripple)
-    // ==========================================================================
-    
-    // Ambient Orbs (Lerp до курсора)
-    const orb1 = document.querySelector('.orb-1');
-    const orb2 = document.querySelector('.orb-2');
-    let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
-    let orb1X = 0, orb1Y = 0, orb2X = 0, orb2Y = 0;
-
-    window.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX; mouseY = e.clientY;
-    });
-
-    function animateOrbs() {
-        const targetX1 = (mouseX - window.innerWidth / 2) * 0.04;
-        const targetY1 = (mouseY - window.innerHeight / 2) * 0.04;
-        const targetX2 = (mouseX - window.innerWidth / 2) * -0.03;
-        const targetY2 = (mouseY - window.innerHeight / 2) * -0.03;
-
-        orb1X += (targetX1 - orb1X) * 0.02;
-        orb1Y += (targetY1 - orb1Y) * 0.02;
-        orb2X += (targetX2 - orb2X) * 0.02;
-        orb2Y += (targetY2 - orb2Y) * 0.02;
-
-        if (orb1) orb1.style.transform = `translate(${orb1X}px, ${orb1Y}px)`;
-        if (orb2) orb2.style.transform = `translate(${orb2X}px, ${orb2Y}px)`;
-
-        requestAnimationFrame(animateOrbs);
-    }
-    // Запускаємо тільки якщо не ввімкнено "reduce motion" в ОС
-    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        animateOrbs();
+        const isActive = fullscreenMenu.classList.contains('active');
+        if (isActive) {
+            fullscreenMenu.classList.remove('active');
+            menuToggle.classList.remove('active');
+            menuToggle.querySelector('.menu-text').innerText = 'Меню';
+            document.body.style.overflow = '';
+            header.style.mixBlendMode = window.innerWidth > 900 ? 'difference' : 'normal';
+        } else {
+            fullscreenMenu.classList.add('active');
+            menuToggle.classList.add('active');
+            menuToggle.querySelector('.menu-text').innerText = 'Закрити';
+            document.body.style.overflow = 'hidden';
+            header.style.mixBlendMode = 'normal'; // Щоб текст було видно на світлому фоні меню
+            header.style.color = 'var(--primary-navy)';
+            document.querySelectorAll('.hamburger span').forEach(s => s.style.background = 'var(--primary-navy)');
+        }
     }
 
-    // Ripple ефект для кнопок
-    document.querySelectorAll('.quick-link-btn, .btn').forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            const rect = this.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            const ripple = document.createElement('span');
-            ripple.classList.add('ripple-effect');
-            
-            const size = Math.max(rect.width, rect.height);
-            ripple.style.width = ripple.style.height = `${size}px`;
-            ripple.style.left = `${x - size/2}px`;
-            ripple.style.top = `${y - size/2}px`;
-            
-            this.appendChild(ripple);
-            setTimeout(() => ripple.remove(), 600);
-        });
-    });
+    menuToggle.addEventListener('click', toggleMenu);
 
     // ==========================================================================
-    // 3. SCROLL АНІМАЦІЇ (Staggered Cards, Counters, Progress Line)
+    // 2. SPA PAGE TRANSITION (Шторка)
     // ==========================================================================
-    
-    // Staggered-анімація карток (.grid > .card)
-    document.querySelectorAll('.grid').forEach(grid => {
-        const cards = grid.querySelectorAll('.card, .bento-card');
-        // Роздаємо inline затримку кожній картці у гріді
-        cards.forEach((card, index) => {
-            card.style.transitionDelay = `${index * 0.15}s`;
-        });
-    });
+    window.navigate = function(targetId) {
+        const overlay = document.getElementById('pageTransition');
+        
+        // Крок 1: Опускаємо шторку
+        overlay.classList.add('active');
+        
+        // Крок 2: Чекаємо поки шторка перекриє екран, міняємо контент
+        setTimeout(() => {
+            // Ховаємо всі сторінки
+            document.querySelectorAll('.screen').forEach(screen => {
+                screen.classList.remove('active');
+            });
+            
+            // Показуємо нову
+            const targetScreen = document.getElementById(targetId);
+            if(targetScreen) targetScreen.classList.add('active');
+            
+            // Скролимо нагору
+            window.scrollTo({ top: 0, behavior: 'instant' });
+            
+            // Закриваємо меню, якщо воно відкрите
+            if(fullscreenMenu.classList.contains('active')) {
+                toggleMenu();
+            }
 
-    const scrollObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                // Активація базових reveal блоків та карток
-                entry.target.classList.add('active');
+            // Крок 3: Піднімаємо шторку назад (або опускаємо далі)
+            setTimeout(() => {
+                overlay.classList.remove('active');
                 
-                // Якщо це грід, активуємо всі картки всередині
-                if(entry.target.classList.contains('grid')) {
-                    entry.target.querySelectorAll('.card, .bento-card').forEach(c => c.classList.add('active'));
+                // Перезапускаємо Observer для нових елементів на екрані
+                initScrollAnimations();
+                
+            }, 100); // Невелика затримка перед відкриттям
+
+        }, 600); // 600ms - час анімації шторки в CSS
+    };
+
+    // ==========================================================================
+    // 3. SCROLL REVEAL ANIMATIONS (Intersection Observer)
+    // ==========================================================================
+    let observer;
+
+    function initScrollAnimations() {
+        if (observer) observer.disconnect(); // Очищаємо старий
+
+        const options = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); // Анімуємо тільки 1 раз
                 }
+            });
+        }, options);
 
-                scrollObserver.unobserve(entry.target); 
-            }
-        });
-    }, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
+        // Знаходимо всі елементи для анімації на ПОТОЧНОМУ активному екрані
+        const activeScreen = document.querySelector('.screen.active');
+        if (activeScreen) {
+            activeScreen.querySelectorAll('.fade-up-element, .clip-reveal-element').forEach(el => {
+                el.classList.remove('is-visible'); // Скидаємо перед спостереженням
+                observer.observe(el);
+            });
+        }
+    }
 
-    // Підписуємо всі гріди, прогрес-бари та звичайні reveal-елементи
-    document.querySelectorAll('.grid, .reveal, .scroll-progress-line').forEach(el => scrollObserver.observe(el));
-
-    // Анімація цифр (Counters)
-    const counters = document.querySelectorAll('.count-up');
-    const counterObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const target = +entry.target.getAttribute('data-target');
-                let count = 0;
-                const updateCount = () => {
-                    const increment = target / 40; // швидкість рахунку
-                    if (count < target) {
-                        count += increment;
-                        entry.target.innerText = Math.ceil(count);
-                        requestAnimationFrame(updateCount);
-                    } else {
-                        entry.target.innerText = target;
-                    }
-                };
-                updateCount();
-                counterObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.5 });
-    
-    counters.forEach(counter => counterObserver.observe(counter));
+    // Запуск при першому завантаженні
+    setTimeout(initScrollAnimations, 100);
 
     // ==========================================================================
     // 4. БАЗА ДАНИХ ОФІЦІЙНИХ ДОКУМЕНТІВ (Google Drive)
     // ==========================================================================
     const googleDriveDocs = {
+        // Установчі та фінансові
         "statut": "https://drive.google.com/file/d/тут_статут",
         "licenzia": "https://drive.google.com/file/d/тут_ліцензія",
+        "structure": "https://drive.google.com/file/d/тут_структура",
         "koshtorys": "https://drive.google.com/file/d/тут_кошторис",
+        "finance-zvit": "https://drive.google.com/file/d/тут_звіт",
+        "zakupivli": "https://prozorro.gov.ua/tender/search/", 
+        
+        // Інклюзія та правила
         "dostupnist-info": "https://drive.google.com/file/d/1YNombvybqeQ9ZP6o2SZzgfxu0srV3-iN/view",
-        "rules-1-4": "https://drive.google.com/file/d/посилання",
-        "stress-help": "https://drive.google.com/file/d/посилання"
-        // (Додайте усі ваші посилання)
+        
+        // Протидія насильству
+        "stress-help": "https://drive.google.com/file/d/посилання",
+        "child-care": "https://drive.google.com/file/d/посилання",
+        "mediation": "https://drive.google.com/file/d/посилання",
+        "digital-rights": "https://drive.google.com/file/d/посилання",
+        "vid-1": "https://youtube.com/ваше_відео",
+        "vid-2": "https://youtube.com/ваше_відео",
+
+        // Навчання та вступ
+        "osvitni-programy": "https://drive.google.com/file/d/посилання",
+        "kriterii": "https://drive.google.com/file/d/посилання",
+        "menu-food": "https://drive.google.com/file/d/посилання",
+        "vstup-rules": "https://drive.google.com/file/d/посилання"
     };
 
+    // Розподіл посилань
     Object.keys(googleDriveDocs).forEach(key => {
-        const docElement = document.querySelector(`[data-doc="${key}"]`);
-        if (docElement) {
-            docElement.href = googleDriveDocs[key];
-            docElement.target = "_blank"; 
-            docElement.rel = "noopener noreferrer"; 
-        }
+        // Шукаємо всі посилання (бо одне посилання може бути на різних екранах)
+        const docElements = document.querySelectorAll(`[data-doc="${key}"]`);
+        docElements.forEach(el => {
+            el.href = googleDriveDocs[key];
+            el.target = "_blank"; 
+            el.rel = "noopener noreferrer"; 
+        });
     });
 });
