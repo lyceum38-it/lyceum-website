@@ -7,311 +7,392 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="page-transition-overlay" id="pageTransition"></div>
-
+    <!-- Facebook SDK -->
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/uk_UA/sdk.js#xfbml=1&version=v20.0"></script>
 
+    <!-- КЛАСИЧНА ШАПКА З ВИДИМИМ МЕНЮ -->
     <header class="main-header">
         <div class="container header-inner">
             <a href="#" class="logo" onclick="navigate('home')">
-                <div class="logo-dot"></div>
-                <span>Ліцей №38</span>
-            </a>
-            <button class="menu-btn" id="menuToggle">
-                <span class="menu-text">Меню</span>
-                <div class="hamburger">
-                    <span></span><span></span>
+                <div class="logo-circle">#38</div>
+                <div class="logo-text">
+                    <strong>Ліцей №38 ім. І. Павловського</strong>
+                    <span>Полтавської міської ради</span>
                 </div>
-            </button>
+            </a>
+            
+            <nav class="desktop-nav">
+                <a href="#" onclick="navigate('home')" class="active">Головна</a>
+                <a href="#" onclick="navigate('about')">Про ліцей</a>
+                <a href="#" onclick="navigate('team')">Колектив</a>
+                <a href="#" onclick="navigate('education')">Навчання</a>
+                <a href="#" onclick="navigate('transparency')">Прозорість</a>
+                <a href="#" onclick="navigate('parents')">Батькам</a>
+                <a href="#" onclick="navigate('contacts')">Контакти</a>
+            </nav>
+
+            <button class="menu-toggle" id="menuToggle">☰</button>
         </div>
     </header>
 
-    <nav class="fullscreen-menu" id="fullscreenMenu">
-        <div class="menu-container">
-            <ul class="main-menu-list">
-                <li><a href="#" onclick="navigate('home')">Головна</a></li>
-                <li><a href="#" onclick="navigate('about')">Про ліцей</a></li>
-                <li><a href="#" onclick="navigate('team')">Колектив</a></li>
-                <li><a href="#" onclick="navigate('education')">Освітній процес</a></li>
-                <li><a href="#" onclick="navigate('transparency')">Прозорість</a></li>
-                <li><a href="#" onclick="navigate('parents')">Батькам та Вступ</a></li>
-                <li><a href="#" onclick="navigate('contacts')">Контакти</a></li>
-            </ul>
-            <div class="menu-footer">
-                <div class="menu-info">
-                    <p>м. Полтава</p>
-                    <p>school38@ukr.net</p>
-                    <p>+38 (000) 000-00-00</p>
-                </div>
-            </div>
+    <!-- БІЧНЕ МЕНЮ ДЛЯ МОБІЛЬНИХ -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>Меню</h3>
+            <button class="close-btn" id="closeMenu">✕</button>
         </div>
+        <ul class="sidebar-menu">
+            <li><a href="#" onclick="navigate('home'); closeSidebar();">Головна</a></li>
+            <li><a href="#" onclick="navigate('about'); closeSidebar();">Про ліцей</a></li>
+            <li><a href="#" onclick="navigate('team'); closeSidebar();">Колектив</a></li>
+            <li><a href="#" onclick="navigate('education'); closeSidebar();">Навчання</a></li>
+            <li><a href="#" onclick="navigate('transparency'); closeSidebar();">Прозорість</a></li>
+            <li><a href="#" onclick="navigate('parents'); closeSidebar();">Батькам та Вступ</a></li>
+            <li><a href="#" onclick="navigate('contacts'); closeSidebar();">Контакти</a></li>
+        </ul>
     </nav>
 
+    <!-- КОНТЕЙНЕР SPA -->
     <main id="app-root">
         
+        <!-- ================= СТОРІНКА: ГОЛОВНА ================= -->
         <div id="home" class="screen active">
-            <section class="hero-editorial container">
-                <div class="hero-content">
-                    <h1 class="huge-title fade-up-element">
-                        Простір<br>
-                        <span class="text-navy">твоїх</span><br>
-                        можливостей
-                    </h1>
-                    <div class="hero-desc fade-up-element" style="transition-delay: 0.1s;">
-                        <p>Сучасний освітній заклад у Полтаві, де повага, інновації та традиції створюють середовище для розвитку щасливої особистості.</p>
-                        <div class="hero-links">
-                            <a href="#" class="link-arrow" onclick="navigate('about')">Дізнатися більше ↗</a>
-                            <a href="#" class="link-arrow text-pink" onclick="navigate('parents')">Вступ 2026 ↗</a>
-                        </div>
-                    </div>
+            
+            <!-- Hero Блок -->
+            <section class="hero-section container">
+                <div class="hero-text text-center reveal">
+                    <span class="badge badge-pink" style="margin-bottom: 15px;">Освіта майбутнього</span>
+                    <h1 class="hero-title">Ліцей успішних та <span class="text-navy">щасливих учнів</span></h1>
+                    <p class="hero-subtitle">Сучасний освітній простір Полтави, де інновації зустрічаються з традиціями, а кожна дитина розкриває свій потенціал.</p>
                 </div>
-                <div class="hero-image-wrap clip-reveal-element">
-                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1000&auto=format&fit=crop" alt="Учні ліцею" class="hero-img">
-                </div>
-            </section>
-
-            <div class="marquee-section">
-                <div class="marquee-content">
-                    <span>Успішна дитина — щаслива родина</span> <span class="dot">•</span>
-                    <span>Ліцей №38</span> <span class="dot">•</span>
-                    <span>Сучасна освіта</span> <span class="dot">•</span>
-                    <span>Успішна дитина — щаслива родина</span> <span class="dot">•</span>
-                    <span>Ліцей №38</span> <span class="dot">•</span>
-                    <span>Сучасна освіта</span> <span class="dot">•</span>
-                </div>
-            </div>
-
-            <section class="stats-minimal container section">
-                <div class="grid-3">
-                    <div class="stat-item fade-up-element">
-                        <div class="stat-num">1711</div>
-                        <div class="stat-label">Учнів навчається<br>у нашому ліцеї</div>
-                    </div>
-                    <div class="stat-item fade-up-element" style="transition-delay: 0.1s;">
-                        <div class="stat-num text-green">97</div>
-                        <div class="stat-label">Кваліфікованих<br>викладачів</div>
-                    </div>
-                    <div class="stat-item fade-up-element" style="transition-delay: 0.2s;">
-                        <div class="stat-num text-pink">100%</div>
-                        <div class="stat-label">Безпечне та<br>комфортне середовище</div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <div id="team" class="screen">
-            <section class="container section">
-                <h1 class="huge-title fade-up-element">Наш<br>колектив</h1>
-                <p class="subtitle fade-up-element">Професіонали, які надихають, підтримують та ведуть до успіху.</p>
                 
-                <div class="team-departments">
-                    <div class="department-block fade-up-element">
-                        <div class="department-info">
-                            <h2 class="dep-title">Кафедра математики та інформатики</h2>
-                            <p class="dep-desc">Викладачі точних наук, які розвивають логічне мислення, алгоритмічний підхід та готують учнів до викликів цифрового світу.</p>
-                            <a href="#" class="link-arrow">Список викладачів ↗</a>
-                        </div>
-                        <div class="department-image clip-reveal-element">
-                            <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=800&auto=format&fit=crop" alt="Кафедра математики">
+                <!-- Швидкий доступ (Чітко структурований) -->
+                <div class="quick-access grid grid-4 reveal">
+                    <a href="#" class="qa-card" onclick="navigate('transparency')">
+                        <div class="qa-icon">📄</div>
+                        <h3>Публічна інформація</h3>
+                        <p>Офіційні дані та звіти</p>
+                    </a>
+                    <a href="#" class="qa-card" onclick="navigate('parents')">
+                        <div class="qa-icon">🎒</div>
+                        <h3>Вступ до 1 класу</h3>
+                        <p>Правила та документи</p>
+                    </a>
+                    <a href="#" class="qa-card" onclick="navigate('parents')">
+                        <div class="qa-icon">🎓</div>
+                        <h3>Вступ до 10 класу</h3>
+                        <p>Профільне навчання</p>
+                    </a>
+                    <a href="#" class="qa-card" onclick="navigate('about')">
+                        <div class="qa-icon">🏫</div>
+                        <h3>Про ліцей</h3>
+                        <p>Історія та колектив</p>
+                    </a>
+                </div>
+            </section>
+
+            <!-- УНІКАЛЬНА ІНТЕРАКТИВНА КАРУСЕЛЬ (Акордеон) -->
+            <section class="carousel-section container section reveal">
+                <h2 class="section-title text-center" style="margin-bottom: 40px;">Наш освітній простір</h2>
+                <div class="expanding-carousel">
+                    <div class="carousel-panel active" style="background-image: url('https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1000&auto=format&fit=crop');">
+                        <div class="panel-content">
+                            <h3>Сучасні класи</h3>
+                            <p>Обладнані інтерактивними панелями</p>
                         </div>
                     </div>
-
-                    <div class="department-block reverse fade-up-element">
-                        <div class="department-info">
-                            <h2 class="dep-title text-green">Природничі науки</h2>
-                            <p class="dep-desc">Біологія, хімія, фізика та географія. Досліджуємо світ через практику, експерименти та наукові проєкти МАН.</p>
-                            <a href="#" class="link-arrow text-green">Список викладачів ↗</a>
-                        </div>
-                        <div class="department-image clip-reveal-element">
-                            <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=800&auto=format&fit=crop" alt="Природничі науки">
+                    <div class="carousel-panel" style="background-image: url('https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?q=80&w=1000&auto=format&fit=crop');">
+                        <div class="panel-content">
+                            <h3>Дружня атмосфера</h3>
+                            <p>Простір без булінгу та стресу</p>
                         </div>
                     </div>
-
-                    <div class="department-block fade-up-element">
-                        <div class="department-info">
-                            <h2 class="dep-title text-pink">Українська філологія</h2>
-                            <p class="dep-desc">Плекаємо любов до рідного слова, розвиваємо критичне читання та готуємо до блискучого складання НМТ з мови та літератури.</p>
-                            <a href="#" class="link-arrow text-pink">Список викладачів ↗</a>
-                        </div>
-                        <div class="department-image clip-reveal-element">
-                            <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=800&auto=format&fit=crop" alt="Українська філологія">
+                    <div class="carousel-panel" style="background-image: url('https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=1000&auto=format&fit=crop');">
+                        <div class="panel-content">
+                            <h3>Цифровий центр</h3>
+                            <p>Інноваційна проєктна діяльність</p>
                         </div>
                     </div>
+                    <div class="carousel-panel" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1000&auto=format&fit=crop');">
+                        <div class="panel-content">
+                            <h3>Творчі студії</h3>
+                            <p>Розвиток талантів після уроків</p>
+                        </div>
+                    </div>
+                    <div class="carousel-panel" style="background-image: url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=1000&auto=format&fit=crop');">
+                        <div class="panel-content">
+                            <h3>Природничі науки</h3>
+                            <p>Сучасні лабораторії та експерименти</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-                    <div class="department-block reverse fade-up-element">
-                        <div class="department-info">
-                            <h2 class="dep-title">Іноземні мови</h2>
-                            <p class="dep-desc">Інтегруємо учнів у світовий простір. Практика живого спілкування, сучасні методики та подолання мовних бар'єрів.</p>
-                            <a href="#" class="link-arrow">Список викладачів ↗</a>
+            <!-- ІНФОРМАЦІЯ ПРО ЛІЦЕЙ (Ваша статистика) -->
+            <section class="about-brief-section section background-light reveal">
+                <div class="container grid grid-2" style="align-items: center;">
+                    <div>
+                        <span class="badge badge-green" style="margin-bottom: 15px;">Факти та цифри</span>
+                        <h2 class="section-title">Масштаб та досвід</h2>
+                        <p style="font-size: 1.1rem; margin-bottom: 20px;">Мова освітнього процесу – <strong>українська</strong>. Ми забезпечуємо високий рівень знань та підтримуємо кожного учня на шляху до успіху.</p>
+                        <div class="stats-grid">
+                            <div class="stat-box">
+                                <div class="stat-number text-navy">1711</div>
+                                <div class="stat-text">Фактична кількість учнів (Ліцензований обсяг: 1296)</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-number text-pink">97</div>
+                                <div class="stat-text">Педагогічних працівників у колективі</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-number text-green">51</div>
+                                <div class="stat-text">Вчитель вищої кваліфікаційної категорії</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-number text-navy">21</div>
+                                <div class="stat-text">Вчитель-методист працює з учнями</div>
+                            </div>
                         </div>
-                        <div class="department-image clip-reveal-element">
-                            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop" alt="Іноземні мови">
+                    </div>
+                    <div class="mission-cards">
+                        <div class="card bg-navy text-white">
+                            <h3 style="margin-bottom: 10px; font-size: 1.5rem;">Наша візія</h3>
+                            <p>Ліцей успішних щасливих учнів, умотивованих кваліфікованих педагогів та відкритих до співпраці батьків.</p>
                         </div>
+                        <div class="card bg-green text-white" style="margin-top: 20px;">
+                            <h3 style="margin-bottom: 10px; font-size: 1.5rem;">Наша місія</h3>
+                            <p style="font-size: 1.5rem; font-weight: 700;">Успішна дитина — щаслива родина.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FACEBOOK ТА КОНТАКТИ -->
+            <section class="news-fb-section container section reveal">
+                <div class="section-header text-center">
+                    <h2 class="section-title">Життя ліцею</h2>
+                    <p class="section-subtitle">Слідкуйте за нашими новинами та подіями</p>
+                </div>
+                <div class="grid grid-2" style="background: white; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); overflow: hidden; border: 1px solid var(--border-color);">
+                    <div style="padding: 40px; display: flex; flex-direction: column; justify-content: center; background: var(--bg-main);">
+                        <h3 style="font-size: 2rem; color: var(--primary-navy); margin-bottom: 20px;">Офіційна сторінка</h3>
+                        <p style="margin-bottom: 30px; color: var(--text-light);">Долучайтесь до нашої спільноти у Facebook, щоб першими дізнаватися про досягнення учнів, анонси свят та важливі оголошення.</p>
+                        <div class="contact-details" style="background: white; padding: 20px; border-radius: 12px; border: 1px solid var(--border-color);">
+                            <p><strong>📍 Адреса:</strong> м. Полтава</p>
+                            <p><strong>📞 Телефон:</strong> +38 (000) 000-00-00</p>
+                            <p><strong>✉️ Email:</strong> school38@ukr.net</p>
+                        </div>
+                        <button class="btn btn-primary" style="margin-top: 20px; width: fit-content;" onclick="navigate('contacts')">Усі контакти</button>
+                    </div>
+                    <div style="padding: 0; min-height: 500px; border-left: 1px solid var(--border-color);">
+                        <div class="fb-page" data-href="https://www.facebook.com/facebook" data-tabs="timeline" data-width="500" data-height="600" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false"></div>
                     </div>
                 </div>
             </section>
         </div>
 
+        <!-- ================= СТОРІНКА: ПРОЗОРІСТЬ (Структурована) ================= -->
         <div id="transparency" class="screen">
             <section class="container section">
-                <h1 class="huge-title fade-up-element">Прозорість</h1>
-                <p class="subtitle fade-up-element">Офіційна інформація відповідно до ст. 30 Закону України «Про освіту».</p>
-
-                <div class="clean-docs-section fade-up-element">
-                    <div class="doc-row">
-                        <div class="doc-category">
-                            <h3>Установчі документи</h3>
-                            <p>Базові документи про діяльність закладу</p>
-                        </div>
-                        <div class="doc-links">
-                            <a href="#" data-doc="statut" class="doc-link">Статут ліцею ↗</a>
-                            <a href="#" data-doc="licenzia" class="doc-link">Ліцензії на діяльність ↗</a>
-                            <a href="#" data-doc="structure" class="doc-link">Структура управління ↗</a>
-                        </div>
-                    </div>
-
-                    <div class="doc-row">
-                        <div class="doc-category">
-                            <h3 class="text-green">Фінансова звітність</h3>
-                            <p>Кошториси та використання коштів</p>
-                        </div>
-                        <div class="doc-links">
-                            <a href="#" data-doc="koshtorys" class="doc-link">Кошторис закладу ↗</a>
-                            <a href="#" data-doc="finance-zvit" class="doc-link">Звіт про використання ↗</a>
-                            <a href="#" data-doc="zakupivli" class="doc-link">Закупівлі (Prozorro) ↗</a>
+                <span class="badge badge-navy" style="margin-bottom: 15px;">Відкриті дані</span>
+                <h1 class="section-title">Публічна інформація</h1>
+                <p class="section-subtitle" style="margin-bottom: 40px;">Інформація розміщена відповідно до статті 30 Закону України «Про освіту».</p>
+                
+                <div class="grid grid-2">
+                    <div class="card">
+                        <div class="card-icon">📁</div>
+                        <h3 class="card-title">Установчі документи</h3>
+                        <div class="link-list">
+                            <a href="#" data-doc="statut">Статут ліцею</a>
+                            <a href="#" data-doc="licenzia">Ліцензії на освітню діяльність</a>
+                            <a href="#" data-doc="structure">Структура та органи управління</a>
                         </div>
                     </div>
-                </div>
-
-                <h2 class="section-title fade-up-element" style="margin-top: 60px;">Протидія насильству та Булінгу</h2>
-                <div class="accordion-wrapper fade-up-element">
-                    <details class="clean-accordion">
-                        <summary>Психосоціальна підтримка учасників <span class="icon">+</span></summary>
-                        <div class="content">
-                            <a href="#" data-doc="stress-help" class="doc-link">Як допомогти собі справитися з наслідками стресу ↗</a>
-                            <a href="#" data-doc="child-care" class="doc-link">Турбота про дітей під час конфліктів ↗</a>
+                    <div class="card">
+                        <div class="card-icon">📊</div>
+                        <h3 class="card-title">Фінансова звітність</h3>
+                        <div class="link-list">
+                            <a href="#" data-doc="koshtorys">Кошторис закладу</a>
+                            <a href="#" data-doc="finance-zvit">Звіт про використання коштів</a>
+                            <a href="#" data-doc="zakupivli">Інформація про закупівлі (Prozorro)</a>
                         </div>
-                    </details>
-                    <details class="clean-accordion">
-                        <summary>Безпека в цифровому середовищі (Інтернет) <span class="icon">+</span></summary>
-                        <div class="content">
-                            <a href="#" data-doc="digital-rights" class="doc-link">Буклет «Права в цифровому середовищі» ↗</a>
-                            <a href="#" data-doc="vid-1" class="doc-link">Відео: Захист дітей онлайн ↗</a>
-                            <a href="#" data-doc="vid-2" class="doc-link">Відео: Сексуальний шантаж та Секстинг ↗</a>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🛡️</div>
+                        <h3 class="card-title">Запобігання насильству (Булінг)</h3>
+                        <div class="link-list">
+                            <a href="#" data-doc="buling-plan">План заходів з протидії булінгу</a>
+                            <a href="#" data-doc="stress-help">Психосоціальна підтримка учнів</a>
+                            <a href="#" data-doc="mediation">Вирішення конфліктів (медіація)</a>
+                            <a href="#" data-doc="digital-rights">Безпека дітей в Інтернеті</a>
                         </div>
-                    </details>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">♿</div>
+                        <h3 class="card-title">Умови доступності</h3>
+                        <p style="font-size: 0.95rem; color: var(--text-light); margin-bottom: 15px;">Будівля має два окремі входи. Обладнано ліфт для дітей з ООП. Станом на 01.09 інклюзивні класи відсутні.</p>
+                        <a href="#" data-doc="dostupnist-info" class="btn btn-outline" style="width: 100%;">Детальна інформація</a>
+                    </div>
                 </div>
             </section>
         </div>
 
+        <!-- ================= СТОРІНКА: КОЛЕКТИВ ================= -->
+        <div id="team" class="screen">
+            <section class="container section">
+                <span class="badge badge-pink" style="margin-bottom: 15px;">Наші викладачі</span>
+                <h1 class="section-title">Методичні об'єднання</h1>
+                <p class="section-subtitle" style="margin-bottom: 40px;">Професіонали, які надихають, підтримують та ведуть до успіху.</p>
+                
+                <div class="grid grid-2">
+                    <div class="card image-card">
+                        <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=600&auto=format&fit=crop" alt="Математика">
+                        <div class="card-content">
+                            <h3 class="card-title">Математика та Інформатика</h3>
+                            <p>Розвиваємо логічне мислення та алгоритмічний підхід.</p>
+                        </div>
+                    </div>
+                    <div class="card image-card">
+                        <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=600&auto=format&fit=crop" alt="Природничі">
+                        <div class="card-content">
+                            <h3 class="card-title">Природничі науки</h3>
+                            <p>Біологія, хімія, фізика. Досліджуємо світ через експерименти.</p>
+                        </div>
+                    </div>
+                    <div class="card image-card">
+                        <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=600&auto=format&fit=crop" alt="Філологія">
+                        <div class="card-content">
+                            <h3 class="card-title">Українська філологія</h3>
+                            <p>Плекаємо любов до рідного слова та критичне читання.</p>
+                        </div>
+                    </div>
+                    <div class="card image-card">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=600&auto=format&fit=crop" alt="Іноземні">
+                        <div class="card-content">
+                            <h3 class="card-title">Іноземні мови</h3>
+                            <p>Практика живого спілкування та сучасні методики.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ================= СТОРІНКА: ПРО ЛІЦЕЙ ================= -->
         <div id="about" class="screen">
             <section class="container section">
-                <h1 class="huge-title fade-up-element">Про<br>Ліцей</h1>
-                <div class="editorial-text fade-up-element">
-                    <p>Ліцей №38 імені Івана Павловського — це не просто стіни. Це потужна спільнота викладачів, дітей та батьків, об'єднаних єдиною метою: надати якісну освіту та виховати достойних громадян України.</p>
-                    <p>Наш навчальний заклад постійно розвивається, впроваджуючи інноваційні методики, інтерактивне обладнання та зберігаючи найкращі класичні традиції викладання.</p>
-                </div>
-                
-                <h2 class="section-title fade-up-element" style="margin-top: 60px;">Умови доступності</h2>
-                <div class="grid-2 fade-up-element">
-                    <div>
-                        <p style="font-size: 1.1rem; line-height: 1.8;">Будівля Ліцею має два окремі входи, що дає можливість уникати скупчення дітей. Для дітей з особливими освітніми потребами обладнано спеціальний ліфт та пандуси.</p>
-                        <a href="#" data-doc="dostupnist-info" class="link-arrow" style="margin-top: 20px;">Детально про доступність ↗</a>
+                <h1 class="section-title">Про ліцей</h1>
+                <div class="grid grid-2">
+                    <div class="card">
+                        <h3 class="card-title">Історія та традиції</h3>
+                        <p>Наш навчальний заклад має багату історію та сформовані традиції. Ми пишаємося кожним випуском та нашими викладачами.</p>
                     </div>
-                    <div class="clip-reveal-element" style="height: 300px;">
-                        <img src="image_c7780d.png" alt="Умови доступності" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="card">
+                        <h3 class="card-title">Адміністрація</h3>
+                        <ul class="link-list">
+                            <li><strong>Директор:</strong> [ПІБ Директора]</li>
+                            <li><strong>Заступник з НВР:</strong> [ПІБ Заступника]</li>
+                            <li><strong>Заступник з виховної роботи:</strong> Корнієнко Жанна Анатоліївна</li>
+                        </ul>
                     </div>
                 </div>
             </section>
         </div>
 
+        <!-- ================= СТОРІНКА: ОСВІТНІЙ ПРОЦЕС ================= -->
         <div id="education" class="screen">
             <section class="container section">
-                <h1 class="huge-title fade-up-element">Освітній<br>процес</h1>
-                
-                <div class="doc-row fade-up-element" style="margin-top: 40px; border-top: 1px solid var(--border-color);">
-                    <div class="doc-category">
-                        <h3>Програми та Критерії</h3>
+                <h1 class="section-title">Навчання та Розклад</h1>
+                <div class="grid grid-2" style="margin-bottom: 40px;">
+                    <div class="card">
+                        <h3 class="card-title">Освітні програми</h3>
+                        <p style="margin-bottom: 15px;">Перелік освітніх програм, що реалізуються в закладі освіти.</p>
+                        <a href="#" data-doc="osvitni-programy" class="btn btn-outline">Переглянути документ</a>
                     </div>
-                    <div class="doc-links">
-                        <a href="#" data-doc="osvitni-programy" class="doc-link">Перелік освітніх програм ↗</a>
-                        <a href="#" data-doc="kriterii" class="doc-link">Критерії оцінювання учнів ↗</a>
-                    </div>
-                </div>
-
-                <h2 class="section-title fade-up-element" style="margin-top: 60px;">Розклад дзвінків</h2>
-                <div class="clean-table fade-up-element">
-                    <div class="t-row t-head">
-                        <div>Урок</div><div>Час</div><div>Перерва</div>
-                    </div>
-                    <div class="t-row">
-                        <div>1 урок</div><div>08:30 – 09:15</div><div>10 хв</div>
-                    </div>
-                    <div class="t-row">
-                        <div>2 урок</div><div>09:25 – 10:10</div><div>20 хв (Сніданок)</div>
-                    </div>
-                    <div class="t-row">
-                        <div>3 урок</div><div>10:30 – 11:15</div><div>20 хв</div>
-                    </div>
-                    <div class="t-row">
-                        <div>4 урок</div><div>11:35 – 12:20</div><div>15 хв</div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <div id="parents" class="screen">
-            <section class="container section">
-                <h1 class="huge-title fade-up-element">Для<br>Батьків</h1>
-                
-                <div class="grid-2 fade-up-element" style="margin-top: 40px;">
-                    <div>
-                        <h2 class="section-title">Вступ до ліцею</h2>
-                        <p style="margin-bottom: 20px;">Ознайомтеся з правилами прийому до 1-х та 10-х класів нашого закладу.</p>
-                        <a href="#" data-doc="vstup-rules" class="link-arrow text-pink">Завантажити правила прийому ↗</a>
-                    </div>
-                    <div>
-                        <h2 class="section-title">Харчування та Журнал</h2>
-                        <div style="display: flex; flex-direction: column; gap: 15px;">
-                            <a href="#" data-doc="menu-food" class="doc-link">Графік та меню харчування ↗</a>
-                            <a href="#" class="doc-link">Електронний журнал ↗</a>
+                    <div class="card">
+                        <h3 class="card-title">Правила поведінки</h3>
+                        <div class="link-list">
+                            <a href="#" data-doc="rules-1-4">Для здобувачів 1-4 класів</a>
+                            <a href="#" data-doc="rules-5-11">Для здобувачів 5-11 класів</a>
                         </div>
                     </div>
                 </div>
             </section>
         </div>
 
-        <div id="contacts" class="screen">
-            <section class="container section fade-up-element">
-                <h1 class="huge-title">Зв'язок</h1>
-                <div class="grid-2" style="margin-top: 40px; align-items: start;">
-                    <div class="contact-info">
-                        <p class="large-contact">school38@ukr.net</p>
-                        <p class="large-contact">+38 (000) 000-00-00</p>
-                        <p style="margin-top: 20px; font-size: 1.2rem;">м. Полтава<br>Ліцей №38 імені Івана Павловського</p>
+        <!-- ================= СТОРІНКА: БАТЬКАМ (ВСТУП) ================= -->
+        <div id="parents" class="screen">
+            <section class="container section">
+                <h1 class="section-title">Вступ та інформація для батьків</h1>
+                <div class="grid grid-2">
+                    <div class="card bg-navy text-white">
+                        <h3 class="card-title" style="color: white;">Набір до 1 класу</h3>
+                        <p style="margin-bottom: 15px;">Заява батьків, копія свідоцтва про народження, медична довідка. Територія обслуговування закріплена за ліцеєм.</p>
+                        <a href="#" data-doc="vstup-rules" class="btn btn-primary" style="background: var(--accent-pink); border: none;">Правила прийому</a>
                     </div>
-                    
-                    <div class="fb-clean-wrapper">
-                        <div class="fb-page" data-href="https://www.facebook.com/facebook" data-tabs="timeline" data-width="500" data-height="600" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="false"></div>
+                    <div class="card bg-green text-white">
+                        <h3 class="card-title" style="color: white;">Набір до 10 класу</h3>
+                        <p style="margin-bottom: 15px;">Зарахування відбувається на конкурсній основі за результатами співбесіди та свідоцтва про базову освіту.</p>
+                        <a href="#" data-doc="vstup-rules" class="btn btn-primary" style="background: white; color: var(--accent-green); border: none;">Правила прийому</a>
+                    </div>
+                    <div class="card" style="grid-column: 1 / -1;">
+                        <h3 class="card-title">Харчування та Журнал</h3>
+                        <div class="link-list">
+                            <a href="#" data-doc="menu-food">Графік та меню харчування</a>
+                            <a href="#">Електронний журнал</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ================= СТОРІНКА: КОНТАКТИ ================= -->
+        <div id="contacts" class="screen">
+            <section class="container section">
+                <h1 class="section-title">Контакти</h1>
+                <div class="grid grid-2">
+                    <div class="card">
+                        <h3 class="card-title">Зворотний зв'язок</h3>
+                        <div class="form-group">
+                            <label class="form-label">Ваше ім'я</label>
+                            <input type="text" class="form-control" placeholder="Ім'я Прізвище">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email або телефон</label>
+                            <input type="text" class="form-control" placeholder="Контакти">
+                        </div>
+                        <button class="btn btn-primary" style="width: 100%;">Надіслати</button>
+                    </div>
+                    <div>
+                        <div style="background-color: var(--border-color); width: 100%; height: 250px; border-radius: var(--radius-md); margin-bottom: 20px; display: flex; align-items: center; justify-content: center;">
+                            [Карта Полтави]
+                        </div>
+                        <div class="card">
+                            <p><strong>Адреса:</strong> м. Полтава</p>
+                            <p><strong>Телефон:</strong> +38 (000) 000-00-00</p>
+                            <p><strong>Email:</strong> school38@ukr.net</p>
+                        </div>
                     </div>
                 </div>
             </section>
         </div>
     </main>
 
-    <footer class="clean-footer">
+    <!-- ФУТЕР -->
+    <footer class="main-footer">
         <div class="container footer-inner">
-            <div class="f-left">
-                <div class="logo-dot"></div>
-                <span>Ліцей №38 ім. І. Павловського</span>
+            <div>
+                <strong style="font-size: 1.2rem; display: block; margin-bottom: 5px;">Ліцей №38 ім. І. Павловського</strong>
+                <span style="opacity: 0.8;">м. Полтава</span>
             </div>
-            <div class="f-right">
-                <span>© 2026 Всі права захищено</span>
+            <div>
+                <a href="#" onclick="navigate('transparency')" style="color: white; text-decoration: underline; margin-right: 20px;">Публічна інформація</a>
+                <span style="opacity: 0.6;">© 2026 Всі права захищено</span>
             </div>
         </div>
     </footer>
