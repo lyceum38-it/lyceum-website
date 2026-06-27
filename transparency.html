@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Прозорість | Ліцей №38 імені Івана Павловського</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- ШАПКА -->
+    <header class="main-header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo">
+                <div class="logo-circle">#38</div>
+                <div class="logo-text">
+                    <strong>Ліцей №38 ім. І. Павловського</strong>
+                    <span>Полтавської міської ради</span>
+                </div>
+            </a>
+            
+            <nav class="desktop-nav">
+                <a href="index.html">Головна</a>
+                <a href="about.html">Про ліцей</a>
+                <a href="team.html">Колектив</a>
+                <a href="education.html">Навчання</a>
+                <a href="transparency.html">Прозорість</a>
+                <a href="parents.html">Батькам</a>
+                <a href="contacts.html">Контакти</a>
+            </nav>
+
+            <button class="menu-toggle" id="menuToggle">☰</button>
+        </div>
+    </header>
+
+    <!-- БІЧНЕ МЕНЮ ДЛЯ МОБІЛЬНИХ -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>Меню</h3>
+            <button class="close-btn" id="closeMenu">✕</button>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="index.html">Головна</a></li>
+            <li><a href="about.html">Про ліцей</a></li>
+            <li><a href="team.html">Колектив</a></li>
+            <li><a href="education.html">Навчання</a></li>
+            <li><a href="transparency.html">Прозорість</a></li>
+            <li><a href="parents.html">Батькам та Вступ</a></li>
+            <li><a href="contacts.html">Контакти</a></li>
+        </ul>
+    </nav>
+
+    <!-- УНІКАЛЬНИЙ КОНТЕНТ СТОРІНКИ "ПРОЗОРІСТЬ" -->
+    <main>
+        <section class="container section reveal">
+            <span class="badge badge-navy" style="margin-bottom: 15px;">Відкриті дані</span>
+            <h1 class="section-title">Публічна інформація</h1>
+            <p class="section-subtitle" style="margin-bottom: 40px;">Інформація розміщена відповідно до статті 30 Закону України «Про освіту».</p>
+            
+            <div class="grid grid-2">
+                <div class="card">
+                    <div class="card-icon">📁</div>
+                    <h3 class="card-title">Установчі документи</h3>
+                    <div class="link-list">
+                        <a href="#" data-doc="statut">Статут ліцею</a>
+                        <a href="#" data-doc="licenzia">Ліцензії на освітню діяльність</a>
+                        <a href="#" data-doc="structure">Структура та органи управління</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📊</div>
+                    <h3 class="card-title">Фінансова звітність</h3>
+                    <div class="link-list">
+                        <a href="#" data-doc="koshtorys">Кошторис закладу</a>
+                        <a href="#" data-doc="finance-zvit">Звіт про використання коштів</a>
+                        <a href="#" data-doc="zakupivli">Інформація про закупівлі (Prozorro)</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🛡️</div>
+                    <h3 class="card-title">Запобігання насильству (Булінг)</h3>
+                    <div class="link-list">
+                        <a href="#" data-doc="buling-plan">План заходів з протидії булінгу</a>
+                        <a href="#" data-doc="stress-help">Психосоціальна підтримка учнів</a>
+                        <a href="#" data-doc="mediation">Вирішення конфліктів (медіація)</a>
+                        <a href="#" data-doc="digital-rights">Безпека дітей в Інтернеті</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon">♿</div>
+                    <h3 class="card-title">Умови доступності</h3>
+                    <p style="font-size: 0.95rem; color: var(--text-light); margin-bottom: 15px;">Будівля має два окремі входи. Обладнано ліфт для дітей з ООП. Станом на 01.09 інклюзивні класи відсутні.</p>
+                    <a href="#" data-doc="dostupnist-info" class="btn btn-outline" style="width: 100%;">Детальна інформація</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ФУТЕР -->
+    <footer class="main-footer">
+        <div class="container footer-inner">
+            <div>
+                <strong style="font-size: 1.2rem; display: block; margin-bottom: 5px;">Ліцей №38 ім. І. Павловського</strong>
+                <span style="opacity: 0.8;">м. Полтава</span>
+            </div>
+            <div>
+                <a href="transparency.html" style="color: white; text-decoration: underline; margin-right: 20px;">Публічна інформація</a>
+                <span style="opacity: 0.6;">© 2026 Всі права захищено</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
