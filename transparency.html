@@ -74,7 +74,8 @@
                         <a href="#" data-doc="statut">Установчі документи</a>
                         <a href="#" data-doc="structure">Структури та органи управління</a>
                         <a href="#" data-doc="territory">Територія обслуговування</a>
-                        <a href="#" data-doc="language">Мова освітнього процесу</a>
+                        <a href="#" onclick="event.preventDefault(); const info = document.getElementById('lang-info'); info.style.display = info.style.display === 'none' ? 'block' : 'none';">Мова освітнього процесу</a>
+                        <div id="lang-info" style="display: none; padding: 10px 15px; background: var(--bg-main); border-left: 3px solid var(--primary-navy); margin-top: 5px; font-size: 0.9rem; border-radius: 4px;">Мова освітнього процесу – <strong>українська</strong>.</div>
                         <a href="#" data-doc="annual-report">Річний звіт про діяльність</a>
                     </div>
                 </div>
