@@ -57,45 +57,80 @@
     <!-- УНІКАЛЬНИЙ КОНТЕНТ СТОРІНКИ "ПРОЗОРІСТЬ" -->
     <main>
         <section class="container section reveal">
-            <span class="badge badge-navy" style="margin-bottom: 15px;">Відкриті дані</span>
-            <h1 class="section-title">Публічна інформація</h1>
-            <p class="section-subtitle" style="margin-bottom: 40px;">Інформація розміщена відповідно до статті 30 Закону України «Про освіту».</p>
+            <div class="text-center" style="margin-bottom: 40px;">
+                <span class="badge badge-navy" style="margin-bottom: 15px;">Відкриті дані</span>
+                <h1 class="section-title">Публічна інформація</h1>
+                <p class="section-subtitle">Інформація розміщена відповідно до статті 30 Закону України «Про освіту».</p>
+            </div>
             
-            <div class="grid grid-2">
+            <!-- Оновлена сітка документів (Згрупована) -->
+            <div class="grid grid-2" style="gap: 30px;">
+                
+                <!-- Блок 1: Організація роботи -->
                 <div class="card">
-                    <div class="card-icon">📁</div>
-                    <h3 class="card-title">Установчі документи</h3>
+                    <div class="card-icon" style="font-size: 2.5rem; margin-bottom: 10px;">🏛️</div>
+                    <h3 class="card-title">Організація роботи закладу</h3>
                     <div class="link-list">
-                        <a href="#" data-doc="statut">Статут ліцею</a>
-                        <a href="#" data-doc="licenzia">Ліцензії на освітню діяльність</a>
-                        <a href="#" data-doc="structure">Структура та органи управління</a>
+                        <a href="#" data-doc="statut">Установчі документи</a>
+                        <a href="#" data-doc="structure">Структури та органи управління</a>
+                        <a href="#" data-doc="territory">Територія обслуговування</a>
+                        <a href="#" data-doc="language">Мова освітнього процесу</a>
+                        <a href="#" data-doc="annual-report">Річний звіт про діяльність</a>
                     </div>
                 </div>
+
+                <!-- Блок 2: Освітній процес -->
                 <div class="card">
-                    <div class="card-icon">📊</div>
-                    <h3 class="card-title">Фінансова звітність</h3>
+                    <div class="card-icon" style="font-size: 2.5rem; margin-bottom: 10px;">📚</div>
+                    <h3 class="card-title">Освітній процес</h3>
                     <div class="link-list">
-                        <a href="#" data-doc="koshtorys">Кошторис закладу</a>
-                        <a href="#" data-doc="finance-zvit">Звіт про використання коштів</a>
-                        <a href="#" data-doc="zakupivli">Інформація про закупівлі (Prozorro)</a>
+                        <a href="#" data-doc="osvitni-programy">Освітні програми</a>
+                        <a href="#" data-doc="books">Підручники</a>
+                        <a href="#" data-doc="monitoring">Результати моніторингу якості освіти</a>
+                        <a href="#" data-doc="extra-services">Перелік додаткових послуг (та ціни)</a>
                     </div>
                 </div>
+
+                <!-- Блок 3: Колектив та Учні -->
                 <div class="card">
-                    <div class="card-icon">🛡️</div>
-                    <h3 class="card-title">Запобігання насильству (Булінг)</h3>
+                    <div class="card-icon" style="font-size: 2.5rem; margin-bottom: 10px;">👥</div>
+                    <h3 class="card-title">Кадри та Контингент</h3>
                     <div class="link-list">
-                        <a href="#" data-doc="buling-plan">План заходів з протидії булінгу</a>
-                        <a href="#" data-doc="stress-help">Психосоціальна підтримка учнів</a>
-                        <a href="#" data-doc="mediation">Вирішення конфліктів (медіація)</a>
-                        <a href="#" data-doc="digital-rights">Безпека дітей в Інтернеті</a>
+                        <a href="#" data-doc="staff">Кадровий склад (педагоги та адміністрація)</a>
+                        <a href="#" data-doc="students">Учнівський контингент (кількість учнів)</a>
                     </div>
                 </div>
+
+                <!-- Блок 4: Безпека та Правила -->
                 <div class="card">
-                    <div class="card-icon">♿</div>
-                    <h3 class="card-title">Умови доступності</h3>
-                    <p style="font-size: 0.95rem; color: var(--text-light); margin-bottom: 15px;">Будівля має два окремі входи. Обладнано ліфт для дітей з ООП. Станом на 01.09 інклюзивні класи відсутні.</p>
-                    <a href="#" data-doc="dostupnist-info" class="btn btn-outline" style="width: 100%;">Детальна інформація</a>
+                    <div class="card-icon" style="font-size: 2.5rem; margin-bottom: 10px;">🛡️</div>
+                    <h3 class="card-title">Безпека та Правила</h3>
+                    <div class="link-list">
+                        <a href="#" data-doc="rules">Правила поведінки для здобувачів освіти</a>
+                        <a href="#" data-doc="stop-bullying">Стопбулінг (запобігання та протидія)</a>
+                        <a href="#" data-doc="violence-prevention">Запобігання та протидія насильству</a>
+                    </div>
                 </div>
+
+                <!-- Блок 5: Фінанси та Забезпечення -->
+                <div class="card">
+                    <div class="card-icon" style="font-size: 2.5rem; margin-bottom: 10px;">💰</div>
+                    <h3 class="card-title">Фінанси та Забезпечення</h3>
+                    <div class="link-list">
+                        <a href="#" data-doc="koshtorys">Кошторис та фінансові звіти</a>
+                        <a href="#" data-doc="facilities">Матеріально-технічна база</a>
+                    </div>
+                </div>
+
+                <!-- Блок 6: Інклюзія -->
+                <div class="card">
+                    <div class="card-icon" style="font-size: 2.5rem; margin-bottom: 10px;">♿</div>
+                    <h3 class="card-title">Інклюзивність</h3>
+                    <div class="link-list">
+                        <a href="#" data-doc="accessibility">Умови доступності закладу освіти</a>
+                    </div>
+                </div>
+
             </div>
         </section>
     </main>
