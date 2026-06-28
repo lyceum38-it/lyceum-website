@@ -106,11 +106,21 @@ body { background-color: var(--bg-main); color: var(--text-dark); line-height: 1
 .btn-link { margin-top: 20px; text-decoration: none; font-weight: 700; color: var(--primary-navy); font-size: 0.9rem; }
 
 /* FB Section */
-.fb-container { border-radius: var(--radius-md); overflow: hidden; }
-.fb-info { padding: 40px; }
-.contact-card { background: white; padding: 20px; border-radius: 16px; margin: 25px 0; border: 1px solid var(--border-color); }
-.contact-card p { font-size: 0.9rem; margin-bottom: 8px; }
-.fb-widget { min-height: 500px; background: #eee; }
+.fb-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Робимо дві рівні колонки */
+    align-items: stretch; /* Змушуємо обидві колонки мати однакову висоту */
+    overflow: hidden;
+    background: white; /* Білий фон для всього блоку */
+}
+
+.fb-widget {
+    min-height: 500px;
+    background: transparent; /* ПРИБИРАЄМО СІРУ ПОЛОСКУ (тепер фон прозорий) */
+    display: flex;
+    justify-content: center; /* Центруємо віджет Facebook, якщо він вужчий за колонку */
+    align-items: flex-start;
+}
 
 /* Buttons */
 .btn { display: inline-block; padding: 14px 28px; border-radius: var(--radius-pill); font-weight: 700; text-decoration: none; transition: var(--transition); cursor: pointer; border: none; }
@@ -143,6 +153,13 @@ body { background-color: var(--bg-main); color: var(--text-dark); line-height: 1
     .desktop-nav { display: none; }
     .menu-toggle { display: block; }
     .expanding-carousel { flex-direction: column; height: 800px; }
+    .fb-container {
+        grid-template-columns: 1fr; /* На мобільних — одна колонка */
+    }
+    .fb-widget {
+        width: 100%;
+        justify-content: center;
+    }
 }
 /* --- ВИПРАВЛЕННЯ ДЛЯ СТОРІНКИ ПРОЗОРІСТЬ ТА ІНШИХ --- */
 
