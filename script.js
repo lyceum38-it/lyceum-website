@@ -1,31 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
     
-    // 1. АВТОМАТИЧНЕ ПІДСВІЧУВАННЯ АКТИВНОГО ПУНКТУ МЕНЮ
-    // Отримуємо назву поточного файлу (наприклад, 'about.html')
-    let currentPage = window.location.pathname.split("/").pop();
-    if (currentPage === "" || currentPage === "/") {
-        currentPage = "index.html"; // Якщо це корінь сайту, вважаємо, що це index.html
-    }
-
-    // Перевіряємо всі посилання в десктопному та мобільному меню
+    // 1. АВТОМАТИЧНЕ ПІДСВІЧУВАННЯ АКТИВНОГО МЕНЮ
+    let currentPage = window.location.pathname.split("/").pop() || "index.html";
+    
     document.querySelectorAll('.desktop-nav a, .sidebar-menu a').forEach(link => {
         let linkHref = link.getAttribute('href');
-        let linkPage = linkHref.split("/").pop();
-        
-        if (linkPage === "" || linkPage === "/") {
-            linkPage = "index.html";
-        }
-
-        // Видаляємо клас active про всяк випадок
-        link.classList.remove('active');
-        
-        // Порівнюємо поточну сторінку з посиланням (враховуючи чисті URL без .html)
-        if (currentPage === linkPage || currentPage.replace('.html', '') === linkPage.replace('.html', '')) {
+        if (linkHref === currentPage) {
             link.classList.add('active');
         }
     });
 
-    // 2. МОБІЛЬНЕ МЕНЮ (Сайдбар)
+    // 2. МОБІЛЬНЕ МЕНЮ
     const menuToggle = document.getElementById('menuToggle');
     const sidebar = document.getElementById('sidebar');
     const overlay = document.getElementById('sidebarOverlay');
@@ -41,36 +26,30 @@ document.addEventListener("DOMContentLoaded", () => {
     if (closeMenuBtn) closeMenuBtn.addEventListener('click', toggleMenu);
     if (overlay) overlay.addEventListener('click', toggleMenu);
 
-    // 3. ІНТЕРАКТИВНА КАРУСЕЛЬ (Акордеон для фото простору)
+    // 3. ІНТЕРАКТИВНА КАРУСЕЛЬ
     const panels = document.querySelectorAll('.carousel-panel');
     panels.forEach(panel => {
         panel.addEventListener('click', () => {
-            // Знімаємо клас active з усіх
             panels.forEach(p => p.classList.remove('active'));
-            // Додаємо тому, на який клікнули
             panel.classList.add('active');
         });
     });
 
-    // 4. АНІМАЦІЯ ПРИ СКРОЛІ (Intersection Observer)
+    // 4. АНІМАЦІЯ ПРИ СКРОЛІ
     const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('active');
-                observer.unobserve(entry.target); 
             }
         });
     }, observerOptions);
 
-    // Запускаємо спостерігач з невеликою затримкою
-    setTimeout(() => {
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-    }, 100);
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // 5. БАЗА ДАНИХ ОФІЦІЙНИХ ДОКУМЕНТІВ (Google Drive)
+    // 5. GOOGLE DRIVE DOCS
     const googleDriveDocs = {
-        "statut": "https://drive.google.com/file/d/тут_ваше_посилання_на_статут",
+        "statut": "https://drive.google.com/file/d/тут_ваше_посилання",
         "licenzia": "https://drive.google.com/file/d/посилання",
         "structure": "https://drive.google.com/file/d/посилання",
         "koshtorys": "https://drive.google.com/file/d/посилання",
@@ -89,13 +68,12 @@ document.addEventListener("DOMContentLoaded", () => {
         "vstup-rules": "https://drive.google.com/file/d/посилання"
     };
 
-    // Автоматична розстановка посилань по сайту
     Object.keys(googleDriveDocs).forEach(key => {
         const docElements = document.querySelectorAll(`[data-doc="${key}"]`);
         docElements.forEach(el => {
             el.href = googleDriveDocs[key];
-            el.target = "_blank"; // Відкривати в новій вкладці
-            el.rel = "noopener noreferrer"; // Безпека
+            el.target = "_blank";
+            el.rel = "noopener noreferrer";
         });
     });
 });
