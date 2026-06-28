@@ -130,38 +130,65 @@
             </div>
         </section>
 
-        <!-- Статистика -->
-        <section class="about-brief-section section background-light reveal">
-            <div class="container grid grid-2" style="align-items: center;">
+<!-- Статистика у стилі Bento Grid -->
+<section class="about-brief-section section background-light reveal">
+    <div class="container">
+        <div class="grid grid-2" style="align-items: stretch; gap: 30px;">
+            
+            <!-- Ліва частина: Текст + Більша картка статистики -->
+            <div style="display: flex; flex-direction: column; gap: 20px;">
                 <div>
                     <span class="badge badge-green" style="margin-bottom: 15px;">Факти та цифри</span>
-                    <h2 class="section-title">Масштаб та досвід</h2>
-                    <p style="font-size: 1.1rem; margin-bottom: 20px;">Мова освітнього процесу – <strong>українська</strong>. Ми забезпечуємо високий рівень знань та підтримуємо кожного учня на шляху до успіху.</p>
-                    <div class="stats-grid">
-                        <div class="stat-box">
-                            <div class="stat-number text-navy">1711</div>
-                            <div class="stat-text">Фактична кількість учнів (Ліцензований обсяг: 1296)</div>
-                        </div>
-                        <div class="stat-box">
-                            <div class="stat-number text-pink">97</div>
-                            <div class="stat-text">Педагогічних працівників у колективі</div>
-                        </div>
-                        <div class="stat-box">
-                            <div class="stat-number text-green">51</div>
-                            <div class="stat-text">Вчитель вищої кваліфікаційної категорії</div>
-                        </div>
-                        <div class="stat-box">
-                            <div class="stat-number text-navy">21</div>
-                            <div class="stat-text">Вчитель-методист працює з учнями</div>
+                    <h2 class="section-title" style="font-size: 2.5rem;">Масштаб та досвід</h2>
+                    <p style="font-size: 1.2rem; color: var(--text-light);">Мова освітнього процесу – <strong>українська</strong>. Ми забезпечуємо високий рівень знань.</p>
+                </div>
+
+                <!-- Велика картка статистики (Bento Item) -->
+                <div class="stat-box" style="background: var(--primary-navy); color: white; flex-grow: 1; display: flex; align-items: center; justify-content: center; text-align: center;">
+                    <div>
+                        <div class="stat-number" style="background: white; -webkit-background-clip: text; -webkit-text-fill-color: var(--primary-navy);">1711</div>
+                        <div style="font-size: 1.2rem; font-weight: 500; opacity: 0.9;">Загальна кількість учнів</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Права частина: Сітка маленьких карток + Оголошення -->
+            <div class="grid" style="grid-template-columns: repeat(2, 1fr); gap: 15px;">
+                
+                <div class="stat-box">
+                    <div class="stat-number text-pink" style="font-size: 2rem;">97</div>
+                    <div class="stat-text">Педагогів</div>
+                </div>
+                
+                <div class="stat-box">
+                    <div class="stat-number text-green" style="font-size: 2rem;">51</div>
+                    <div class="stat-text">Вищих категорій</div>
+                </div>
+
+                <!-- Блок оголошень (займає 2 колонки в цій сітці) -->
+                <div class="announcements-board" style="grid-column: span 2;">
+                    <div class="card glass" style="height: 100%;">
+                        <h3 style="margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+                            <span>📌</span> Актуально
+                        </h3>
+                        <div style="display: flex; flex-direction: column; gap: 12px;">
+                            <!-- Твій код оголошень залишається таким самим, але в новому контейнері -->
+                            <div style="border-left: 4px solid var(--accent-pink); background: rgba(255,255,255,0.5); padding: 15px; border-radius: 8px;">
+                                <span style="font-size: 0.75rem; font-weight: 700; color: var(--accent-pink);">ДО 15 СЕРПНЯ</span>
+                                <h4 style="margin: 5px 0; font-size: 1rem;">Прийом документів до 10 класу</h4>
+                            </div>
+                            <div style="border-left: 4px solid var(--accent-green); background: rgba(255,255,255,0.5); padding: 15px; border-radius: 8px;">
+                                <span style="font-size: 0.75rem; font-weight: 700; color: var(--accent-green);">28 СЕРПНЯ</span>
+                                <h4 style="margin: 5px 0; font-size: 1rem;">Зустрічі з батьками</h4>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="announcements-board" style="height: 100%;">
-                    <div class="card" style="height: 100%; display: flex; flex-direction: column;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; border-bottom: 1px solid var(--border-color); padding-bottom: 15px;">
-                            <h3 style="font-size: 1.5rem; color: var(--primary-navy); margin: 0;">📌 Актуально</h3>
-                            <span class="badge badge-pink" style="font-size: 0.7rem;">Оновлено</span>
-                        </div>
+
+            </div>
+        </div>
+    </div>
+</section>
                         
                         <div style="display: flex; flex-direction: column; gap: 15px;">
                             <!-- Оголошення 1 -->
