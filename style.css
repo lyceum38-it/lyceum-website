@@ -146,76 +146,55 @@ body { background-color: var(--bg-main); color: var(--text-dark); line-height: 1
 }
 /* --- ВИПРАВЛЕННЯ ДЛЯ СТОРІНКИ ПРОЗОРІСТЬ ТА ІНШИХ --- */
 
-/* 1. Робимо всі посилання в основному контенті блочними (в стовпчик) */
+/* --- СТИЛЬ ДЛЯ ПОСИЛАНЬ НА СТОРІНЦІ ПРОЗОРІСТЬ (БЕЗ ЗМІНИ HTML) --- */
+
+/* 1. Прибираємо стандартне підкреслення і робимо їх у стовпчик */
 main a {
     display: block;
-    margin-bottom: 10px; /* Додаємо відступ між посиланнями */
+    text-decoration: none; /* Прибираємо підкреслення */
+    color: var(--primary-navy);
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: var(--transition);
+    position: relative;
+}
+
+/* 2. Ефект при наведенні */
+main a:hover {
+    background-color: rgba(216, 27, 96, 0.08); /* Легкий рожевий фон */
+    color: var(--accent-pink);
+    padding-left: 20px; /* Текст трохи зсувається вправо */
+}
+
+/* 3. Додаємо маленьку стрілочку через CSS (псевдоелемент) */
+main a::after {
+    content: '→';
+    position: absolute;
+    right: 10px;
+    opacity: 0;
+    transform: translateX(-10px);
     transition: var(--transition);
 }
 
-/* 2. ЗАХИСТ: Повертаємо нормальний вигляд посиланням у меню та кнопках,
-      щоб вони не перетворилися на стовпчик! */
+main a:hover::after {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* ЗАХИСТ для меню та кнопок (щоб вони не зламалися) */
 .desktop-nav a, 
 .sidebar-menu a, 
 .logo a, 
 .btn, 
 .qa-card a {
-    display: inline-block; /* Або inline, щоб вони були в ряд */
-    margin-bottom: 0;
+    display: inline-block !important;
+    padding: 0 !important;
+    margin-bottom: 0 !important;
+    background: none !important;
 }
-
-/* 3. Додатково: якщо посилання всередині карток мають бути в рядок (як у Hero) */
-.qa-card h3, .qa-card p {
-    display: block;
-}
-/* --- СТИЛЬ "DOC-LINK" (ПРОФЕСІЙНИЙ) --- */
-
-.doc-link-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.doc-link {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px 20px;
-    background: white;
-    border: 1px solid var(--border-color);
-    border-radius: 14px;
-    text-decoration: none;
-    color: var(--primary-navy);
-    font-weight: 600;
-    transition: var(--transition);
-    box-shadow: var(--shadow-sm);
-}
-
-.doc-link:hover {
-    transform: translateX(8px); /* Зсув управо */
-    border-color: var(--accent-pink);
-    box-shadow: var(--shadow-md);
-    background: white;
-}
-
-.doc-link .link-text {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.doc-link .link-icon {
-    font-size: 1.2rem;
-    opacity: 0.7;
-}
-
-.doc-link .arrow {
-    font-size: 1.2rem;
-    color: var(--accent-pink);
-    opacity: 0;
-    transition: var(--transition);
-}
-
-.doc-link:hover .arrow {
-    opacity: 1;
+.desktop-nav a::after, 
+.sidebar-menu a::after, 
+.btn::after {
+    display: none; /* Прибираємо стрілочки в меню */
 }
