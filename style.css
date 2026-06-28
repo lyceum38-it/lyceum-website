@@ -1,3 +1,6 @@
+/* ==========================================================================
+   1. ПЕРЕМЕННІ ТА ОСНОВА (Design System)
+   ========================================================================== */
 :root {
     --bg-main: #f8fafc;
     --primary-navy: #1B365D; 
@@ -18,6 +21,9 @@
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
 body { background-color: var(--bg-main); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
 
+/* ==========================================================================
+   2. УТИЛІТИ ТА СІТКА
+   ========================================================================== */
 .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 .section { padding: 80px 0; }
 .text-center { text-align: center; }
@@ -34,20 +40,20 @@ body { background-color: var(--bg-main); color: var(--text-dark); line-height: 1
     border: 1px solid var(--border-color);
 }
 
-/* Badges */
+.grid { display: grid; gap: 25px; }
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+
 .badge { display: inline-block; padding: 6px 16px; border-radius: var(--radius-pill); font-weight: 700; font-size: 0.85rem; color: white; }
 .badge-pink { background: var(--accent-pink); }
 .badge-green { background: var(--accent-green); }
 .badge-navy { background: var(--primary-navy); }
 
-/* Grid System */
-.grid { display: grid; gap: 25px; }
-.grid-2 { grid-template-columns: repeat(2, 1fr); }
-.grid-4 { grid-template-columns: repeat(4, 1fr); }
-
-/* Header */
+/* ==========================================================================
+   3. ШАПКА (Header)
+   ========================================================================== */
 .main-header { 
-    position: sticky; top: 0; z-index: 100; padding: 15px 0; 
+    position: sticky; top: 0; z-index: 100; padding: 12px 0; 
     background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
@@ -65,12 +71,17 @@ body { background-color: var(--bg-main); color: var(--text-dark); line-height: 1
 .desktop-nav a:hover, .desktop-nav a.active { color: var(--accent-pink); }
 .menu-toggle { display: none; background: var(--primary-navy); color: white; border: none; padding: 10px 15px; border-radius: 12px; cursor: pointer; }
 
-/* Hero Section */
-.hero-section { padding: 120px 0 80px 0; background: radial-gradient(circle at top right, rgba(216, 27, 96, 0.05), transparent), radial-gradient(circle at bottom left, rgba(27, 54, 93, 0.05), transparent); }
+/* ==========================================================================
+   4. HERO SECTION
+   ========================================================================== */
+.hero-section { 
+    padding: 120px 0 80px 0; 
+    background: radial-gradient(circle at top right, rgba(216, 27, 96, 0.05), transparent),
+                radial-gradient(circle at bottom left, rgba(27, 54, 93, 0.05), transparent);
+}
 .hero-title { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; color: var(--primary-navy); line-height: 1.1; margin: 20px 0; }
 .hero-subtitle { font-size: 1.2rem; color: var(--text-light); max-width: 700px; margin: 0 auto 50px; }
 
-/* Quick Access Cards */
 .qa-card { 
     background: white; border-radius: var(--radius-md); padding: 30px 20px; text-decoration: none; color: var(--text-dark); 
     box-shadow: var(--shadow-sm); border: 1px solid var(--border-color); transition: var(--transition); text-align: center;
@@ -80,7 +91,9 @@ body { background-color: var(--bg-main); color: var(--text-dark); line-height: 1
 .qa-card h3 { font-size: 1.1rem; color: var(--primary-navy); margin-bottom: 8px; }
 .qa-card p { font-size: 0.85rem; color: var(--text-light); }
 
-/* Expanding Carousel */
+/* ==========================================================================
+   5. КАРУСЕЛЬ (Expanding Carousel)
+   ========================================================================== */
 .expanding-carousel { display: flex; width: 100%; height: 450px; gap: 15px; }
 .carousel-panel { background-size: cover; background-position: center; border-radius: var(--radius-md); cursor: pointer; flex: 0.5; position: relative; transition: flex 0.6s cubic-bezier(0.25, 1, 0.5, 1); overflow: hidden; }
 .carousel-panel.active, .carousel-panel:hover { flex: 4; }
@@ -89,7 +102,9 @@ body { background-color: var(--bg-main); color: var(--text-dark); line-height: 1
 .carousel-panel.active .panel-content, .carousel-panel:hover .panel-content { opacity: 1; transform: translateY(0); }
 .panel-content h3 { font-size: 1.8rem; margin-bottom: 5px; }
 
-/* Stats & Announcements (Bento Style) */
+/* ==========================================================================
+   6. СТАТИСТИКА ТА БЕНТО-БЛОКИ
+   ========================================================================== */
 .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 30px; }
 .stat-box { background: white; padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-color); transition: var(--transition); }
 .stat-box:hover { transform: scale(1.03); border-color: var(--primary-navy); box-shadow: var(--shadow-md); }
@@ -103,115 +118,4 @@ body { background-color: var(--bg-main); color: var(--text-dark); line-height: 1
 .announcement-item .date { font-size: 0.75rem; font-weight: 700; color: var(--text-light); }
 .announcement-item h4 { font-size: 1rem; margin: 5px 0; color: var(--primary-navy); }
 .announcement-item p { font-size: 0.85rem; color: var(--text-light); }
-.btn-link { margin-top: 20px; text-decoration: none; font-weight: 700; color: var(--primary-navy); font-size: 0.9rem; }
-
-/* FB Section */
-.fb-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Робимо дві рівні колонки */
-    align-items: stretch; /* Змушуємо обидві колонки мати однакову висоту */
-    overflow: hidden;
-    background: white; /* Білий фон для всього блоку */
-}
-
-.fb-widget {
-    min-height: 500px;
-    background: transparent; /* ПРИБИРАЄМО СІРУ ПОЛОСКУ (тепер фон прозорий) */
-    display: flex;
-    justify-content: center; /* Центруємо віджет Facebook, якщо він вужчий за колонку */
-    align-items: flex-start;
-}
-
-/* Buttons */
-.btn { display: inline-block; padding: 14px 28px; border-radius: var(--radius-pill); font-weight: 700; text-decoration: none; transition: var(--transition); cursor: pointer; border: none; }
-.btn-primary { background: var(--primary-navy); color: white; }
-.btn-primary:hover { background: var(--accent-pink); transform: translateY(-3px); }
-
-/* Sidebar & Mobile */
-.sidebar { position: fixed; top: 0; right: -320px; width: 320px; height: 100vh; background: white; z-index: 1000; transition: var(--transition); padding: 30px; }
-.sidebar.active { right: 0; }
-.sidebar-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 999; opacity: 0; pointer-events: none; transition: var(--transition); }
-.sidebar-overlay.active { opacity: 1; pointer-events: all; }
-.sidebar-header { display: flex; justify-content: space-between; margin-bottom: 30px; }
-.sidebar-menu { list-style: none; }
-.sidebar-menu a { display: block; padding: 15px 0; text-decoration: none; color: var(--text-dark); font-weight: 600; border-bottom: 1px solid #eee; }
-.menu-toggle { display: none; }
-
-/* Footer */
-.main-footer { background: var(--primary-navy); color: white; padding: 40px 0; }
-.footer-inner { display: flex; justify-content: space-between; align-items: center; }
-.footer-inner a { color: white; text-decoration: none; margin-right: 20px; opacity: 0.8; }
-.footer-inner span { opacity: 0.6; font-size: 0.85rem; }
-
-/* Animations */
-.reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
-.reveal.active { opacity: 1; transform: translateY(0); }
-
-/* Responsive */
-@media (max-width: 992px) {
-    .grid-4, .grid-2 { grid-template-columns: 1fr; }
-    .desktop-nav { display: none; }
-    .menu-toggle { display: block; }
-    .expanding-carousel { flex-direction: column; height: 800px; }
-    .fb-container {
-        grid-template-columns: 1fr; /* На мобільних — одна колонка */
-    }
-    .fb-widget {
-        width: 100%;
-        justify-content: center;
-    }
-}
-/* --- ВИПРАВЛЕННЯ ДЛЯ СТОРІНКИ ПРОЗОРІСТЬ ТА ІНШИХ --- */
-
-/* --- СТИЛЬ ДЛЯ ПОСИЛАНЬ НА СТОРІНЦІ ПРОЗОРІСТЬ (БЕЗ ЗМІНИ HTML) --- */
-
-/* 1. Прибираємо стандартне підкреслення і робимо їх у стовпчик */
-main a {
-    display: block;
-    text-decoration: none; /* Прибираємо підкреслення */
-    color: var(--primary-navy);
-    font-weight: 500;
-    padding: 8px 12px;
-    border-radius: 8px;
-    transition: var(--transition);
-    position: relative;
-}
-
-/* 2. Ефект при наведенні */
-main a:hover {
-    background-color: rgba(216, 27, 96, 0.08); /* Легкий рожевий фон */
-    color: var(--accent-pink);
-    padding-left: 20px; /* Текст трохи зсувається вправо */
-}
-
-/* 3. Додаємо маленьку стрілочку через CSS (псевдоелемент) */
-main a::after {
-    content: '→';
-    position: absolute;
-    right: 10px;
-    opacity: 0;
-    transform: translateX(-10px);
-    transition: var(--transition);
-}
-
-main a:hover::after {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-/* ЗАХИСТ для меню та кнопок (щоб вони не зламалися) */
-.desktop-nav a, 
-.sidebar-menu a, 
-.logo a, 
-.btn, 
-.qa-card a {
-    display: inline-block !important;
-    padding: 0 !important;
-    margin-bottom: 0 !important;
-    background: none !important;
-}
-.desktop-nav a::after, 
-.sidebar-menu a::after, 
-.btn::after {
-    display: none; /* Прибираємо стрілочки в меню */
-}
+.btn-link { margin-top: 20px; text-de
