@@ -144,3 +144,27 @@ body { background-color: var(--bg-main); color: var(--text-dark); line-height: 1
     .menu-toggle { display: block; }
     .expanding-carousel { flex-direction: column; height: 800px; }
 }
+/* --- ВИПРАВЛЕННЯ ДЛЯ СТОРІНКИ ПРОЗОРІСТЬ ТА ІНШИХ --- */
+
+/* 1. Робимо всі посилання в основному контенті блочними (в стовпчик) */
+main a {
+    display: block;
+    margin-bottom: 10px; /* Додаємо відступ між посиланнями */
+    transition: var(--transition);
+}
+
+/* 2. ЗАХИСТ: Повертаємо нормальний вигляд посиланням у меню та кнопках,
+      щоб вони не перетворилися на стовпчик! */
+.desktop-nav a, 
+.sidebar-menu a, 
+.logo a, 
+.btn, 
+.qa-card a {
+    display: inline-block; /* Або inline, щоб вони були в ряд */
+    margin-bottom: 0;
+}
+
+/* 3. Додатково: якщо посилання всередині карток мають бути в рядок (як у Hero) */
+.qa-card h3, .qa-card p {
+    display: block;
+}
