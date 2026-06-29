@@ -1,11 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
     
-    // 1. АВТОМАТИЧНЕ ПІДСВІЧУВАННЯ АКТИВНОГО МЕНЮ
+// 1. АВТОМАТИЧНЕ ПІДСВІЧУВАННЯ АКТИВНОГО МЕНЮ
     let currentPage = window.location.pathname.split("/").pop() || "index.html";
     
     document.querySelectorAll('.desktop-nav a, .sidebar-menu a').forEach(link => {
         let linkHref = link.getAttribute('href');
-        if (linkHref === currentPage) {
+        
+        // Відкидаємо ".html" від посилань та назви сторінки для коректного порівняння 
+        // Це дозволяє скрипту працювати як локально, так і з Vercel cleanUrls
+        let cleanLink = linkHref.replace('.html', '');
+        let cleanPage = currentPage.replace('.html', '');
+        
+        if (cleanLink === cleanPage) {
             link.classList.add('active');
         }
     });
