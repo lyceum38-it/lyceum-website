@@ -303,11 +303,13 @@ main a:not([class]):hover {
 
 /* Адаптивність */
 @media (max-width: 992px) {
-    .desktop-nav { display: none; }
+    /* Додано .expanding-header-menu та !important для 100% приховування на мобільних */
+    .desktop-nav.expanding-header-menu { display: none !important; }
     .menu-toggle { display: block; }
     .grid-2, .grid-4 { grid-template-columns: 1fr; }
     .fb-container { grid-template-columns: 1fr; }
     .expanding-carousel { flex-direction: column; height: 800px; }
+}
 }
 /* ==========================================================================
    10. ПЛАВАЮЧЕ МЕНЮ (EXPANDING HOVER DOCK)
@@ -375,9 +377,3 @@ main a:not([class]):hover {
     transform: translateX(0);
 }
 
-/* Ховаємо меню на мобільних, оскільки там є бургер-меню, а hover на смартфонах не працює */
-@media (max-width: 992px) {
-    .expanding-menu {
-        display: none;
-    }
-}
