@@ -3,9 +3,13 @@
    ========================================================================== */
 :root {
     --bg-main: #f8fafc;
-    --primary-navy: #1B365D; 
-    --accent-green: #2E8B57; 
-    --accent-pink: #D81B60; 
+    --primary-navy: #1B365D; /* Залишаємо цей глибокий синій для тексту замість чорного */
+    
+    /* ОФІЦІЙНІ КОЛЬОРИ ЛОГОТИПА ЛІЦЕЮ №38 */
+    --brand-pink: #e3007b;  /* З тексту "Успішна дитина..." */
+    --brand-blue: #0072bc;  /* З ліній глобуса */
+    --brand-green: #009944; /* З фігури дитини та цифри 38 */
+    
     --text-dark: #1e293b;
     --text-light: #64748b;
     --card-bg: rgba(255, 255, 255, 0.8);
@@ -159,12 +163,12 @@ body { background-color: var(--bg-main); color: var(--text-dark); line-height: 1
     align-items: center;
     gap: 12px;
     background: rgba(255, 255, 255, 0.7);
-    border: 1px solid rgba(216, 27, 96, 0.2);
+    border: 1px solid rgba(0, 114, 188, 0.2); /* Рамка фірмового синього кольору */
     padding: 8px 24px;
     border-radius: 50px;
     font-size: 0.95rem;
     color: var(--primary-navy);
-    box-shadow: 0 4px 15px rgba(216, 27, 96, 0.05);
+    box-shadow: 0 4px 15px rgba(0, 114, 188, 0.05);
     margin-bottom: 25px;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -181,7 +185,7 @@ body { background-color: var(--bg-main); color: var(--text-dark); line-height: 1
 .pulse-dot {
     width: 10px;
     height: 10px;
-    background-color: var(--accent-pink);
+    background-color: var(--brand-green);
     border-radius: 50%;
     position: relative;
 }
@@ -190,7 +194,7 @@ body { background-color: var(--bg-main); color: var(--text-dark); line-height: 1
     position: absolute;
     top: -4px; left: -4px; right: -4px; bottom: -4px;
     border-radius: 50%;
-    border: 2px solid var(--accent-pink);
+    border: 2px solid var(--brand-green);
     animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
 }
 
@@ -211,14 +215,11 @@ body { background-color: var(--bg-main); color: var(--text-dark); line-height: 1
 
 /* Градієнтний текст, який переливається */
 .text-gradient {
-    /* Перехід від вашого рожевого до теплого помаранчевого/золотого */
-    background: linear-gradient(135deg, var(--accent-pink) 0%, #FF8A65 100%);
+    background: linear-gradient(135deg, var(--brand-blue) 0%, var(--brand-pink) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     display: inline-block;
-    
-    /* Анімація руху градієнта */
     background-size: 200% auto;
     animation: gradient-shift 4s ease infinite;
 }
