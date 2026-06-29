@@ -52,6 +52,9 @@ body { background-color: var(--bg-main); color: var(--text-dark); line-height: 1
 /* ==========================================================================
    3. ШАПКА (Header)
    ========================================================================== */
+/* ==========================================================================
+   3. ШАПКА (Header) - Оновлена навігація
+   ========================================================================== */
 .main-header { 
     position: sticky; top: 0; z-index: 100; padding: 12px 0; 
     background: rgba(255, 255, 255, 0.7);
@@ -66,9 +69,66 @@ body { background-color: var(--bg-main); color: var(--text-dark); line-height: 1
 .logo-text strong { display: block; font-size: 1.1rem; line-height: 1.2; }
 .logo-text span { font-size: 0.75rem; color: var(--text-light); }
 
-.desktop-nav { display: flex; gap: 25px; }
-.desktop-nav a { text-decoration: none; color: var(--text-dark); font-weight: 600; font-size: 0.9rem; transition: var(--transition); }
-.desktop-nav a:hover, .desktop-nav a.active { color: var(--accent-pink); }
+/* --- Нові стилі для Expanding Меню в шапці --- */
+.desktop-nav.expanding-header-menu {
+    display: flex;
+    gap: 8px; /* Невеликий відступ між іконками */
+    align-items: center;
+}
+
+.desktop-nav.expanding-header-menu .menu-item {
+    width: 44px; /* Початковий розмір (тільки іконка) */
+    height: 44px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--primary-navy);
+    transition: width .45s cubic-bezier(.22, 1, .36, 1), background .3s ease, color .3s ease;
+    padding: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+/* Стан при наведенні або активна сторінка */
+.desktop-nav.expanding-header-menu .menu-item:hover,
+.desktop-nav.expanding-header-menu .menu-item.active {
+    width: 140px; /* Загальна ширина розкриття */
+    background: var(--primary-navy);
+    color: white;
+}
+
+/* Індивідуальне налаштування для найдовшого слова "Прозорість" */
+.desktop-nav.expanding-header-menu .menu-item[href="transparency.html"]:hover,
+.desktop-nav.expanding-header-menu .menu-item[href="transparency.html"].active {
+    width: 155px; 
+}
+
+.desktop-nav.expanding-header-menu .icon {
+    min-width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.desktop-nav.expanding-header-menu .menu-label {
+    opacity: 0;
+    white-space: nowrap;
+    transform: translateX(-10px);
+    transition: all .35s ease;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.desktop-nav.expanding-header-menu .menu-item:hover .menu-label,
+.desktop-nav.expanding-header-menu .menu-item.active .menu-label {
+    opacity: 1;
+    transform: translateX(0);
+}
+
 .menu-toggle { display: none; background: var(--primary-navy); color: white; border: none; padding: 10px 15px; border-radius: 12px; cursor: pointer; }
 
 /* ==========================================================================
