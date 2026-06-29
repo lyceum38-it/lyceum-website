@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
-  
 </head>
 <body>
     <!-- Facebook SDK -->
@@ -76,7 +75,6 @@
                 <span class="material-symbols-outlined">close</span>
             </button>
         </div>
-        
         <ul class="sidebar-menu">
             <li><a href="index.html"><span class="icon material-symbols-outlined">home</span> Головна</a></li>
             <li><a href="about.html" class="active"><span class="icon material-symbols-outlined">school</span> Про ліцей</a></li>
@@ -89,12 +87,12 @@
     </nav>
 
     <main>
-        <!-- Оновлений банер сторінки -->
+        <!-- Банер сторінки -->
         <section class="page-hero">
             <div class="container page-hero-content text-center reveal active">
-                <span class="badge badge-pink" style="margin-bottom: 15px;">Наша гордість</span>
-                <h1 style="font-size: 3rem; font-weight: 800; margin-bottom: 15px;">Історія та Сучасність</h1>
-                <p style="font-size: 1.1rem; max-width: 600px; margin: 0 auto; opacity: 0.9;">Дізнайтеся більше про традиції, цінності та людей, які щодня створюють освітній простір нашого ліцею.</p>
+                <span class="badge badge-pink" style="margin-bottom: 15px;">Про заклад</span>
+                <h1 style="font-size: 3rem; font-weight: 800; margin-bottom: 15px;">Традиції та Інновації</h1>
+                <p style="font-size: 1.1rem; max-width: 600px; margin: 0 auto; opacity: 0.9;">Дізнайтеся більше про нашу історію, символіку та досягнення, які формують унікальне обличчя ліцею.</p>
             </div>
         </section>
 
@@ -106,16 +104,20 @@
                 <h3>Зміст сторінки</h3>
                 <nav class="in-page-nav" id="inPageNav">
                     <a href="#history" class="active">
-                        <span class="icon material-symbols-outlined">account_balance</span>
+                        <span class="icon material-symbols-outlined">history_edu</span>
                         Історія закладу
                     </a>
-                    <a href="#values">
-                        <span class="icon material-symbols-outlined">volunteer_activism</span>
-                        Наші цінності
+                    <a href="#symbols">
+                        <span class="icon material-symbols-outlined">local_fire_department</span>
+                        Символіка ліцею
                     </a>
-                    <a href="#administration">
-                        <span class="icon material-symbols-outlined">manage_accounts</span>
-                        Адміністрація
+                    <a href="#media">
+                        <span class="icon material-symbols-outlined">newspaper</span>
+                        ЗМІ про нас
+                    </a>
+                    <a href="#charity">
+                        <span class="icon material-symbols-outlined">volunteer_activism</span>
+                        Благодійність
                     </a>
                 </nav>
             </aside>
@@ -126,68 +128,118 @@
                 <!-- Блок 1: Історія -->
                 <section id="history" class="content-section reveal">
                     <h2>
-                        <span class="material-symbols-outlined" style="color: var(--brand-blue); font-size: 2rem;">account_balance</span> 
+                        <span class="material-symbols-outlined" style="color: var(--primary-navy); font-size: 2.2rem;">history_edu</span> 
                         Історія закладу
                     </h2>
-                    <p style="font-size: 1.05rem; line-height: 1.8; color: var(--text-dark);">Наш навчальний заклад був заснований з метою надання якісної освіти дітям нашого міста. Протягом десятиліть ми формували власні традиції, випустили тисячі талановитих учнів та стали одним із провідних освітніх центрів Полтави.</p>
-                    <p style="font-size: 1.05rem; line-height: 1.8; color: var(--text-dark); margin-top: 15px;">Ми пишаємося кожним випускником і продовжуємо розвивати матеріально-технічну базу, щоб відповідати найвищим стандартам сучасної освіти.</p>
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1200&auto=format&fit=crop" alt="Будівля школи" style="width: 100%; height: 250px; object-fit: cover; border-radius: 12px; margin-bottom: 25px;">
+                    <p style="font-size: 1.05rem; line-height: 1.8; color: var(--text-dark); margin-bottom: 15px;">Ліцей №38 імені Івана Павловського був заснований у 1990 році. За понад три десятиліття він пройшов шлях від звичайної школи до сучасного освітнього центру, який є одним із лідерів у Полтаві.</p>
+                    <p style="font-size: 1.05rem; line-height: 1.8; color: var(--text-dark);">Сьогодні ми поєднуємо класичні педагогічні традиції з інноваційними цифровими технологіями, створюючи простір, де кожен учень може розкрити свій потенціал, а вчителі — реалізувати найсміливіші освітні ідеї.</p>
                 </section>
 
-                <!-- Блок 2: Цінності -->
-                <section id="values" class="content-section reveal">
+                <!-- Блок 2: Символіка -->
+                <section id="symbols" class="content-section reveal">
                     <h2>
-                        <span class="material-symbols-outlined" style="color: var(--brand-pink); font-size: 2rem;">volunteer_activism</span> 
-                        Наші цінності
+                        <span class="material-symbols-outlined" style="color: var(--brand-pink); font-size: 2.2rem;">local_fire_department</span> 
+                        Символіка ліцею
                     </h2>
-                    <ul class="values-list">
-                        <li>
-                            <span class="material-symbols-outlined" style="color: var(--brand-green); font-size: 1.5rem;">check_circle</span>
-                            <div><strong>Повага:</strong> до особистості кожного учня та вчителя, створення атмосфери довіри.</div>
-                        </li>
-                        <li>
-                            <span class="material-symbols-outlined" style="color: var(--brand-green); font-size: 1.5rem;">check_circle</span>
-                            <div><strong>Інновації:</strong> використання сучасних технологій та методик для ефективного навчання.</div>
-                        </li>
-                        <li>
-                            <span class="material-symbols-outlined" style="color: var(--brand-green); font-size: 1.5rem;">check_circle</span>
-                            <div><strong>Безпека:</strong> створення комфортного психологічного середовища без булінгу.</div>
-                        </li>
-                        <li>
-                            <span class="material-symbols-outlined" style="color: var(--brand-green); font-size: 1.5rem;">check_circle</span>
-                            <div><strong>Патріотизм:</strong> виховання свідомих громадян України з активною позицією.</div>
-                        </li>
-                    </ul>
-                </section>
-
-                <!-- Блок 3: Адміністрація -->
-                <section id="administration" class="content-section reveal">
-                    <h2>
-                        <span class="material-symbols-outlined" style="color: var(--primary-navy); font-size: 2rem;">manage_accounts</span> 
-                        Адміністрація ліцею
-                    </h2>
-                    <p style="color: var(--text-light); margin-bottom: 30px;">Команда професіоналів, яка щодня забезпечує якісний та безперебійний освітній процес.</p>
+                    <p style="color: var(--text-light); margin-bottom: 30px;">Наша емблема — це відображення місії та візії закладу. Кожен колір та елемент має своє глибоке значення.</p>
                     
-                    <div class="grid grid-4" style="gap: 20px;">
-                        <div class="text-center">
-                            <!-- Стокові фото з Unsplash для прикладу -->
-                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=300&auto=format&fit=crop" alt="Директор" class="admin-avatar">
-                            <h4 style="color: var(--primary-navy); margin-bottom: 5px;">Прізвище Ім'я</h4>
-                            <p style="font-size: 0.85rem; color: var(--text-light); font-weight: 600;">Директор ліцею</p>
+                    <div class="symbol-grid">
+                        <div class="symbol-image-wrapper">
+                            <img src="img/logo.png" alt="Емблема Ліцею №38">
                         </div>
-                        <div class="text-center">
-                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=300&auto=format&fit=crop" alt="Заступник" class="admin-avatar">
-                            <h4 style="color: var(--primary-navy); margin-bottom: 5px;">Прізвище Ім'я</h4>
-                            <p style="font-size: 0.85rem; color: var(--text-light); font-weight: 600;">Заступник директора</p>
+                        <ul class="color-list">
+                            <li class="color-item">
+                                <div class="color-dot" style="background: var(--brand-green);"></div>
+                                <div>
+                                    <strong style="color: var(--primary-navy); display: block; margin-bottom: 5px;">Зелений колір (Учень)</strong>
+                                    <span style="font-size: 0.9rem; color: var(--text-light);">Символізує життя, зростання, молодість та гармонійний розвиток дитини в центрі освітнього процесу.</span>
+                                </div>
+                            </li>
+                            <li class="color-item">
+                                <div class="color-dot" style="background: var(--brand-pink);"></div>
+                                <div>
+                                    <strong style="color: var(--primary-navy); display: block; margin-bottom: 5px;">Маджента (Книга знань)</strong>
+                                    <span style="font-size: 0.9rem; color: var(--text-light);">Колір енергії, творчості та любові. Символізує відкриту книгу, яка дає знання, та щасливу родину.</span>
+                                </div>
+                            </li>
+                            <li class="color-item">
+                                <div class="color-dot" style="background: var(--brand-blue);"></div>
+                                <div>
+                                    <strong style="color: var(--primary-navy); display: block; margin-bottom: 5px;">Синій колір (Глобус)</strong>
+                                    <span style="font-size: 0.9rem; color: var(--text-light);">Символізує стабільність, мудрість та відкритість до світу. Ми готуємо громадян глобального суспільства.</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Блок 3: ЗМІ про нас -->
+                <section id="media" class="content-section reveal">
+                    <h2>
+                        <span class="material-symbols-outlined" style="color: var(--brand-blue); font-size: 2.2rem;">newspaper</span> 
+                        ЗМІ про нас
+                    </h2>
+                    <p style="color: var(--text-light); margin-bottom: 25px;">Гортайте вбік, щоб переглянути публікації та відеосюжети про життя нашого ліцею у місцевих та всеукраїнських медіа.</p>
+                    
+                    <!-- Слайдер карток -->
+                    <div class="media-slider">
+                        <a href="#" class="media-card">
+                            <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=400&auto=format&fit=crop" alt="Новина 1" class="media-img">
+                            <div class="media-content">
+                                <span class="media-date">24 Травня, 2026</span>
+                                <h3 class="media-title">Учні ліцею №38 стали переможцями всеукраїнського хакатону</h3>
+                                <p style="font-size: 0.85rem; color: var(--text-light);">Джерело: Полтаващина</p>
+                            </div>
+                        </a>
+                        <a href="#" class="media-card">
+                            <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?q=80&w=400&auto=format&fit=crop" alt="Новина 2" class="media-img">
+                            <div class="media-content">
+                                <span class="media-date">12 Квітня, 2026</span>
+                                <h3 class="media-title">Як впроваджують інновації в освіті: досвід полтавського ліцею</h3>
+                                <p style="font-size: 0.85rem; color: var(--text-light);">Джерело: Суспільне Полтава</p>
+                            </div>
+                        </a>
+                        <a href="#" class="media-card">
+                            <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=400&auto=format&fit=crop" alt="Новина 3" class="media-img">
+                            <div class="media-content">
+                                <span class="media-date">1 Березня, 2026</span>
+                                <h3 class="media-title">Відкриття нового цифрового освітнього простору (DLC)</h3>
+                                <p style="font-size: 0.85rem; color: var(--text-light);">Джерело: Міська рада</p>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Блок 4: Благодійність -->
+                <section id="charity" class="content-section reveal">
+                    <h2>
+                        <span class="material-symbols-outlined" style="color: var(--brand-green); font-size: 2.2rem;">volunteer_activism</span> 
+                        Благодійність
+                    </h2>
+                    <p style="font-size: 1.05rem; line-height: 1.8; color: var(--text-dark);">Ми щиро вдячні батькам, випускникам та меценатам, які підтримують розвиток ліцею. Ваші благодійні внески допомагають нам покращувати матеріально-технічну базу, закуповувати сучасне обладнання та створювати ще кращі умови для дітей.</p>
+                    
+                    <div class="charity-card">
+                        <h3 style="color: var(--primary-navy); margin-bottom: 20px; font-size: 1.2rem;">Реквізити для благодійних внесків:</h3>
+                        <div class="requisite-row">
+                            <span class="req-label">Отримувач:</span>
+                            <span style="font-weight: 600; color: var(--primary-navy);">Благодійний фонд ліцею №38</span>
                         </div>
-                        <div class="text-center">
-                            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=300&auto=format&fit=crop" alt="Заступник" class="admin-avatar">
-                            <h4 style="color: var(--primary-navy); margin-bottom: 5px;">Прізвище Ім'я</h4>
-                            <p style="font-size: 0.85rem; color: var(--text-light); font-weight: 600;">Заступник директора</p>
+                        <div class="requisite-row">
+                            <span class="req-label">Код ЄДРПОУ:</span>
+                            <span class="req-value">12345678</span>
                         </div>
-                        <div class="text-center">
-                            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=300&auto=format&fit=crop" alt="Заступник" class="admin-avatar">
-                            <h4 style="color: var(--primary-navy); margin-bottom: 5px;">Прізвище Ім'я</h4>
-                            <p style="font-size: 0.85rem; color: var(--text-light); font-weight: 600;">Заступник директора</p>
+                        <div class="requisite-row">
+                            <span class="req-label">Рахунок (IBAN):</span>
+                            <span class="req-value">UA123456789000000000000000000</span>
+                        </div>
+                        <div class="requisite-row">
+                            <span class="req-label">Банк отримувача:</span>
+                            <span style="font-weight: 600; color: var(--primary-navy);">ПриватБанк</span>
+                        </div>
+                        <div class="requisite-row">
+                            <span class="req-label">Призначення платежу:</span>
+                            <span style="font-size: 0.9rem; color: var(--text-dark);">Благодійний внесок на розвиток матеріально-технічної бази. Без ПДВ.</span>
                         </div>
                     </div>
                 </section>
@@ -221,7 +273,6 @@
                 let current = "";
                 sections.forEach((section) => {
                     const sectionTop = section.offsetTop;
-                    // Перевіряємо, чи доскролили ми до секції (з похибкою на висоту шапки)
                     if (pageYOffset >= sectionTop - 150) {
                         current = section.getAttribute("id");
                     }
