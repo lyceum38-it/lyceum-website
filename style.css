@@ -244,3 +244,75 @@ main a:not([class]):hover {
     .fb-container { grid-template-columns: 1fr; }
     .expanding-carousel { flex-direction: column; height: 800px; }
 }
+/* ==========================================================================
+   10. ПЛАВАЮЧЕ МЕНЮ (EXPANDING HOVER DOCK)
+   ========================================================================== */
+.expanding-menu {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    padding: 10px;
+    background: rgba(27, 54, 93, 0.85); /* Використовуємо ваш --primary-navy з прозорістю */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+    box-shadow: var(--shadow-lg);
+    z-index: 1000;
+}
+
+.expanding-menu .menu-item {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    text-decoration: none !important;
+    transition: width .45s cubic-bezier(.22, 1, .36, 1), background .3s ease, transform .2s ease;
+    padding: 0 !important; /* Захист від стилів main a */
+    margin-bottom: 0 !important;
+}
+
+.expanding-menu .menu-item:hover {
+    width: 145px; /* Ширина розкриття (залежить від довжини слів) */
+    background: var(--accent-pink); /* Ваш рожевий акцент */
+    transform: translateY(-3px);
+}
+
+.expanding-menu .icon {
+    min-width: 52px; /* Фіксуємо ширину, щоб іконка не стискалась */
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+}
+
+.expanding-menu .menu-label {
+    opacity: 0;
+    white-space: nowrap;
+    transform: translateX(-10px);
+    transition: all .35s ease;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: white;
+}
+
+.expanding-menu .menu-item:hover .menu-label {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Ховаємо меню на мобільних, оскільки там є бургер-меню, а hover на смартфонах не працює */
+@media (max-width: 992px) {
+    .expanding-menu {
+        display: none;
+    }
+}
