@@ -79,12 +79,12 @@ body { background-color: var(--bg-main); color: var(--text-dark); line-height: 1
 .desktop-nav.expanding-header-menu .menu-item {
     width: 44px; /* Початковий розмір (тільки іконка) */
     height: 44px;
-    display: flex;
+    display: flex !important;
     align-items: center;
     overflow: hidden;
     border-radius: 999px;
     background: transparent;
-    color: var(--primary-navy);
+    color: var(--primary-navy) !important;
     transition: width .45s cubic-bezier(.22, 1, .36, 1), background .3s ease, color .3s ease;
     padding: 0 !important;
     margin-bottom: 0 !important;
@@ -94,13 +94,17 @@ body { background-color: var(--bg-main); color: var(--text-dark); line-height: 1
 .desktop-nav.expanding-header-menu .menu-item:hover,
 .desktop-nav.expanding-header-menu .menu-item.active {
     width: 140px; /* Загальна ширина розкриття */
-    background: var(--primary-navy);
-    color: white;
+    background: var(--primary-navy) !important;
+    color: white !important;
 }
 
-/* Індивідуальне налаштування для найдовшого слова "Прозорість" */
+/* Індивідуальне налаштування для найдовших слів */
 .desktop-nav.expanding-header-menu .menu-item[href="transparency.html"]:hover,
 .desktop-nav.expanding-header-menu .menu-item[href="transparency.html"].active {
+    width: 160px; /* Трохи збільшено, щоб слово точно влізло */
+}
+.desktop-nav.expanding-header-menu .menu-item[href="about.html"]:hover,
+.desktop-nav.expanding-header-menu .menu-item[href="about.html"].active {
     width: 155px; 
 }
 
@@ -121,6 +125,7 @@ body { background-color: var(--bg-main); color: var(--text-dark); line-height: 1
     transition: all .35s ease;
     font-weight: 600;
     font-size: 0.85rem;
+    color: white; /* Явно робимо текст білим */
 }
 
 .desktop-nav.expanding-header-menu .menu-item:hover .menu-label,
