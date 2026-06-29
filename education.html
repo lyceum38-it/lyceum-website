@@ -3,13 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ліцей №38 імені Івана Павловського</title>
+    <title>Навчання - Ліцей №38 імені Івана Павловського</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+    <!-- Стилі специфічні для сторінки Навчання (Потім перенесіть у style.css) -->
+    <style>
+        /* Картки з інформацією про навчання */
+        .edu-card {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .edu-card:hover {
+            box-shadow: var(--shadow-md);
+            border-color: var(--brand-blue);
+        }
+        .edu-card-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 114, 188, 0.1);
+            color: var(--brand-blue);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .edu-card-icon .material-symbols-outlined {
+            font-size: 2rem;
+        }
+
+        /* Список розкладу дзвінків */
+        .schedule-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .schedule-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 15px;
+            border-bottom: 1px dashed var(--border-color);
+            color: var(--text-dark);
+        }
+        .schedule-item:last-child {
+            border-bottom: none;
+        }
+        .schedule-item strong {
+            color: var(--primary-navy);
+            font-family: monospace;
+            font-size: 1.1rem;
+        }
+        .schedule-break {
+            background: rgba(227, 0, 123, 0.05); /* Легкий рожевий фон для перерв */
+            border-radius: 8px;
+            color: var(--brand-pink);
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 8px 15px;
+            text-align: center;
+            margin: 5px 0;
+        }
+
+        /* Банер-акцент для НМТ */
+        .nmt-banner {
+            background: linear-gradient(135deg, var(--primary-navy) 0%, var(--brand-blue) 100%);
+            border-radius: 16px;
+            padding: 40px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+        .nmt-banner::after {
+            content: 'school';
+            font-family: 'Material Symbols Outlined';
+            position: absolute;
+            right: -20px;
+            bottom: -40px;
+            font-size: 12rem;
+            color: rgba(255, 255, 255, 0.1);
+            pointer-events: none;
+        }
+        .nmt-feature-list {
+            list-style: none;
+            margin-top: 25px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        .nmt-feature-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 12px 20px;
+            border-radius: 12px;
+            backdrop-filter: blur(5px);
+        }
+
+        @media (max-width: 768px) {
+            .nmt-feature-list { grid-template-columns: 1fr; }
+            .edu-card { padding: 20px; }
+        }
+    </style>
 </head>
 <body>
     <!-- Facebook SDK -->
@@ -20,9 +128,7 @@
     <header class="main-header glass">
         <div class="container header-inner">
             <a href="index.html" class="logo">
-                <!-- Вставляємо емблему замість рожевого кола -->
                 <img src="img/logo.png" alt="Емблема Ліцею №38" class="logo-image">
-                
                 <div class="logo-text">
                     <strong>Ліцей №38 ім. І. Павловського</strong>
                     <span>Полтавської міської ради</span>
@@ -30,148 +136,253 @@
             </a>
             
             <nav class="desktop-nav expanding-header-menu">
-    <a href="index.html" class="menu-item">
-        <span class="icon material-symbols-outlined">home</span>
-        <span class="menu-label">Головна</span>
-    </a>
-    <a href="about.html" class="menu-item">
-        <span class="icon material-symbols-outlined">school</span>
-        <span class="menu-label">Про ліцей</span>
-    </a>
-    <a href="team.html" class="menu-item">
-        <span class="icon material-symbols-outlined">groups</span>
-        <span class="menu-label">Колектив</span>
-    </a>
-    <a href="education.html" class="menu-item">
-        <span class="icon material-symbols-outlined">menu_book</span>
-        <span class="menu-label">Навчання</span>
-    </a>
-    <a href="transparency.html" class="menu-item">
-        <span class="icon material-symbols-outlined">description</span>
-        <span class="menu-label">Прозорість</span>
-    </a>
-    <a href="parents.html" class="menu-item">
-        <span class="icon material-symbols-outlined">family_restroom</span>
-        <span class="menu-label">Батькам</span>
-    </a>
-    <a href="contacts.html" class="menu-item">
-        <span class="icon material-symbols-outlined">call</span>
-        <span class="menu-label">Контакти</span>
-    </a>
-</nav>
+                <a href="index.html" class="menu-item">
+                    <span class="icon material-symbols-outlined">home</span>
+                    <span class="menu-label">Головна</span>
+                </a>
+                <a href="about.html" class="menu-item">
+                    <span class="icon material-symbols-outlined">school</span>
+                    <span class="menu-label">Про ліцей</span>
+                </a>
+                <a href="team.html" class="menu-item">
+                    <span class="icon material-symbols-outlined">groups</span>
+                    <span class="menu-label">Колектив</span>
+                </a>
+                <a href="education.html" class="menu-item active">
+                    <span class="icon material-symbols-outlined">menu_book</span>
+                    <span class="menu-label">Навчання</span>
+                </a>
+                <a href="transparency.html" class="menu-item">
+                    <span class="icon material-symbols-outlined">description</span>
+                    <span class="menu-label">Прозорість</span>
+                </a>
+                <a href="parents.html" class="menu-item">
+                    <span class="icon material-symbols-outlined">family_restroom</span>
+                    <span class="menu-label">Батькам</span>
+                </a>
+                <a href="contacts.html" class="menu-item">
+                    <span class="icon material-symbols-outlined">call</span>
+                    <span class="menu-label">Контакти</span>
+                </a>
+            </nav>
 
             <button class="menu-toggle" id="menuToggle">☰</button>
         </div>
     </header>
-<!-- БІЧНЕ МЕНЮ -->
+
+    <!-- БІЧНЕ МЕНЮ (Мобільне) -->
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
     <nav class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <div class="sidebar-logo">
-                <div class="logo-circle">#38</div>
+                <img src="img/logo.png" alt="Емблема" style="width: 35px; height: 35px; border-radius: 50%;">
                 <span>Меню ліцею</span>
             </div>
             <button class="close-btn" id="closeMenu">
                 <span class="material-symbols-outlined">close</span>
             </button>
         </div>
-        
         <ul class="sidebar-menu">
-            <li>
-                <a href="index.html">
-                    <span class="icon material-symbols-outlined">home</span>
-                    Головна
-                </a>
-            </li>
-            <li>
-                <a href="about.html">
-                    <span class="icon material-symbols-outlined">school</span>
-                    Про ліцей
-                </a>
-            </li>
-            <li>
-                <a href="team.html">
-                    <span class="icon material-symbols-outlined">groups</span>
-                    Колектив
-                </a>
-            </li>
-            <li>
-                <a href="education.html">
-                    <span class="icon material-symbols-outlined">menu_book</span>
-                    Навчання
-                </a>
-            </li>
-            <li>
-                <a href="transparency.html">
-                    <span class="icon material-symbols-outlined">description</span>
-                    Прозорість
-                </a>
-            </li>
-            <li>
-                <a href="parents.html">
-                    <span class="icon material-symbols-outlined">family_restroom</span>
-                    Батькам
-                </a>
-            </li>
-            <li>
-                <a href="contacts.html">
-                    <span class="icon material-symbols-outlined">call</span>
-                    Контакти
-                </a>
-            </li>
+            <li><a href="index.html"><span class="icon material-symbols-outlined">home</span> Головна</a></li>
+            <li><a href="about.html"><span class="icon material-symbols-outlined">school</span> Про ліцей</a></li>
+            <li><a href="team.html"><span class="icon material-symbols-outlined">groups</span> Колектив</a></li>
+            <li><a href="education.html" class="active"><span class="icon material-symbols-outlined">menu_book</span> Навчання</a></li>
+            <li><a href="transparency.html"><span class="icon material-symbols-outlined">description</span> Прозорість</a></li>
+            <li><a href="parents.html"><span class="icon material-symbols-outlined">family_restroom</span> Батькам</a></li>
+            <li><a href="contacts.html"><span class="icon material-symbols-outlined">call</span> Контакти</a></li>
         </ul>
-</nav>
-    <main>
-        <section class="container section reveal">
-            <h1 class="section-title">Освітній процес</h1>
-            <p class="section-subtitle">Програми, розклади та правила внутрішнього розпорядку.</p>
-            
-            <div class="grid grid-2" style="margin-top: 40px;">
-                <div class="card">
-                    <h3 class="card-title">📚 Освітні програми</h3>
-                    <p>Перелік навчальних програм для 1-11 класів, затверджених Міністерством освіти і науки України.</p>
-                    <div class="link-list" style="margin-top: 15px;">
-                        <a href="#" data-doc="osvitni-programy">Завантажити програму (PDF)</a>
-                        <a href="#" data-doc="kriterii">Критерії оцінювання учнів</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <h3 class="card-title">⚖️ Правила поведінки</h3>
-                    <p>Ми прагнемо створити середовище, де кожен почувається в безпеці та повазі.</p>
-                    <div class="link-list" style="margin-top: 15px;">
-                        <a href="#" data-doc="rules-1-4">Для початкової школи</a>
-                        <a href="#" data-doc="rules-5-11">Для середньої та старшої школи</a>
-                    </div>
-                </div>
-            </div>
+    </nav>
 
-            <div class="card reveal" style="margin-top: 40px; padding: 40px;">
-                <h3 class="text-center" style="margin-bottom: 20px;">Розклад дзвінків</h3>
-                <div style="overflow-x: auto;">
-                    <table style="width: 100%; border-collapse: collapse; text-align: center;">
-                        <tr style="background: var(--primary-navy); color: white;">
-                            <th style="padding: 15px; border: 1px solid #ddd;">Урок</th>
-                            <th style="padding: 15px; border: 1px solid #ddd;">Початок</th>
-                            <th style="padding: 15px; border: 1px solid #ddd;">Кінець</th>
-                            <th style="padding: 15px; border: 1px solid #ddd;">Перерва</th>
-                        </tr>
-                        <tr><td>1</td><td>08:00</td><td>08:45</td><td>10 хв</td></tr>
-                        <tr style="background: #f8fafc;"><td>2</td><td>08:55</td><td>09:40</td><td>20 хв</td></tr>
-                        <tr><td>3</td><td>10:00</td><td>10:45</td><td>20 хв</td></tr>
-                        <tr style="background: #f8fafc;"><td>4</td><td>11:05</td><td>11:50</td><td>10 хв</td></tr>
-                        <tr><td>5</td><td>12:00</td><td>12:45</td><td>10 хв</td></tr>
-                        <tr style="background: #f8fafc;"><td>6</td><td>12:55</td><td>13:40</td><td>-</td></tr>
-                    </table>
-                </div>
+    <main>
+        <!-- Банер сторінки -->
+        <section class="page-hero" style="background-image: url('https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=80&w=2000&auto=format&fit=crop');">
+            <div class="container page-hero-content text-center reveal active">
+                <span class="badge badge-pink" style="margin-bottom: 15px;">Якісна освіта</span>
+                <h1 style="font-size: 3rem; font-weight: 800; margin-bottom: 15px;">Освітній простір</h1>
+                <p style="font-size: 1.1rem; max-width: 600px; margin: 0 auto; opacity: 0.9;">Від щоденних уроків до перемог на олімпіадах. Дізнайтеся, як організовано навчальний процес у нашому ліцеї.</p>
             </div>
         </section>
+
+        <!-- Основний макет: Бокове меню + Контент -->
+        <div class="container page-layout">
+            
+            <!-- Липке бокове підменю -->
+            <aside class="page-sidebar">
+                <h3>Навігація розділом</h3>
+                <nav class="in-page-nav" id="inPageNav">
+                    <a href="#process" class="active">
+                        <span class="icon material-symbols-outlined">schedule</span>
+                        Освітній процес
+                    </a>
+                    <a href="#nmt">
+                        <span class="icon material-symbols-outlined">fact_check</span>
+                        НМТ та ДПА
+                    </a>
+                    <a href="#olympiads">
+                        <span class="icon material-symbols-outlined">emoji_events</span>
+                        Олімпіади та МАН
+                    </a>
+                    <a href="#activities">
+                        <span class="icon material-symbols-outlined">extension</span>
+                        Виховна робота
+                    </a>
+                </nav>
+            </aside>
+
+            <!-- Контентна частина -->
+            <div class="page-content">
+                
+                <!-- Блок 1: Освітній процес -->
+                <section id="process" class="content-section reveal">
+                    <h2>
+                        <span class="material-symbols-outlined" style="color: var(--brand-blue); font-size: 2.2rem;">schedule</span> 
+                        Освітній процес
+                    </h2>
+                    
+                    <div class="grid grid-2" style="gap: 30px; margin-top: 30px;">
+                        <!-- Форми навчання -->
+                        <div class="edu-card">
+                            <div class="edu-card-icon">
+                                <span class="material-symbols-outlined">laptop_chromebook</span>
+                            </div>
+                            <h3 style="color: var(--primary-navy); margin-bottom: 15px;">Форми навчання</h3>
+                            <p style="color: var(--text-light); margin-bottom: 15px;">Ліцей забезпечує гнучкий підхід до освітнього процесу, адаптуючись до безпекової ситуації та потреб здобувачів освіти:</p>
+                            <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px;">
+                                <li style="display: flex; gap: 10px; align-items: center;"><span class="material-symbols-outlined" style="color: var(--brand-green);">check_circle</span> Очна (денна) форма</li>
+                                <li style="display: flex; gap: 10px; align-items: center;"><span class="material-symbols-outlined" style="color: var(--brand-green);">check_circle</span> Змішаний формат</li>
+                                <li style="display: flex; gap: 10px; align-items: center;"><span class="material-symbols-outlined" style="color: var(--brand-green);">check_circle</span> Дистанційне навчання</li>
+                            </ul>
+                        </div>
+
+                        <!-- Режим роботи -->
+                        <div class="edu-card">
+                            <div class="edu-card-icon">
+                                <span class="material-symbols-outlined">notifications_active</span>
+                            </div>
+                            <h3 style="color: var(--primary-navy); margin-bottom: 15px;">Режим роботи</h3>
+                            <ul class="schedule-list">
+                                <li class="schedule-item"><span>1 урок</span> <strong>08:00 – 08:45</strong></li>
+                                <div class="schedule-break">Перерва 10 хв</div>
+                                <li class="schedule-item"><span>2 урок</span> <strong>08:55 – 09:40</strong></li>
+                                <div class="schedule-break">Перерва 20 хв</div>
+                                <li class="schedule-item"><span>3 урок</span> <strong>10:00 – 10:45</strong></li>
+                                <div class="schedule-break">Перерва 20 хв</div>
+                                <li class="schedule-item"><span>4 урок</span> <strong>11:05 – 11:50</strong></li>
+                                <li class="schedule-item"><span>5 урок</span> <strong>12:00 – 12:45</strong></li>
+                                <li class="schedule-item"><span>6 урок</span> <strong>12:55 – 13:40</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Блок 2: НМТ та ДПА -->
+                <section id="nmt" class="content-section reveal">
+                    <h2>
+                        <span class="material-symbols-outlined" style="color: var(--brand-pink); font-size: 2.2rem;">fact_check</span> 
+                        Підготовка до НМТ та ДПА
+                    </h2>
+                    <p style="color: var(--text-dark); font-size: 1.05rem; line-height: 1.6;">Ми приділяємо особливу увагу підготовці старшокласників до Державної підсумкової атестації та Національного мультипредметного тесту. Наша мета — високі бали випускників для вступу до омріяних закладів вищої освіти.</p>
+                    
+                    <div class="nmt-banner">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 15px;">Профільна підготовка</h3>
+                        <p style="opacity: 0.9; max-width: 500px; line-height: 1.5;">Наші педагоги використовують сучасні методики тестування та інтерактивні платформи. Глибоке вивчення точних наук, зокрема <strong>математики та інформатики</strong>, забезпечує учням потужну базу для успішного складання тестів.</p>
+                        
+                        <ul class="nmt-feature-list">
+                            <li><span class="material-symbols-outlined">trending_up</span> Аналіз типових помилок</li>
+                            <li><span class="material-symbols-outlined">timer</span> Пробні тестування на час</li>
+                            <li><span class="material-symbols-outlined">psychology</span> Психологічна підтримка</li>
+                            <li><span class="material-symbols-outlined">menu_book</span> Додаткові консультації</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Блок 3: Олімпіади та МАН -->
+                <section id="olympiads" class="content-section reveal">
+                    <h2>
+                        <span class="material-symbols-outlined" style="color: #F59E0B; font-size: 2.2rem;">emoji_events</span> 
+                        Олімпіади та МАН
+                    </h2>
+                    <p style="color: var(--text-dark); font-size: 1.05rem; line-height: 1.6; margin-bottom: 25px;">Ліцей №38 пишається своїми талановитими учнями. Робота з обдарованою молоддю є одним із пріоритетних напрямків нашої діяльності.</p>
+                    
+                    <div class="grid grid-2" style="gap: 20px;">
+                        <div style="background: var(--bg-main); padding: 25px; border-radius: 16px; border-left: 4px solid var(--brand-blue);">
+                            <h4 style="color: var(--primary-navy); margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+                                <span class="material-symbols-outlined" style="color: var(--brand-blue);">science</span>
+                                Мала Академія Наук (МАН)
+                            </h4>
+                            <p style="font-size: 0.95rem; color: var(--text-light);">Щорічно наші ліцеїсти захищають науково-дослідницькі роботи на міському та обласному етапах МАН у секціях комп'ютерних наук, історії, філології та екології.</p>
+                        </div>
+                        <div style="background: var(--bg-main); padding: 25px; border-radius: 16px; border-left: 4px solid var(--brand-pink);">
+                            <h4 style="color: var(--primary-navy); margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+                                <span class="material-symbols-outlined" style="color: var(--brand-pink);">military_tech</span>
+                                Предметні олімпіади
+                            </h4>
+                            <p style="font-size: 0.95rem; color: var(--text-light);">Підготовка команд до Всеукраїнських учнівських олімпіад з базових дисциплін. Робота в малих групах та індивідуальні заняття з переможцями.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Блок 4: Виховна робота -->
+                <section id="activities" class="content-section reveal">
+                    <h2>
+                        <span class="material-symbols-outlined" style="color: var(--brand-green); font-size: 2.2rem;">extension</span> 
+                        Виховна та проєктна діяльність
+                    </h2>
+                    <p style="color: var(--text-dark); font-size: 1.05rem; line-height: 1.6; margin-bottom: 25px;">Школа — це не лише уроки. Це місце, де формується особистість, розвиваються лідерські якості та творчі здібності.</p>
+                    
+                    <div class="edu-card" style="margin-bottom: 20px;">
+                        <h3 style="color: var(--primary-navy); margin-bottom: 15px; font-size: 1.2rem;">Учнівське самоврядування</h3>
+                        <p style="color: var(--text-light); font-size: 0.95rem;">Активна участь учнів у житті ліцею. Президентська рада організовує благодійні ярмарки, тематичні дні, флешмоби та культурні заходи, даючи дітям реальний досвід менеджменту та командної роботи.</p>
+                    </div>
+                    
+                    <div class="edu-card">
+                        <h3 style="color: var(--primary-navy); margin-bottom: 15px; font-size: 1.2rem;">Творчі студії та проєкти</h3>
+                        <p style="color: var(--text-light); font-size: 0.95rem;">Впровадження STEM-освіти, екологічні ініціативи, робота цифрового освітнього центру (DLC), медіа-гуртки та спортивні секції. Кожен учень може знайти справу до душі після завершення основних занять.</p>
+                    </div>
+                </section>
+
+            </div>
+        </div>
     </main>
 
     <footer class="main-footer">
         <div class="container footer-inner">
-            <span>© 2026 Ліцей №38 імені Івана Павловського</span>
+            <div>
+                <strong>Ліцей №38 ім. І. Павловського</strong>
+                <span style="opacity: 0.8; display: block;">м. Полтава</span>
+            </div>
+            <div>
+                <a href="transparency.html" style="color: white; text-decoration: underline; margin-right: 20px;">Прозорість</a>
+                <span style="opacity: 0.6;">© 2026 Всі права захищено</span>
+            </div>
         </div>
     </footer>
+
     <script src="script.js"></script>
+    
+    <!-- Скрипт для бокового меню (Scroll Spy) -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const sections = document.querySelectorAll(".content-section");
+            const navLinks = document.querySelectorAll(".in-page-nav a");
+
+            window.addEventListener("scroll", () => {
+                let current = "";
+                sections.forEach((section) => {
+                    const sectionTop = section.offsetTop;
+                    if (pageYOffset >= sectionTop - 150) {
+                        current = section.getAttribute("id");
+                    }
+                });
+
+                navLinks.forEach((link) => {
+                    link.classList.remove("active");
+                    if (link.getAttribute("href").includes(current) && current !== "") {
+                        link.classList.add("active");
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
