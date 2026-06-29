@@ -3,13 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ліцей №38 імені Івана Павловського</title>
+    <title>Колектив - Ліцей №38 імені Івана Павловського</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+    <!-- Стилі для сторінки Колективу (Потім перенесіть у style.css) -->
+    <style>
+        /* Банер сторінки з колективним фото */
+        .team-hero {
+            position: relative;
+            padding: 120px 0 80px;
+            background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Ефект паралаксу */
+            border-radius: 0 0 var(--radius-md) var(--radius-md);
+            margin-bottom: 60px;
+        }
+        
+        .team-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(27, 54, 93, 0.9), rgba(27, 54, 93, 0.6));
+            border-radius: 0 0 var(--radius-md) var(--radius-md);
+        }
+
+        .team-hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+        }
+
+        /* Сітка для карток МО (3 колонки) */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        /* Сучасна інтерактивна картка МО */
+        .team-card {
+            position: relative;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            aspect-ratio: 4/3; /* Фіксовані пропорції для всіх карток */
+            box-shadow: var(--shadow-sm);
+            text-decoration: none;
+            display: block;
+            border: 1px solid var(--border-color);
+        }
+
+        /* Зображення всередині картки */
+        .team-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        /* Градієнтне накладання знизу */
+        .team-card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(27, 54, 93, 0.95) 0%, rgba(27, 54, 93, 0.4) 40%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 25px;
+            transition: background 0.4s ease;
+        }
+
+        /* Іконка предмету (захована за замовчуванням) */
+        .team-card-icon {
+            color: var(--brand-pink);
+            font-size: 2.5rem !important;
+            margin-bottom: auto; /* Виштовхує текст вниз, а іконку залишає вгорі */
+            align-self: flex-end;
+            opacity: 0;
+            transform: translateY(15px);
+            transition: all 0.4s ease;
+            background: white;
+            padding: 10px;
+            border-radius: 50%;
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Назва МО */
+        .team-card-title {
+            color: white;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin: 0;
+            line-height: 1.4;
+            transform: translateY(0);
+            transition: transform 0.4s ease;
+        }
+
+        /* Анімації при наведенні (Hover) */
+        .team-card:hover {
+            box-shadow: var(--shadow-lg);
+            border-color: transparent;
+        }
+
+        .team-card:hover img {
+            transform: scale(1.08); /* Плавний зум фотографії */
+        }
+
+        .team-card:hover .team-card-overlay {
+            background: linear-gradient(to top, rgba(27, 54, 93, 0.95) 0%, rgba(27, 54, 93, 0.6) 50%, rgba(0, 114, 188, 0.3) 100%);
+        }
+
+        .team-card:hover .team-card-icon {
+            opacity: 1; /* З'являється іконка */
+            transform: translateY(0);
+        }
+
+        .team-card:hover .team-card-title {
+            transform: translateY(-5px); /* Текст трохи піднімається */
+        }
+
+        /* Адаптивність для планшетів та телефонів */
+        @media (max-width: 992px) {
+            .team-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        }
+        @media (max-width: 576px) {
+            .team-grid { grid-template-columns: 1fr; }
+            .team-hero { padding: 80px 0 60px; }
+        }
+    </style>
 </head>
 <body>
     <!-- Facebook SDK -->
@@ -20,9 +147,7 @@
     <header class="main-header glass">
         <div class="container header-inner">
             <a href="index.html" class="logo">
-                <!-- Вставляємо емблему замість рожевого кола -->
                 <img src="img/logo.png" alt="Емблема Ліцею №38" class="logo-image">
-                
                 <div class="logo-text">
                     <strong>Ліцей №38 ім. І. Павловського</strong>
                     <span>Полтавської міської ради</span>
@@ -30,136 +155,179 @@
             </a>
             
             <nav class="desktop-nav expanding-header-menu">
-    <a href="index.html" class="menu-item">
-        <span class="icon material-symbols-outlined">home</span>
-        <span class="menu-label">Головна</span>
-    </a>
-    <a href="about.html" class="menu-item">
-        <span class="icon material-symbols-outlined">school</span>
-        <span class="menu-label">Про ліцей</span>
-    </a>
-    <a href="team.html" class="menu-item">
-        <span class="icon material-symbols-outlined">groups</span>
-        <span class="menu-label">Колектив</span>
-    </a>
-    <a href="education.html" class="menu-item">
-        <span class="icon material-symbols-outlined">menu_book</span>
-        <span class="menu-label">Навчання</span>
-    </a>
-    <a href="transparency.html" class="menu-item">
-        <span class="icon material-symbols-outlined">description</span>
-        <span class="menu-label">Прозорість</span>
-    </a>
-    <a href="parents.html" class="menu-item">
-        <span class="icon material-symbols-outlined">family_restroom</span>
-        <span class="menu-label">Батькам</span>
-    </a>
-    <a href="contacts.html" class="menu-item">
-        <span class="icon material-symbols-outlined">call</span>
-        <span class="menu-label">Контакти</span>
-    </a>
-</nav>
+                <a href="index.html" class="menu-item">
+                    <span class="icon material-symbols-outlined">home</span>
+                    <span class="menu-label">Головна</span>
+                </a>
+                <a href="about.html" class="menu-item">
+                    <span class="icon material-symbols-outlined">school</span>
+                    <span class="menu-label">Про ліцей</span>
+                </a>
+                <a href="team.html" class="menu-item active">
+                    <span class="icon material-symbols-outlined">groups</span>
+                    <span class="menu-label">Колектив</span>
+                </a>
+                <a href="education.html" class="menu-item">
+                    <span class="icon material-symbols-outlined">menu_book</span>
+                    <span class="menu-label">Навчання</span>
+                </a>
+                <a href="transparency.html" class="menu-item">
+                    <span class="icon material-symbols-outlined">description</span>
+                    <span class="menu-label">Прозорість</span>
+                </a>
+                <a href="parents.html" class="menu-item">
+                    <span class="icon material-symbols-outlined">family_restroom</span>
+                    <span class="menu-label">Батькам</span>
+                </a>
+                <a href="contacts.html" class="menu-item">
+                    <span class="icon material-symbols-outlined">call</span>
+                    <span class="menu-label">Контакти</span>
+                </a>
+            </nav>
 
             <button class="menu-toggle" id="menuToggle">☰</button>
         </div>
     </header>
-<!-- БІЧНЕ МЕНЮ -->
+
+    <!-- БІЧНЕ МЕНЮ (Мобільне) -->
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
     <nav class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <div class="sidebar-logo">
-                <div class="logo-circle">#38</div>
+                <img src="img/logo.png" alt="Емблема" style="width: 35px; height: 35px; border-radius: 50%;">
                 <span>Меню ліцею</span>
             </div>
             <button class="close-btn" id="closeMenu">
                 <span class="material-symbols-outlined">close</span>
             </button>
         </div>
-        
         <ul class="sidebar-menu">
-            <li>
-                <a href="index.html">
-                    <span class="icon material-symbols-outlined">home</span>
-                    Головна
-                </a>
-            </li>
-            <li>
-                <a href="about.html">
-                    <span class="icon material-symbols-outlined">school</span>
-                    Про ліцей
-                </a>
-            </li>
-            <li>
-                <a href="team.html">
-                    <span class="icon material-symbols-outlined">groups</span>
-                    Колектив
-                </a>
-            </li>
-            <li>
-                <a href="education.html">
-                    <span class="icon material-symbols-outlined">menu_book</span>
-                    Навчання
-                </a>
-            </li>
-            <li>
-                <a href="transparency.html">
-                    <span class="icon material-symbols-outlined">description</span>
-                    Прозорість
-                </a>
-            </li>
-            <li>
-                <a href="parents.html">
-                    <span class="icon material-symbols-outlined">family_restroom</span>
-                    Батькам
-                </a>
-            </li>
-            <li>
-                <a href="contacts.html">
-                    <span class="icon material-symbols-outlined">call</span>
-                    Контакти
-                </a>
-            </li>
+            <li><a href="index.html"><span class="icon material-symbols-outlined">home</span> Головна</a></li>
+            <li><a href="about.html"><span class="icon material-symbols-outlined">school</span> Про ліцей</a></li>
+            <li><a href="team.html" class="active"><span class="icon material-symbols-outlined">groups</span> Колектив</a></li>
+            <li><a href="education.html"><span class="icon material-symbols-outlined">menu_book</span> Навчання</a></li>
+            <li><a href="transparency.html"><span class="icon material-symbols-outlined">description</span> Прозорість</a></li>
+            <li><a href="parents.html"><span class="icon material-symbols-outlined">family_restroom</span> Батькам</a></li>
+            <li><a href="contacts.html"><span class="icon material-symbols-outlined">call</span> Контакти</a></li>
         </ul>
-</nav>
+    </nav>
+
     <main>
-        <section class="container section reveal">
-            <div class="text-center" style="margin-bottom: 40px;">
-                <span class="badge badge-green" style="margin-bottom: 15px;">Наші викладачі</span>
-                <h1 class="section-title">Методичні об'єднання</h1>
-                <p class="section-subtitle">Професіонали, які надихають та ведуть до успіху. В ліцеї працює 97 педагогів.</p>
+        <!-- Банер з колективним фото -->
+        <section class="team-hero">
+            <div class="container team-hero-content text-center reveal active">
+                <h1 style="font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; margin-bottom: 15px;">Колектив ліцею</h1>
+                <p style="font-size: 1.15rem; max-width: 700px; margin: 0 auto; opacity: 0.9;">Команда мотивованих та кваліфікованих педагогів, які щодня створюють успішне майбутнє для кожної дитини.</p>
             </div>
-            
-            <div class="grid grid-3">
-                <div class="card image-card">
-                    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=400&auto=format&fit=crop" alt="Початкова" style="width: 100%; height: 200px; object-fit: cover;">
-                    <div class="card-content">
-                        <h3>Початкова школа</h3>
-                        <p>Вчителі НУШ, які створюють фундамент для майбутніх перемог.</p>
+        </section>
+
+        <!-- Сітка Методичних об'єднань (9 блоків) -->
+        <section class="container reveal">
+            <div class="text-center" style="margin-bottom: 40px;">
+                <h2 class="section-title">Методичні об'єднання</h2>
+                <p class="section-subtitle">Оберіть кафедру, щоб дізнатися більше про наших викладачів.</p>
+            </div>
+
+            <div class="team-grid">
+                
+                <!-- Картка 1: Іноземні мови -->
+                <a href="#" class="team-card">
+                    <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=600&auto=format&fit=crop" alt="МО Іноземної мови">
+                    <div class="team-card-overlay">
+                        <span class="material-symbols-outlined team-card-icon">language</span>
+                        <h3 class="team-card-title">МО іноземної мови</h3>
                     </div>
-                </div>
-                <div class="card image-card">
-                    <img src="https://images.unsplash.com/photo-1518133910546-b6c2fb7d79e3?q=80&w=400&auto=format&fit=crop" alt="Математика" style="width: 100%; height: 200px; object-fit: cover;">
-                    <div class="card-content">
-                        <h3>Математика та ІТ</h3>
-                        <p>Розвиток логіки, алгоритмів та цифрової грамотності.</p>
+                </a>
+
+                <!-- Картка 2: Українська мова та література -->
+                <a href="#" class="team-card">
+                    <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=600&auto=format&fit=crop" alt="МО української мови">
+                    <div class="team-card-overlay">
+                        <span class="material-symbols-outlined team-card-icon">menu_book</span>
+                        <h3 class="team-card-title">МО української мови та літератури</h3>
                     </div>
-                </div>
-                <div class="card image-card">
-                    <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=400&auto=format&fit=crop" alt="Мови" style="width: 100%; height: 200px; object-fit: cover;">
-                    <div class="card-content">
-                        <h3>Суспільно-гуманітарні</h3>
-                        <p>Філологія, історія та право для свідомого громадянина.</p>
+                </a>
+
+                <!-- Картка 3: Природничі дисципліни -->
+                <a href="#" class="team-card">
+                    <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=600&auto=format&fit=crop" alt="МО природничих дисциплін">
+                    <div class="team-card-overlay">
+                        <span class="material-symbols-outlined team-card-icon">eco</span>
+                        <h3 class="team-card-title">МО природничих дисциплін</h3>
                     </div>
-                </div>
+                </a>
+
+                <!-- Картка 4: Суспільно-гуманітарні -->
+                <a href="#" class="team-card">
+                    <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=600&auto=format&fit=crop" alt="МО суспільно-гуманітарних дисциплін">
+                    <div class="team-card-overlay">
+                        <span class="material-symbols-outlined team-card-icon">public</span>
+                        <h3 class="team-card-title">МО суспільно-гуманітарних дисциплін</h3>
+                    </div>
+                </a>
+
+                <!-- Картка 5: Математика -->
+                <a href="#" class="team-card">
+                    <img src="https://images.unsplash.com/photo-1531545514256-b1400bc00f31?q=80&w=600&auto=format&fit=crop" alt="МО математики">
+                    <div class="team-card-overlay">
+                        <span class="material-symbols-outlined team-card-icon">calculate</span>
+                        <h3 class="team-card-title">МО математики</h3>
+                    </div>
+                </a>
+
+                <!-- Картка 6: Мистецтво та зарубіжна література -->
+                <a href="#" class="team-card">
+                    <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=600&auto=format&fit=crop" alt="МО мистецтва">
+                    <div class="team-card-overlay">
+                        <span class="material-symbols-outlined team-card-icon">palette</span>
+                        <h3 class="team-card-title">МО мистецтва та зарубіжної літератури</h3>
+                    </div>
+                </a>
+
+                <!-- Картка 7: Початкові класи та ГПД -->
+                <a href="#" class="team-card">
+                    <img src="https://images.unsplash.com/photo-1552581234-26160f608093?q=80&w=600&auto=format&fit=crop" alt="МО початкових класів">
+                    <div class="team-card-overlay">
+                        <span class="material-symbols-outlined team-card-icon">child_care</span>
+                        <h3 class="team-card-title">МО початкових класів та ГПД</h3>
+                    </div>
+                </a>
+
+                <!-- Картка 8: Інформатика -->
+                <a href="#" class="team-card">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=600&auto=format&fit=crop" alt="МО інформатики">
+                    <div class="team-card-overlay">
+                        <span class="material-symbols-outlined team-card-icon">computer</span>
+                        <h3 class="team-card-title">МО інформатики</h3>
+                    </div>
+                </a>
+
+                <!-- Картка 9: Фізична культура -->
+                <a href="#" class="team-card">
+                    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32d7?q=80&w=600&auto=format&fit=crop" alt="МО фізичної культури">
+                    <div class="team-card-overlay">
+                        <span class="material-symbols-outlined team-card-icon">sports_basketball</span>
+                        <h3 class="team-card-title">МО фізичної культури</h3>
+                    </div>
+                </a>
+
             </div>
         </section>
     </main>
 
     <footer class="main-footer">
         <div class="container footer-inner">
-            <span>© 2026 Ліцей №38 імені Івана Павловського</span>
+            <div>
+                <strong>Ліцей №38 ім. І. Павловського</strong>
+                <span style="opacity: 0.8; display: block;">м. Полтава</span>
+            </div>
+            <div>
+                <a href="transparency.html" style="color: white; text-decoration: underline; margin-right: 20px;">Прозорість</a>
+                <span style="opacity: 0.6;">© 2026 Всі права захищено</span>
+            </div>
         </div>
     </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
