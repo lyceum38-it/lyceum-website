@@ -3,15 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Про ліцей | Ліцей №38 імені Івана Павловського</title>
+    <title>Ліцей №38 імені Івана Павловського</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
 <body>
-    <header class="main-header">
+    <!-- Facebook SDK -->
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/uk_UA/sdk.js#xfbml=1&version=v20.0"></script>
+
+    <!-- ШАПКА -->
+    <header class="main-header glass">
         <div class="container header-inner">
             <a href="index.html" class="logo">
                 <div class="logo-circle">#38</div>
@@ -20,15 +26,38 @@
                     <span>Полтавської міської ради</span>
                 </div>
             </a>
-            <nav class="desktop-nav">
-                <a href="index.html">Головна</a>
-                <a href="about.html">Про ліцей</a>
-                <a href="team.html">Колектив</a>
-                <a href="education.html">Навчання</a>
-                <a href="transparency.html">Прозорість</a>
-                <a href="parents.html">Батькам</a>
-                <a href="contacts.html">Контакти</a>
-            </nav>
+            
+            <nav class="desktop-nav expanding-header-menu">
+    <a href="index.html" class="menu-item">
+        <span class="icon material-symbols-outlined">home</span>
+        <span class="menu-label">Головна</span>
+    </a>
+    <a href="about.html" class="menu-item">
+        <span class="icon material-symbols-outlined">school</span>
+        <span class="menu-label">Про ліцей</span>
+    </a>
+    <a href="team.html" class="menu-item">
+        <span class="icon material-symbols-outlined">groups</span>
+        <span class="menu-label">Колектив</span>
+    </a>
+    <a href="education.html" class="menu-item">
+        <span class="icon material-symbols-outlined">menu_book</span>
+        <span class="menu-label">Навчання</span>
+    </a>
+    <a href="transparency.html" class="menu-item">
+        <span class="icon material-symbols-outlined">description</span>
+        <span class="menu-label">Прозорість</span>
+    </a>
+    <a href="parents.html" class="menu-item">
+        <span class="icon material-symbols-outlined">family_restroom</span>
+        <span class="menu-label">Батькам</span>
+    </a>
+    <a href="contacts.html" class="menu-item">
+        <span class="icon material-symbols-outlined">call</span>
+        <span class="menu-label">Контакти</span>
+    </a>
+</nav>
+
             <button class="menu-toggle" id="menuToggle">☰</button>
         </div>
     </header>
