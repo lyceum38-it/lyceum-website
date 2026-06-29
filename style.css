@@ -69,7 +69,19 @@ body { background-color: var(--bg-main); color: var(--text-dark); line-height: 1
 }
 .header-inner { display: flex; justify-content: space-between; align-items: center; }
 .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--primary-navy); }
-.logo-circle { width: 45px; height: 45px; background: var(--accent-pink); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; }
+.logo-image {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%; /* Обрізає квадратне зображення у форму кола */
+    object-fit: cover; /* Запобігає деформації пропорцій */
+    border: 2px solid var(--brand-blue); /* Тонка синя рамка в колір глобуса */
+    box-shadow: 0 4px 10px rgba(0, 114, 188, 0.15); /* Легка тінь */
+    transition: transform 0.3s ease;
+}
+
+.logo:hover .logo-image {
+    transform: scale(1.05) rotate(-5deg); /* Легка анімація при наведенні */
+}
 .logo-text strong { display: block; font-size: 1.1rem; line-height: 1.2; }
 .logo-text span { font-size: 0.75rem; color: var(--text-light); }
 
