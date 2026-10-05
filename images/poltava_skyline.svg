@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" fill="none" stroke="#7b9bbd" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Ground reference line -->
+  <line x1="20" y1="110" x2="1180" y2="110" stroke-width="1" stroke-dasharray="6 4" opacity="0.6"/>
+
+  <!-- Left: School & Campus Buildings -->
+  <path d="M 60 110 L 60 75 L 140 75 L 140 110" />
+  <path d="M 140 110 L 140 60 L 220 60 L 220 110" />
+  <path d="M 160 60 L 160 45 L 200 45 L 200 60" />
+  <!-- Windows -->
+  <line x1="80" y1="85" x2="120" y2="85" />
+  <line x1="80" y1="95" x2="120" y2="95" />
+  <line x1="155" y1="70" x2="180" y2="70" />
+  <line x1="185" y1="70" x2="205" y2="70" />
+  <line x1="155" y1="85" x2="180" y2="85" />
+  <line x1="185" y1="85" x2="205" y2="85" />
+
+  <!-- Trees between buildings -->
+  <path d="M 235 110 C 235 90, 255 90, 255 110" />
+  <path d="M 250 110 C 250 82, 275 82, 275 110" />
+
+  <!-- Historic Poltava building & rotunda columns -->
+  <path d="M 290 110 L 290 70 L 370 70 L 370 110" />
+  <polygon points="330,40 285,70 375,70" />
+  <line x1="330" y1="30" x2="330" y2="40" />
+
+  <!-- Center-left trees -->
+  <path d="M 390 110 C 385 85, 415 85, 415 110" />
+
+  <!-- Poltava White Rotunda (Біла Альтанка) -->
+  <g transform="translate(450, 20)">
+    <!-- Base -->
+    <path d="M 10 90 L 110 90" stroke-width="2"/>
+    <path d="M 20 86 L 100 86" />
+    <!-- Columns -->
+    <line x1="25" y1="86" x2="25" y2="35" stroke-width="1.8"/>
+    <line x1="40" y1="86" x2="40" y2="35" stroke-width="1.8"/>
+    <line x1="60" y1="86" x2="60" y2="35" stroke-width="1.8"/>
+    <line x1="80" y1="86" x2="80" y2="35" stroke-width="1.8"/>
+    <line x1="95" y1="86" x2="95" y2="35" stroke-width="1.8"/>
+    <!-- Architrave -->
+    <path d="M 18 35 L 102 35" stroke-width="2"/>
+    <!-- Dome -->
+    <path d="M 22 35 C 22 5, 98 5, 98 35" stroke-width="1.6"/>
+    <!-- Small top finial -->
+    <line x1="60" y1="5" x2="60" y2="0" stroke-width="1.5"/>
+  </g>
+
+  <!-- Trees -->
+  <path d="M 590 110 C 585 75, 625 75, 625 110" />
+
+  <!-- Poltava Assumption Cathedral Bell Tower (Дзвіниця Успенського собору) -->
+  <g transform="translate(640, 5)">
+    <!-- Tier 1 -->
+    <rect x="25" y="70" width="50" height="35" />
+    <path d="M 40 105 A 10 10 0 0 1 60 105" />
+    <!-- Tier 2 -->
+    <rect x="30" y="45" width="40" height="25" />
+    <path d="M 42 70 A 8 8 0 0 1 58 70" />
+    <!-- Tier 3 -->
+    <rect x="36" y="25" width="28" height="20" />
+    <!-- Spire -->
+    <polygon points="50,2 40,25 60,25" />
+    <!-- Cross on top -->
+    <line x1="50" y1="-3" x2="50" y2="3" />
+    <line x1="47" y1="-1" x2="53" y2="-1" />
+  </g>
+
+  <!-- Trees -->
+  <path d="M 740 110 C 735 80, 770 80, 770 110" />
+
+  <!-- Domes of Monastery (Хрестовоздвиженський монастир) -->
+  <g transform="translate(790, 25)">
+    <rect x="20" y="55" width="80" height="30" />
+    <!-- Central Dome -->
+    <path d="M 50 55 C 45 35, 75 35, 70 55" />
+    <path d="M 55 35 C 50 20, 70 20, 65 35" />
+    <line x1="60" y1="16" x2="60" y2="20" />
+    <!-- Side Domes -->
+    <path d="M 30 55 C 28 42, 44 42, 42 55" />
+    <path d="M 78 55 C 76 42, 92 42, 90 55" />
+  </g>
+
+  <!-- Flagpole with Ukrainian Flag on the right -->
+  <g transform="translate(930, 45)">
+    <line x1="20" y1="65" x2="20" y2="10" stroke-width="1.5" />
+    <path d="M 20 10 Q 35 15, 50 10 Q 65 5, 80 10 L 80 28 Q 65 23, 50 28 Q 35 33, 20 28 Z" stroke="#3b82f6" fill="rgba(59, 130, 246, 0.1)"/>
+  </g>
+
+  <!-- Campus trees and modern elements -->
+  <path d="M 1030 110 C 1025 80, 1065 80, 1065 110" />
+  <path d="M 1075 110 L 1075 80 L 1140 80 L 1140 110" />
+  <line x1="1090" y1="90" x2="1125" y2="90" />
+</svg>

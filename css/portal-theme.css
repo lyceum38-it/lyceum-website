@@ -1,0 +1,1782 @@
+/* ==========================================================================
+   Lyceum 38 Portal Theme — Reference Inspired Design
+   ========================================================================== */
+
+:root {
+    --primary-blue: #1b62b8;
+    --primary-blue-dark: #124a8f;
+    --primary-blue-light: #eaf2fb;
+    --accent-gold: #f4b428;
+    --text-navy: #152438;
+    --text-muted: #64748b;
+    --border-light: #e6edf5;
+    --bg-main: #f8fafc;
+    --card-shadow: 0 10px 25px -5px rgba(20, 45, 80, 0.04), 0 8px 10px -6px rgba(20, 45, 80, 0.03);
+    --font-heading: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-body: 'Manrope', system-ui, -apple-system, sans-serif;
+    --font-handwriting: 'Caveat', cursive;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--text-navy);
+    background-color: var(--bg-main);
+    margin: 0;
+    padding: 0;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--text-navy);
+    font-weight: 700;
+}
+
+/* ==========================================================================
+   LAYOUT STRUCTURE: SIDEBAR + MAIN CONTENT
+   ========================================================================== */
+.portal-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.portal-sidebar {
+    width: 250px;
+    background: #ffffff;
+    border-right: 1px solid var(--border-light);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    padding: 28px 20px 24px;
+    overflow-y: auto;
+}
+
+.portal-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 28px;
+    text-decoration: none;
+}
+
+.brand-emblem {
+    width: 54px;
+    height: 54px;
+    margin-bottom: 12px;
+}
+
+.brand-title {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--text-navy);
+    margin: 0;
+    line-height: 1.25;
+}
+
+.brand-subtitle {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin: 3px 0 0;
+}
+
+.brand-city {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+/* Navigation items */
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex-grow: 1;
+}
+
+.nav-link-custom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: #475569;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.nav-link-custom .link-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-link-custom .link-left i {
+    font-size: 1.15rem;
+    color: #64748b;
+    transition: color 0.2s ease;
+}
+
+.nav-link-custom .link-chevron {
+    font-size: 0.75rem;
+    color: #94a3b8;
+}
+
+.nav-link-custom:hover {
+    background-color: #f1f5f9;
+    color: var(--primary-blue);
+}
+
+.nav-link-custom:hover .link-left i {
+    color: var(--primary-blue);
+}
+
+.nav-link-custom.active {
+    background-color: var(--primary-blue-light);
+    color: var(--primary-blue);
+}
+
+.nav-link-custom.active .link-left i {
+    color: var(--primary-blue);
+}
+
+/* Sidebar footer */
+.sidebar-footer {
+    padding-top: 24px;
+    border-top: 1px solid #f1f5f9;
+}
+
+.sidebar-quote {
+    font-size: 0.76rem;
+    color: #64748b;
+    line-height: 1.45;
+    margin-bottom: 16px;
+}
+
+.sidebar-socials {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.sidebar-socials a {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #f1f5f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #475569;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.sidebar-socials a:hover {
+    background: var(--primary-blue);
+    color: #ffffff;
+}
+
+.sidebar-bottom-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.7rem;
+    color: #94a3b8;
+}
+
+/* Main Content Area */
+.portal-main {
+    margin-left: 250px;
+    flex-grow: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Top bar */
+.portal-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 14px 40px;
+    background: transparent;
+    gap: 20px;
+}
+
+.topbar-search {
+    position: relative;
+    width: 220px;
+}
+
+.topbar-search input {
+    width: 100%;
+    padding: 7px 14px 7px 34px;
+    font-size: 0.84rem;
+    border-radius: 20px;
+    border: 1px solid #e2e8f0;
+    background: #ffffff;
+    color: #1e293b;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.topbar-search input:focus {
+    border-color: var(--primary-blue);
+}
+
+.topbar-search i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.85rem;
+    color: #94a3b8;
+}
+
+.topbar-lang {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+
+.topbar-lang a {
+    color: #94a3b8;
+    text-decoration: none;
+}
+
+.topbar-lang a.active {
+    color: var(--primary-blue);
+}
+
+.topbar-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.3rem;
+    color: #334155;
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   HERO BANNER SECTION (LAYERED ARCHITECTURE)
+   ========================================================================== */
+.hero-banner-section {
+    position: relative;
+    background-color: #ffffff;
+    min-height: 480px;
+    margin: 0 24px 20px;
+    border-radius: 28px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+/* Right-side school backdrop */
+.hero-school-backdrop {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 58%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.hero-school-backdrop img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Floating Medallion (Bust of Pavlovsky) */
+.hero-medallion-wrap {
+    position: absolute;
+    left: 56%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    height: 350px;
+    z-index: 3;
+    pointer-events: none;
+    transition: transform 0.3s ease;
+}
+
+.hero-medallion-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.15));
+}
+
+/* Corner foliage overlays (bokeh depth) */
+.hero-leaves-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 260px;
+    z-index: 4;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+    opacity: 0.85;
+}
+
+.hero-leaves-top img {
+    width: 100%;
+    height: auto;
+}
+
+.hero-leaves-bottom {
+    position: absolute;
+    bottom: -15px;
+    right: -15px;
+    width: 320px;
+    z-index: 4;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+    opacity: 0.90;
+}
+
+.hero-leaves-bottom img {
+    width: 100%;
+    height: auto;
+}
+
+/* Left copy column */
+.hero-content-left {
+    position: relative;
+    z-index: 5;
+    max-width: 440px;
+    padding: 44px 0 44px 48px;
+}
+
+.hero-eyebrow {
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #64748b;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.hero-title {
+    font-size: 2.7rem;
+    font-weight: 800;
+    line-height: 1.1;
+    color: #0f172a;
+    margin-bottom: 18px;
+}
+
+.hero-title .title-row-sub {
+    font-size: 1.95rem;
+    font-weight: 700;
+    display: block;
+    color: #1e3a5f;
+    margin-top: 4px;
+}
+
+.hero-desc {
+    font-size: 0.94rem;
+    color: #475569;
+    line-height: 1.6;
+    margin-bottom: 28px;
+    max-width: 390px;
+}
+
+.hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.btn-hero-primary {
+    background-color: var(--primary-blue);
+    color: #ffffff;
+    font-size: 0.92rem;
+    font-weight: 600;
+    padding: 12px 24px;
+    border-radius: 30px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 14px rgba(27, 98, 184, 0.25);
+}
+
+.btn-hero-primary:hover {
+    background-color: var(--primary-blue-dark);
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+.btn-hero-secondary {
+    background: #ffffff;
+    border: 1px solid #d1dbe5;
+    color: #334155;
+    font-size: 0.92rem;
+    font-weight: 600;
+    padding: 11px 22px;
+    border-radius: 30px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+}
+
+.btn-hero-secondary:hover {
+    background: #f8fafc;
+    color: var(--primary-blue);
+    border-color: var(--primary-blue);
+}
+
+/* Floating Quote Box Top-Right */
+.hero-floating-quote {
+    position: absolute;
+    top: 26px;
+    right: 36px;
+    z-index: 5;
+    max-width: 250px;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(226, 232, 240, 0.85);
+    padding: 12px 16px;
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+}
+
+.hero-floating-quote p {
+    font-size: 0.8rem;
+    font-style: italic;
+    color: #334155;
+    margin: 0 0 4px;
+    line-height: 1.35;
+}
+
+.hero-floating-quote span {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    display: block;
+}
+
+/* ==========================================================================
+   FEATURE CARDS STRIP (6 ITEMS)
+   ========================================================================== */
+.features-strip {
+    background: #ffffff;
+    border: 1px solid var(--border-light);
+    border-radius: 20px;
+    margin: 0 24px 36px;
+    padding: 20px 24px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px;
+    box-shadow: var(--card-shadow);
+}
+
+.feature-pill {
+    text-align: center;
+    padding: 8px 10px;
+    position: relative;
+}
+
+.feature-pill:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -8px;
+    top: 20%;
+    bottom: 20%;
+    width: 1px;
+    background: #f1f5f9;
+}
+
+.feature-icon-circle {
+    width: 44px;
+    height: 44px;
+    margin: 0 auto 10px;
+    border-radius: 50%;
+    background: #f1f6fd;
+    color: var(--primary-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    transition: transform 0.2s, background 0.2s;
+}
+
+.feature-pill:hover .feature-icon-circle {
+    transform: translateY(-2px);
+    background: var(--primary-blue);
+    color: #ffffff;
+}
+
+.feature-pill-title {
+    font-size: 0.86rem;
+    font-weight: 700;
+    color: var(--text-navy);
+    margin: 0 0 4px;
+}
+
+.feature-pill-desc {
+    font-size: 0.74rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.35;
+}
+
+/* ==========================================================================
+   LATEST NEWS + ADMISSIONS SECTION
+   ========================================================================== */
+.news-section {
+    padding: 0 24px 40px;
+}
+
+.news-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 22px;
+}
+
+.section-title-mark {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.45rem;
+    font-weight: 800;
+    margin: 0;
+}
+
+.section-title-mark::before {
+    content: '';
+    width: 24px;
+    height: 4px;
+    background: var(--accent-gold);
+    border-radius: 2px;
+}
+
+.link-all-news {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #64748b;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s;
+}
+
+.link-all-news:hover {
+    color: var(--primary-blue);
+}
+
+/* News Grid layout: 4 news cards + 1 featured admission card */
+.news-composite-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr) 1.2fr;
+    gap: 18px;
+    align-items: stretch;
+}
+
+/* Standard News Card */
+.news-card {
+    background: #ffffff;
+    border: 1px solid var(--border-light);
+    border-radius: 18px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-decoration: none;
+    color: inherit;
+}
+
+.news-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 30px -8px rgba(20, 45, 80, 0.08);
+}
+
+.news-card-img-wrap {
+    height: 140px;
+    position: relative;
+    overflow: hidden;
+}
+
+.news-card-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.news-card:hover .news-card-img-wrap img {
+    transform: scale(1.04);
+}
+
+.news-tag {
+    position: absolute;
+    bottom: 8px;
+    left: 10px;
+    background: rgba(15, 23, 42, 0.7);
+    color: #ffffff;
+    font-size: 0.68rem;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 12px;
+    backdrop-filter: blur(4px);
+}
+
+.news-card-body {
+    padding: 14px 16px 16px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
+}
+
+.news-date {
+    font-size: 0.72rem;
+    color: #94a3b8;
+    margin-bottom: 6px;
+}
+
+.news-card-title {
+    font-size: 0.88rem;
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--text-navy);
+    margin: 0 0 8px;
+}
+
+.news-card-desc {
+    font-size: 0.76rem;
+    color: var(--text-muted);
+    line-height: 1.45;
+    margin: 0 0 12px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.news-card-arrow {
+    align-self: flex-end;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #f1f5f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.78rem;
+    color: var(--primary-blue);
+    transition: background 0.2s, color 0.2s;
+}
+
+.news-card:hover .news-card-arrow {
+    background: var(--primary-blue);
+    color: #ffffff;
+}
+
+/* Admissions Card (Featured Column) */
+.admission-featured-card {
+    background: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid var(--border-light);
+    box-shadow: var(--card-shadow);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 320px;
+}
+
+.admission-img-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.admission-top-slogan {
+    position: relative;
+    z-index: 2;
+    padding: 24px 20px 0;
+    text-align: right;
+}
+
+.admission-top-slogan span {
+    font-family: var(--font-handwriting);
+    font-size: 1.65rem;
+    color: #1e3a5f;
+    line-height: 1.1;
+    display: block;
+    text-shadow: 0 2px 8px rgba(255, 255, 255, 0.9);
+}
+
+.admission-card-bottom {
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(8px);
+    margin: 16px;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+}
+
+.admission-card-bottom h3 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin: 0 0 6px;
+    color: #0f172a;
+}
+
+.admission-card-bottom p {
+    font-size: 0.78rem;
+    color: #475569;
+    margin: 0 0 14px;
+    line-height: 1.4;
+}
+
+.btn-admission {
+    background-color: var(--primary-blue);
+    color: #ffffff;
+    font-size: 0.84rem;
+    font-weight: 600;
+    padding: 9px 18px;
+    border-radius: 24px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+}
+
+.btn-admission:hover {
+    background-color: var(--primary-blue-dark);
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   DECORATIVE SKYLINE FOOTER
+   ========================================================================== */
+.skyline-footer {
+    position: relative;
+    padding: 30px 40px 36px;
+    text-align: center;
+    background: transparent;
+    overflow: hidden;
+}
+
+.skyline-motto {
+    font-family: var(--font-handwriting);
+    font-size: 2.2rem;
+    color: #2b548c;
+    margin-bottom: 12px;
+}
+
+.skyline-svg {
+    max-width: 900px;
+    width: 100%;
+    height: auto;
+    opacity: 0.35;
+    margin: 0 auto;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+@media (max-width: 1360px) {
+    .news-composite-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .admission-featured-card {
+        grid-column: span 2;
+        min-height: 280px;
+    }
+    .features-strip {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+    .feature-pill:nth-child(3)::after {
+        display: none;
+    }
+    .hero-medallion-wrap {
+        width: 300px;
+        height: 300px;
+        left: 56%;
+    }
+}
+
+@media (max-width: 1100px) {
+    .hero-medallion-wrap {
+        display: none;
+    }
+    .hero-school-backdrop {
+        width: 50%;
+    }
+}
+
+@media (max-width: 992px) {
+    .portal-sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+    .portal-sidebar.open {
+        transform: translateX(0);
+    }
+    .portal-main {
+        margin-left: 0;
+    }
+    .topbar-menu-toggle {
+        display: block;
+    }
+    .hero-banner-section {
+        margin: 0 16px 20px;
+        padding: 32px 24px;
+        min-height: auto;
+    }
+    .hero-content-left {
+        padding: 0;
+        max-width: 100%;
+    }
+    .hero-school-backdrop {
+        position: static;
+        width: 100%;
+        height: 240px;
+        margin-top: 24px;
+        border-radius: 16px;
+    }
+    .hero-floating-quote {
+        position: static;
+        margin-top: 20px;
+        max-width: 100%;
+    }
+    .features-strip {
+        margin: 0 16px 24px;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .news-section {
+        padding: 0 16px 30px;
+    }
+}
+
+@media (max-width: 640px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    .hero-title .title-row-sub {
+        font-size: 1.6rem;
+    }
+    .features-strip {
+        grid-template-columns: 1fr;
+    }
+    .feature-pill::after {
+        display: none !important;
+    }
+    .news-composite-grid {
+        grid-template-columns: 1fr;
+    }
+    .admission-featured-card {
+        grid-column: span 1;
+    }
+}
+
+/* ==========================================================================
+   SUBPAGE SHARED STYLES
+   ========================================================================== */
+.portal-subpage-header {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 36px 44px;
+    margin: 0 24px 28px;
+    border: 1px solid var(--border-light);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    position: relative;
+    overflow: hidden;
+}
+
+.subpage-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.74rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--primary-blue);
+    background: var(--primary-blue-light);
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+}
+
+.subpage-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--text-navy);
+    margin: 0 0 10px;
+}
+
+.subpage-desc {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    max-width: 680px;
+    margin: 0;
+    line-height: 1.55;
+}
+
+/* Breadcrumbs */
+.portal-breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    color: #94a3b8;
+    margin-bottom: 14px;
+}
+
+.portal-breadcrumbs a {
+    color: var(--primary-blue);
+    text-decoration: none;
+}
+
+.portal-breadcrumbs span {
+    color: #cbd5e1;
+}
+
+/* Content Container */
+.portal-content-wrap {
+    padding: 0 24px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+/* Cards & Sections */
+.portal-section-card {
+    background: #ffffff;
+    border: 1px solid var(--border-light);
+    border-radius: 20px;
+    padding: 32px 36px;
+    box-shadow: var(--card-shadow);
+}
+
+.card-heading-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: 16px;
+}
+
+.card-main-title {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--text-navy);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.card-main-title i {
+    color: var(--primary-blue);
+}
+
+/* Document Grid */
+.docs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+}
+
+.doc-download-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 18px;
+    border-radius: 14px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+}
+
+.doc-download-card:hover {
+    background: #ffffff;
+    border-color: var(--primary-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(27, 98, 184, 0.08);
+}
+
+.doc-icon-box {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: #eef4fc;
+    color: var(--primary-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+}
+
+.doc-download-card:hover .doc-icon-box {
+    background: var(--primary-blue);
+    color: #ffffff;
+}
+
+.doc-info-title {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--text-navy);
+    margin: 0 0 4px;
+    line-height: 1.3;
+}
+
+.doc-info-meta {
+    font-size: 0.72rem;
+    color: #64748b;
+    margin: 0;
+}
+
+/* Timetable & Schedule */
+.timetable-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+}
+
+.lesson-slot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 18px;
+    background: #f8fafc;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+}
+
+.lesson-number {
+    font-weight: 800;
+    font-size: 0.9rem;
+    color: var(--primary-blue);
+    background: #ffffff;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+}
+
+.lesson-time {
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: var(--text-navy);
+}
+
+/* Tabs */
+.portal-tabs {
+    display: flex;
+    gap: 8px;
+    border-bottom: 2px solid #e2e8f0;
+    margin-bottom: 24px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+}
+
+.portal-tab-btn {
+    padding: 10px 18px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    border-radius: 10px 10px 0 0;
+    background: transparent;
+    border: none;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.portal-tab-btn:hover {
+    color: var(--primary-blue);
+    background: #f1f5f9;
+}
+
+.portal-tab-btn.active {
+    color: var(--primary-blue);
+    background: #ffffff;
+    border-bottom: 3px solid var(--primary-blue);
+}
+
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+/* Stats Pill Strip */
+.stats-badge-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin: 20px 0;
+}
+
+.stat-badge {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 10px 18px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.stat-badge-num {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--primary-blue);
+}
+
+.stat-badge-lbl {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+
+/* ==========================================================================
+   REFERENCE MATCH OVERRIDES (home page)
+   ========================================================================== */
+body {
+    background: linear-gradient(180deg, #e9f2fb 0%, #f6f9fd 420px, #f8fafc 100%);
+}
+
+.portal-sidebar {
+    width: 200px;
+    padding: 26px 16px 22px;
+}
+.portal-main { margin-left: 200px; position: relative; }
+.brand-title { font-size: 1.35rem; }
+.nav-link-custom { font-size: 0.86rem; padding: 9px 12px; }
+
+/* Topbar floats over hero */
+body.home .portal-topbar {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    z-index: 20;
+    padding: 18px 36px;
+}
+.topbar-search input {
+    border: none;
+    border-bottom: 1px solid #cbd5e1;
+    border-radius: 0;
+    background: transparent;
+}
+
+/* Full-bleed hero with sky */
+.hero-banner-section {
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+    min-height: 520px;
+    background:
+        linear-gradient(180deg, #dbe9f7 0%, #eef5fc 60%, #f6f9fd 100%);
+}
+
+.hero-school-backdrop {
+    width: 62%;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 30%, #000 100%),
+                        linear-gradient(0deg, transparent 0%, #000 22%);
+    -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(90deg, transparent 0%, #000 30%, #000 100%),
+                linear-gradient(0deg, transparent 0%, #000 22%);
+    mask-composite: intersect;
+}
+
+.hero-medallion-wrap {
+    left: 52%;
+    top: 44%;
+    width: 380px;
+    height: 380px;
+}
+
+.hero-content-left {
+    max-width: 480px;
+    padding: 70px 0 120px 56px;
+}
+
+.hero-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    color: #475569;
+}
+.hero-eyebrow b { color: var(--accent-gold); font-weight: 800; }
+
+.hero-title {
+    font-size: 3.2rem;
+    line-height: 1.08;
+    color: #12305a;
+    letter-spacing: -0.5px;
+}
+.hero-title .title-accent { color: var(--primary-blue); }
+
+.hero-floating-quote {
+    top: 70px;
+    right: 60px;
+    background: transparent;
+    border: none;
+    border-left: 2px solid var(--primary-blue);
+    border-radius: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+    padding: 2px 0 2px 14px;
+}
+
+/* Features strip overlaps the hero, single row */
+.features-strip {
+    position: relative;
+    z-index: 10;
+    margin: -90px 36px 40px;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0;
+    padding: 22px 12px;
+    border: none;
+    box-shadow: 0 18px 40px -18px rgba(20, 45, 80, 0.18);
+}
+.feature-pill:not(:last-child)::after {
+    right: 0;
+    background: #e6edf5;
+    display: block !important;
+}
+.feature-icon-circle {
+    background: transparent;
+    font-size: 1.6rem;
+    margin-bottom: 8px;
+}
+
+.news-section { padding: 0 36px 30px; }
+
+@media (max-width: 1360px) {
+    .features-strip { grid-template-columns: repeat(6, 1fr); }
+    .feature-pill-desc { font-size: 0.7rem; }
+}
+
+@media (max-width: 1100px) {
+    .features-strip { grid-template-columns: repeat(3, 1fr); row-gap: 16px; }
+    .feature-pill:nth-child(3)::after { display: none !important; }
+    .hero-title { font-size: 2.6rem; }
+}
+
+@media (max-width: 992px) {
+    .portal-main { margin-left: 0; }
+    .portal-topbar { position: static; }
+    .hero-banner-section { flex-direction: column; padding: 24px 20px 110px; }
+    .hero-school-backdrop { -webkit-mask-image: none; mask-image: none; }
+    .features-strip { margin: -80px 16px 24px; grid-template-columns: repeat(2, 1fr); }
+    .feature-pill::after { display: none !important; }
+    .news-section { padding: 0 16px 30px; }
+}
+
+@media (max-width: 640px) {
+    .hero-title { font-size: 2.1rem; }
+    .features-strip { grid-template-columns: 1fr; }
+}
+
+/* Fine-tuning */
+.hero-school-backdrop {
+    top: 150px;
+    height: calc(100% - 150px);
+}
+.hero-medallion-wrap {
+    left: 60%;
+    top: 46%;
+    width: 320px;
+    height: 320px;
+}
+.hero-leaves-top { width: 170px; opacity: 0.55; }
+.hero-content-left { padding-top: 90px; max-width: 440px; }
+.hero-title { font-size: 3rem; }
+@media (max-width: 1360px) {
+    .hero-medallion-wrap { width: 280px; height: 280px; left: 61%; }
+}
+.hero-school-backdrop {
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 30%),
+                        linear-gradient(0deg, transparent 0%, #000 22%, #000 75%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0%, #000 30%),
+                linear-gradient(0deg, transparent 0%, #000 22%, #000 75%, transparent 100%);
+}
+@media (max-width: 992px) {
+    .hero-school-backdrop { -webkit-mask-image: none; mask-image: none; top: auto; height: 240px; }
+}
+
+
+/* ==========================================================================
+   V2: FLOATING SIDEBAR, SKY + FLAG, EMBLEM, LEAVES, COMPACT
+   ========================================================================== */
+body.home {
+    --side-gap: 22px;
+    --side-w: 200px;
+    --sky-size: auto 660px;
+    --sky-pos: calc(58vw - 400px) -40px;
+    background: #f4f8fc url('../images/sky_flag_bg.jpg') no-repeat;
+    background-size: var(--sky-size);
+    background-position: var(--sky-pos);
+    background-attachment: fixed;
+}
+body.home::before {
+    /* sky fills the whole width (left strip too) */
+    content: '';
+    position: fixed; inset: 0; z-index: -1;
+    background: linear-gradient(180deg, #7fb2e3 0%, #b9d6f1 40%, #eef4fb 75%, #f4f8fc 100%);
+}
+
+/* Floating detached sidebar: sky visible on both sides */
+body.home .portal-sidebar {
+    left: var(--side-gap);
+    top: 16px;
+    bottom: 16px;
+    width: var(--side-w);
+    border-radius: 22px;
+    border: 1px solid rgba(255,255,255,0.9);
+    box-shadow: 0 20px 45px -20px rgba(18, 48, 90, 0.35);
+    padding: 22px 14px 18px;
+}
+body.home .portal-main {
+    margin-left: calc(var(--side-w) + var(--side-gap) * 2);
+}
+body.home .portal-brand { margin-bottom: 18px; }
+body.home .sidebar-nav { gap: 2px; }
+
+/* Hero sits on the shared fixed sky so it's seamless with the left strip */
+body.home .hero-banner-section {
+    background: transparent;
+    min-height: 440px;
+    overflow: visible;
+}
+body.home .hero-school-backdrop {
+    top: 210px;
+    height: calc(100% - 210px);
+    width: 60%;
+}
+
+/* Emblem next to the flag, integrated into the sky */
+.hero-emblem {
+    position: absolute;
+    z-index: 3;
+    left: calc(58vw - var(--side-w) - var(--side-gap) * 2 - 150px);
+    top: 150px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,255,255,0.95) 55%, rgba(255,255,255,0) 72%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+.hero-emblem img { width: 82px; height: 82px; }
+
+body.home .hero-content-left {
+    padding: 58px 0 100px 40px;
+    max-width: 460px;
+}
+body.home .hero-eyebrow {
+    font-size: 0.8rem;
+    letter-spacing: 0.3px;
+    text-transform: none;
+    color: #1e3a5f;
+    margin-bottom: 10px;
+}
+body.home .hero-eyebrow b { color: var(--accent-gold); text-transform: uppercase; letter-spacing: 2px; }
+body.home .hero-title { font-size: 2.9rem; margin-bottom: 12px; }
+body.home .hero-desc {
+    margin-bottom: 18px;
+    padding-left: 12px;
+    border-left: 3px solid var(--accent-gold);
+    color: #1e3a5f;
+}
+body.home .hero-desc strong { color: var(--primary-blue); }
+body.home .hero-floating-quote { top: 62px; right: 40px; }
+
+/* Blurred foreground leaves (shallow depth of field) */
+body.home .hero-leaves-top {
+    top: -10px; left: -30px; width: 230px;
+    opacity: 0.8;
+    filter: blur(3px);
+    mix-blend-mode: normal;
+}
+body.home .hero-leaves-bottom {
+    bottom: -60px; right: -20px; width: 300px;
+    opacity: 0.85;
+    filter: blur(4px);
+    mix-blend-mode: normal;
+    z-index: 11;
+}
+.page-leaves {
+    position: fixed;
+    pointer-events: none;
+    z-index: 1100;
+    filter: blur(5px);
+    opacity: 0.75;
+}
+.page-leaves-bl {
+    left: -40px; bottom: -40px; width: 220px;
+    transform: rotate(180deg) scaleX(-1);
+}
+.page-leaves img { width: 100%; height: auto; display: block; }
+
+/* Compact density */
+body.home .features-strip {
+    margin: -70px 24px 22px;
+    padding: 14px 8px;
+}
+body.home .feature-pill { padding: 4px 8px; }
+body.home .feature-icon-circle { width: 34px; height: 34px; margin-bottom: 4px; font-size: 1.35rem; }
+body.home .feature-pill-title { margin-bottom: 2px; }
+body.home .news-section { padding: 0 24px 20px; }
+body.home .news-header { margin-bottom: 14px; }
+body.home .news-composite-grid { gap: 14px; }
+body.home .news-card-img-wrap { height: 125px; }
+body.home .news-card-body { padding: 12px 14px 12px; }
+body.home .skyline-footer { padding: 10px 24px 20px; }
+
+@media (max-width: 1100px) {
+    .hero-emblem { display: none; }
+}
+@media (max-width: 992px) {
+    body.home .portal-sidebar { left: 0; top: 0; bottom: 0; border-radius: 0; }
+    body.home .portal-main { margin-left: 0; }
+    .page-leaves { display: none; }
+}
+
+/* V2 fixes */
+body.home::before { display: none; }
+body.home {
+    --sky-pos: calc(58vw - 400px) -110px;
+    background:
+        url('../images/sky_flag_bg.jpg') var(--sky-pos) / var(--sky-size) no-repeat fixed,
+        linear-gradient(180deg, #8dbbe7 0%, #c4dcf2 45%, #eef4fb 80%, #f4f8fc 100%) fixed;
+}
+body.home .hero-school-backdrop { top: 250px; height: calc(100% - 250px); }
+.hero-emblem {
+    left: calc(58vw - var(--side-w) - var(--side-gap) * 2 + 180px);
+    top: 140px;
+}
+@media (min-width: 1200px) {
+    body.home .news-composite-grid { grid-template-columns: repeat(4, 1fr) 1.2fr; }
+    body.home .admission-featured-card { grid-column: auto; }
+}
+body.home {
+    background:
+        linear-gradient(90deg, #c9def2 calc(58vw - 400px), rgba(201,222,242,0) calc(58vw - 180px)) fixed,
+        url('../images/sky_flag_bg.jpg') var(--sky-pos) / var(--sky-size) no-repeat fixed,
+        linear-gradient(180deg, #c9def2 0%, #dbe8f5 45%, #eef4fb 80%, #f4f8fc 100%) fixed;
+}
+
+/* ==========================================================================
+   V3: full-width facade, big emblem in sky, mission quote, readable vision
+   ========================================================================== */
+body.home .hero-banner-section { min-height: 470px; }
+
+/* Facade spans the full hero width, edge to edge, sky raised */
+body.home .hero-school-backdrop {
+    left: 0;
+    right: 0;
+    width: auto;
+    top: 150px;
+    height: calc(100% - 150px);
+    -webkit-mask-image: linear-gradient(0deg, transparent 0%, #000 18%, #000 78%, transparent 100%);
+    mask-image: linear-gradient(0deg, transparent 0%, #000 18%, #000 78%, transparent 100%);
+}
+body.home .hero-school-backdrop img { object-position: center 35%; }
+
+/* Large emblem centered in the sky zone */
+body.home .hero-emblem {
+    left: 47%;
+    top: 40px;
+    transform: translateX(-50%);
+    width: 190px;
+    height: 190px;
+    background: radial-gradient(circle, rgba(255,255,255,0.97) 58%, rgba(255,255,255,0) 71%);
+    z-index: 4;
+}
+body.home .hero-emblem img { width: 140px; height: 140px; }
+
+/* Mission replaces the quote, same placement/style */
+body.home .hero-floating-quote { top: 64px; right: 40px; max-width: 280px; }
+body.home .hero-floating-quote p {
+    font-size: 0.95rem;
+    font-style: italic;
+    color: #12305a;
+    margin: 0;
+    text-shadow: 0 1px 6px rgba(255,255,255,0.9);
+}
+body.home .hero-floating-quote p b { color: var(--primary-blue); font-style: normal; }
+
+/* Readable text block over clouds/photo */
+body.home .hero-content-left {
+    margin-left: 24px;
+    margin-top: 40px;
+    margin-bottom: 90px;
+    padding: 22px 26px 24px;
+    max-width: 470px;
+    background: rgba(255, 255, 255, 0.82);
+    border-radius: 20px;
+    box-shadow: 0 14px 40px -18px rgba(18, 48, 90, 0.35);
+}
+body.home .hero-desc { color: #0f2747; font-weight: 500; }
+
+/* No cropped edges */
+body.home .portal-main { overflow-x: hidden; }
+body.home .hero-leaves-bottom { right: 0; bottom: -40px; }
+
+@media (max-width: 1100px) {
+    body.home .hero-emblem { display: flex; left: auto; right: 30px; top: 110px; transform: none; width: 130px; height: 130px; }
+    body.home .hero-emblem img { width: 92px; height: 92px; }
+}
+@media (max-width: 992px) {
+    body.home .hero-emblem { display: none; }
+    body.home .hero-content-left { margin: 0; }
+}
+body.home .hero-emblem {
+    left: calc(494px + (100% - 794px) / 2);
+    width: clamp(140px, 12vw, 190px);
+    height: clamp(140px, 12vw, 190px);
+}
+body.home .hero-emblem img { width: 74%; height: 74%; }
+body.home .hero-school-backdrop { right: -40px; }
+body.home .hero-school-backdrop img { object-position: center 25%; }
+body.home { --sky-size: max(1183px, calc(42vw + 460px)) auto; }
+
+/* ==========================================================================
+   V4: FINAL REFINEMENTS
+   ========================================================================== */
+
+/* 1. Left Sidebar Background & 7. Background Image Sizing */
+body.home {
+    background: transparent !important;
+}
+
+body.home::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: -2;
+    background: url('../images/hero_school_bg.webp') center top / cover no-repeat,
+                linear-gradient(180deg, #c9def2 0%, #dbe8f5 45%, #eef4fb 80%, #f4f8fc 100%);
+    background-attachment: fixed;
+}
+
+/* Hide the old background wrappers since we moved it to body::before */
+body.home .hero-school-backdrop {
+    display: none !important;
+}
+
+body.home .hero-banner-section {
+    min-height: 480px;
+    background: transparent !important;
+    position: static;
+}
+
+/* 2. Remove White Block Behind Text */
+body.home .hero-content-left {
+    background: transparent !important;
+    box-shadow: none !important;
+    position: relative;
+    z-index: 5;
+    padding-left: 0 !important;
+    margin-left: 40px !important;
+}
+
+/* 3. Fix Text Readability (Gradient Overlay) */
+body.home .portal-main::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 550px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 35%, rgba(255,255,255,0) 70%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Add text shadow for extra readability */
+body.home .hero-title, 
+body.home .hero-desc {
+    text-shadow: 0 1px 15px rgba(255,255,255,0.95), 0 2px 5px rgba(255,255,255,0.8);
+}
+
+/* 4. Reposition the Logo (Remove white glow, move strictly upwards) */
+body.home .hero-emblem {
+    position: absolute !important;
+    top: 20px !important;
+    right: 15% !important;
+    left: auto !important;
+    transform: none !important;
+    background: transparent !important;
+    width: 140px !important;
+    height: 140px !important;
+    z-index: 10 !important;
+}
+body.home .hero-emblem img {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* 5. Add the Ukrainian Flag */
+body.home .hero-flag {
+    position: absolute;
+    top: 30px;
+    right: 25%;
+    width: 180px;
+    z-index: 9;
+    opacity: 0.65;
+    mix-blend-mode: multiply;
+    transform: rotate(-3deg) skewY(-5deg);
+    border-radius: 8px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+    pointer-events: none;
+}
+body.home .hero-flag img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+}
+
+/* 6. Fix the Top-Right Quote */
+body.home .hero-floating-quote {
+    position: absolute !important;
+    top: 30px !important;
+    right: 40px !important;
+    left: auto !important;
+    max-width: 300px !important;
+    background: transparent !important;
+    border-left: 3px solid var(--accent-gold) !important;
+    padding-left: 15px !important;
+    z-index: 15 !important;
+}
+body.home .hero-floating-quote p {
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    color: #0f2747 !important;
+    text-shadow: 0 2px 10px rgba(255,255,255,0.9), 0 0 15px rgba(255,255,255,1) !important;
+}
+/* ==========================================================================
+   V5: FINAL TWEAKS
+   ========================================================================== */
+
+/* Hide the blurry artifacts on the left */
+body.home .hero-leaves-top,
+body.home .page-leaves {
+    display: none !important;
+}
+
+/* Ensure the main background is sharp and spans 100vw */
+body.home::before {
+    background: url('../images/hero_school_bg.webp') center top / cover no-repeat,
+                url('../images/sky_flag_bg.jpg') center top / cover no-repeat,
+                linear-gradient(180deg, #c9def2 0%, #dbe8f5 45%, #eef4fb 80%, #f4f8fc 100%) !important;
+}
+
+/* Properly position the logo in the sky */
+body.home .hero-emblem {
+    top: 50px !important;
+    right: 320px !important;
+    width: 130px !important;
+    height: 130px !important;
+}
+
+/* Position the flag near the logo */
+body.home .hero-flag {
+    top: 50px !important;
+    right: 480px !important;
+    width: 140px !important;
+    opacity: 0.8 !important;
+}
+
+/* Align and style the quote correctly */
+body.home .hero-floating-quote {
+    top: 55px !important;
+    right: 30px !important;
+    width: 250px !important;
+    text-align: left !important;
+    border-left: 4px solid var(--primary-blue) !important;
+}
+
+body.home .hero-floating-quote p {
+    font-size: 1.1rem !important;
+    color: #0f2747 !important;
+    text-shadow: 0px 1px 12px rgba(255,255,255,1), 0px 0px 20px rgba(255,255,255,1), 0px 0px 30px rgba(255,255,255,1) !important;
+}
+/* ==========================================================================
+   V6: FIX BACKGROUND
+   ========================================================================== */
+
+/* Restore the image wrapper */
+body.home .hero-school-backdrop {
+    display: block !important;
+    position: fixed !important;
+    top: 150px !important; 
+    left: 0 !important;
+    width: 100vw !important;
+    height: calc(100vh - 150px) !important;
+    z-index: -1 !important;
+    mask-image: linear-gradient(0deg, transparent 0%, #000 18%, #000 78%, transparent 100%) !important;
+    -webkit-mask-image: linear-gradient(0deg, transparent 0%, #000 18%, #000 78%, transparent 100%) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+body.home .hero-school-backdrop img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center top !important;
+}
+
+/* Re-apply sky background to body */
+body.home::before {
+    background: url('../images/sky_flag_bg.jpg') center top / cover no-repeat,
+                linear-gradient(180deg, #c9def2 0%, #dbe8f5 45%, #eef4fb 80%, #f4f8fc 100%) !important;
+    z-index: -2 !important;
+}
+
+/* Ensure portal main doesn't clip it */
+body.home .portal-main {
+    overflow: visible !important;
+}
+

@@ -1,0 +1,17 @@
+178: <style data-href="https://static.parastorage.com/services/editor-elements-library/dist/thunderbolt/rb_wixui.thunderbolt[
+182: <style data-href="https://static.parastorage.com/services/editor-elements-library/dist/thunderbolt/rb_wixui.thunderbolt_
+191: <title>Історія | Школа № 38 полтава</title>
+192: <meta name="description" content="Історія школи"/>
+193: <link rel="canonical" href="https://www.poltavaschool38.pp.ua/istoriyaІсторія | Школа № 38 полтава"/>
+195: <meta property="og:title" content="Історія | Школа № 38 полтава"/>
+196: <meta property="og:description" content="Історія школи"/>
+201: <meta property="og:site_name" content="Ліцей № 38 Полтаваhttps://www.poltavaschool38.pp.ua/istoriya"/>
+207: <meta name="twitter:title" content="Історія | Школа № 38 полтава"/>
+208: <meta name="twitter:description" content="Історія школи"/>
+634: <div id="SITE_CONTAINER"><div id="main_MF" class="main_MF"><div id="SCROLL_TO_TOP" class="qe3oTb ignore-focus SCROLL_TO_
+641: </span></span></span></button></div></nav><!--/$--><div id="comp-m5wo4utn" class="HamburgerOverlay547129737--shouldScrol
+646: </span></span></span></button></div><!--$--><nav id="comp-m5wo4utz" aria-label="Сайт" class="d2V6sy comp-m5wo4utz wixui-
+651: </span></span></span></a></div><!--/$--><!--$--><div id="comp-m681ku7e" class="comp-m681ku7e" data-semantic-classname="b
+656: </span></span></span></a></div><!--/$--><!--$--><div id="comp-mmcola15" class="W4V2qg comp-mmcola15 wixui-image" title="
+661: </span></span></span></a></div><!--/$--></div></div></div><!--/$--><!--$--><div id="comp-m67z2ipf" class="comp-m67z2ipf 
+762: <script type="application/json" id="wix-viewer-model">{"siteFeaturesConfigs":{"accessibilityBrowserZoom":{"isBuilder":fa
