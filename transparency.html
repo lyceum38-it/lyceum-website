@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ліцей №38 імені Івана Павловського</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+</head>
+<body>
+    <!-- Facebook SDK -->
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/uk_UA/sdk.js#xfbml=1&version=v20.0"></script>
+
+    <!-- ШАПКА -->
+    <header class="main-header glass">
+        <div class="container header-inner">
+            <a href="index.html" class="logo">
+                <!-- Вставляємо емблему замість рожевого кола -->
+                <img src="img/logo.png" alt="Емблема Ліцею №38" class="logo-image">
+                
+                <div class="logo-text">
+                    <strong>Ліцей №38 ім. І. Павловського</strong>
+                    <span>Полтавської міської ради</span>
+                </div>
+            </a>
+            
+            <nav class="desktop-nav expanding-header-menu">
+    <a href="index.html" class="menu-item">
+        <span class="icon material-symbols-outlined">home</span>
+        <span class="menu-label">Головна</span>
+    </a>
+    <a href="about.html" class="menu-item">
+        <span class="icon material-symbols-outlined">school</span>
+        <span class="menu-label">Про ліцей</span>
+    </a>
+    <a href="team.html" class="menu-item">
+        <span class="icon material-symbols-outlined">groups</span>
+        <span class="menu-label">Колектив</span>
+    </a>
+    <a href="education.html" class="menu-item">
+        <span class="icon material-symbols-outlined">menu_book</span>
+        <span class="menu-label">Навчання</span>
+    </a>
+    <a href="transparency.html" class="menu-item">
+        <span class="icon material-symbols-outlined">description</span>
+        <span class="menu-label">Прозорість</span>
+    </a>
+    <a href="parents.html" class="menu-item">
+        <span class="icon material-symbols-outlined">family_restroom</span>
+        <span class="menu-label">Батькам</span>
+    </a>
+    <a href="contacts.html" class="menu-item">
+        <span class="icon material-symbols-outlined">call</span>
+        <span class="menu-label">Контакти</span>
+    </a>
+</nav>
+
+            <button class="menu-toggle" id="menuToggle">☰</button>
+        </div>
+    </header>
+<!-- БІЧНЕ МЕНЮ -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">
+                <div class="logo-circle">#38</div>
+                <span>Меню ліцею</span>
+            </div>
+            <button class="close-btn" id="closeMenu">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+        
+        <ul class="sidebar-menu">
+            <li>
+                <a href="index.html">
+                    <span class="icon material-symbols-outlined">home</span>
+                    Головна
+                </a>
+            </li>
+            <li>
+                <a href="about.html">
+                    <span class="icon material-symbols-outlined">school</span>
+                    Про ліцей
+                </a>
+            </li>
+            <li>
+                <a href="team.html">
+                    <span class="icon material-symbols-outlined">groups</span>
+                    Колектив
+                </a>
+            </li>
+            <li>
+                <a href="education.html">
+                    <span class="icon material-symbols-outlined">menu_book</span>
+                    Навчання
+                </a>
+            </li>
+            <li>
+                <a href="transparency.html">
+                    <span class="icon material-symbols-outlined">description</span>
+                    Прозорість
+                </a>
+            </li>
+            <li>
+                <a href="parents.html">
+                    <span class="icon material-symbols-outlined">family_restroom</span>
+                    Батькам
+                </a>
+            </li>
+            <li>
+                <a href="contacts.html">
+                    <span class="icon material-symbols-outlined">call</span>
+                    Контакти
+                </a>
+            </li>
+        </ul>
+</nav>
+    <!-- УНІКАЛЬНИЙ КОНТЕНТ СТОРІНКИ "ПРОЗОРІСТЬ" -->
+    <main>
+        <section class="container section reveal">
+            <div class="text-center" style="margin-bottom: 40px;">
+                <span class="badge badge-navy" style="margin-bottom: 15px;">Відкриті дані</span>
+                <h1 class="section-title">Публічна інформація</h1>
+                <p class="section-subtitle">Інформація розміщена відповідно до статті 30 Закону України «Про освіту».</p>
+            </div>
+            
+            <!-- Оновлена сітка документів (Згрупована) -->
+            <div class="grid grid-2" style="gap: 30px;">
+                
+                <!-- Блок 1: Організація роботи -->
+                <div class="card">
+                    <div class="card-icon" style="font-size: 2.5rem; margin-bottom: 10px;">🏛️</div>
+                    <h3 class="card-title">Організація роботи закладу</h3>
+                    <div class="link-list">
+                        <a href="#" data-doc="statut">Установчі документи</a>
+                        <a href="#" data-doc="structure">Структури та органи управління</a>
+                        <a href="#" data-doc="territory">Територія обслуговування</a>
+                        <a href="#" onclick="event.preventDefault(); const info = document.getElementById('lang-info'); info.style.display = info.style.display === 'none' ? 'block' : 'none';">Мова освітнього процесу</a>
+                        <div id="lang-info" style="display: none; padding: 10px 15px; background: var(--bg-main); border-left: 3px solid var(--primary-navy); margin-top: 5px; font-size: 0.9rem; border-radius: 4px;">Мова освітнього процесу – <strong>українська</strong>.</div>
+                        <a href="#" data-doc="annual-report">Річний звіт про діяльність</a>
+                    </div>
+                </div>
+
+                <!-- Блок 2: Освітній процес -->
+                <div class="card">
+                    <div class="card-icon" style="font-size: 2.5rem; margin-bottom: 10px;">📚</div>
+                    <h3 class="card-title">Освітній процес</h3>
+                    <div class="link-list">
+                        <a href="#" data-doc="osvitni-programy">Освітні програми</a>
+                        <a href="#" data-doc="books">Підручники</a>
+                        <a href="#" data-doc="monitoring">Результати моніторингу якості освіти</a>
+                        <a href="#" data-doc="extra-services">Перелік додаткових послуг (та ціни)</a>
+                    </div>
+                </div>
+
+                <!-- Блок 3: Колектив та Учні -->
+                <div class="card">
+                    <div class="card-icon" style="font-size: 2.5rem; margin-bottom: 10px;">👥</div>
+                    <h3 class="card-title">Кадри та Контингент</h3>
+                    <div class="link-list">
+                        <a href="#" data-doc="staff">Кадровий склад (педагоги та адміністрація)</a>
+                        <a href="#" data-doc="students">Учнівський контингент (кількість учнів)</a>
+                    </div>
+                </div>
+
+                <!-- Блок 4: Безпека та Правила -->
+                <div class="card">
+                    <div class="card-icon" style="font-size: 2.5rem; margin-bottom: 10px;">🛡️</div>
+                    <h3 class="card-title">Безпека та Правила</h3>
+                    <div class="link-list">
+                        <a href="#" data-doc="rules">Правила поведінки для здобувачів освіти</a>
+                        <a href="#" data-doc="stop-bullying">Стопбулінг (запобігання та протидія)</a>
+                        <a href="#" data-doc="violence-prevention">Запобігання та протидія насильству</a>
+                    </div>
+                </div>
+
+                <!-- Блок 5: Фінанси та Забезпечення -->
+                <div class="card">
+                    <div class="card-icon" style="font-size: 2.5rem; margin-bottom: 10px;">💰</div>
+                    <h3 class="card-title">Фінанси та Забезпечення</h3>
+                    <div class="link-list">
+                        <a href="#" data-doc="koshtorys">Кошторис та фінансові звіти</a>
+                        <a href="#" data-doc="facilities">Матеріально-технічна база</a>
+                    </div>
+                </div>
+
+                <!-- Блок 6: Інклюзія -->
+                <div class="card">
+                    <div class="card-icon" style="font-size: 2.5rem; margin-bottom: 10px;">♿</div>
+                    <h3 class="card-title">Інклюзивність</h3>
+                    <div class="link-list">
+                        <a href="#" data-doc="accessibility">Умови доступності закладу освіти</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- ФУТЕР -->
+    <footer class="main-footer">
+        <div class="container footer-inner">
+            <div>
+                <strong style="font-size: 1.2rem; display: block; margin-bottom: 5px;">Ліцей №38 ім. І. Павловського</strong>
+                <span style="opacity: 0.8;">м. Полтава</span>
+            </div>
+            <div>
+                <a href="transparency.html" style="color: white; text-decoration: underline; margin-right: 20px;">Публічна інформація</a>
+                <span style="opacity: 0.6;">© 2026 Всі права захищено</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

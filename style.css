@@ -1,0 +1,940 @@
+/* ==========================================================================
+   1. ПЕРЕМЕННІ ТА ОСНОВА (Design System)
+   ========================================================================== */
+:root {
+    --bg-main: #f8fafc;
+    --primary-navy: #1B365D; /* Залишаємо цей глибокий синій для тексту замість чорного */
+    
+    /* ОФІЦІЙНІ КОЛЬОРИ ЛОГОТИПА ЛІЦЕЮ №38 */
+    --brand-pink: #e3007b;  /* З тексту "Успішна дитина..." */
+    --brand-blue: #0072bc;  /* З ліній глобуса */
+    --brand-green: #009944; /* З фігури дитини та цифри 38 */
+    
+    --text-dark: #1e293b;
+    --text-light: #64748b;
+    --card-bg: rgba(255, 255, 255, 0.8);
+    --border-color: rgba(226, 232, 240, 0.8);
+    --radius-md: 24px;
+    --radius-pill: 100px;
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 20px 40px -10px rgba(0, 0, 0, 0.12);
+    --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+body { background-color: var(--bg-main); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
+
+/* ==========================================================================
+   2. УТИЛІТИ ТА СІТКА
+   ========================================================================== */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.section { padding: 80px 0; }
+.text-center { text-align: center; }
+.text-light { color: var(--text-light); }
+.text-navy { color: var(--primary-navy); }
+.text-pink { color: var(--accent-pink); }
+.text-green { color: var(--accent-green); }
+.bg-light { background-color: #ffffff; }
+
+.glass {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-color);
+}
+
+.grid { display: grid; gap: 25px; }
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+.badge { display: inline-block; padding: 6px 16px; border-radius: var(--radius-pill); font-weight: 700; font-size: 0.85rem; color: white; }
+.badge-pink { background: var(--accent-pink); }
+.badge-green { background: var(--accent-green); }
+.badge-navy { background: var(--primary-navy); }
+
+/* ==========================================================================
+   3. ШАПКА (Header)
+   ========================================================================== */
+/* ==========================================================================
+   3. ШАПКА (Header) - Оновлена навігація
+   ========================================================================== */
+.main-header { 
+    position: sticky; top: 0; z-index: 100; padding: 12px 0; 
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+}
+.header-inner { display: flex; justify-content: space-between; align-items: center; }
+.logo { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--primary-navy); }
+.logo-image {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%; /* Обрізає квадратне зображення у форму кола */
+    object-fit: cover; /* Запобігає деформації пропорцій */
+    border: 2px solid var(--brand-blue); /* Тонка синя рамка в колір глобуса */
+    box-shadow: 0 4px 10px rgba(0, 114, 188, 0.15); /* Легка тінь */
+    transition: transform 0.3s ease;
+}
+
+.logo:hover .logo-image {
+    transform: scale(1.05) rotate(-5deg); /* Легка анімація при наведенні */
+}
+.logo-text strong { display: block; font-size: 1.1rem; line-height: 1.2; }
+.logo-text span { font-size: 0.75rem; color: var(--text-light); }
+
+/* --- Нові стилі для Expanding Меню в шапці --- */
+.desktop-nav.expanding-header-menu {
+    display: flex;
+    gap: 8px; /* Невеликий відступ між іконками */
+    align-items: center;
+}
+
+.desktop-nav.expanding-header-menu .menu-item {
+    width: 44px; /* Початковий розмір (тільки іконка) */
+    height: 44px;
+    display: flex !important;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--primary-navy) !important;
+    transition: width .45s cubic-bezier(.22, 1, .36, 1), background .3s ease, color .3s ease;
+    padding: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+/* Стан при наведенні або активна сторінка */
+.desktop-nav.expanding-header-menu .menu-item:hover,
+.desktop-nav.expanding-header-menu .menu-item.active {
+    width: 140px; /* Загальна ширина розкриття */
+    background: var(--primary-navy) !important;
+    color: white !important;
+}
+
+/* Індивідуальне налаштування для найдовших слів */
+.desktop-nav.expanding-header-menu .menu-item[href="transparency.html"]:hover,
+.desktop-nav.expanding-header-menu .menu-item[href="transparency.html"].active {
+    width: 160px; /* Трохи збільшено, щоб слово точно влізло */
+}
+.desktop-nav.expanding-header-menu .menu-item[href="about.html"]:hover,
+.desktop-nav.expanding-header-menu .menu-item[href="about.html"].active {
+    width: 155px; 
+}
+
+.desktop-nav.expanding-header-menu .icon {
+    min-width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.desktop-nav.expanding-header-menu .menu-label {
+    opacity: 0;
+    white-space: nowrap;
+    transform: translateX(-10px);
+    transition: all .35s ease;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: white; /* Явно робимо текст білим */
+}
+
+.desktop-nav.expanding-header-menu .menu-item:hover .menu-label,
+.desktop-nav.expanding-header-menu .menu-item.active .menu-label {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.menu-toggle { display: none; background: var(--primary-navy); color: white; border: none; padding: 10px 15px; border-radius: 12px; cursor: pointer; }
+
+/* ==========================================================================
+   4. HERO SECTION (Оновлений текст)
+   ========================================================================== */
+.hero-section { 
+    padding: 120px 0 80px 0; 
+    background: radial-gradient(circle at top right, rgba(216, 27, 96, 0.05), transparent),
+                radial-gradient(circle at bottom left, rgba(27, 54, 93, 0.05), transparent);
+}
+
+.hero-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 950px; /* Трохи розширив для довгого тексту */
+    margin: 0 auto;
+}
+
+/* --- Дизайн бейджа Місії --- */
+.mission-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0, 114, 188, 0.2); /* Рамка фірмового синього кольору */
+    padding: 8px 24px;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    color: var(--primary-navy);
+    box-shadow: 0 4px 15px rgba(0, 114, 188, 0.05);
+    margin-bottom: 25px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: default;
+}
+
+.mission-badge:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(216, 27, 96, 0.12);
+}
+
+/* Пульсуюча крапка в бейджі */
+.pulse-dot {
+    width: 10px;
+    height: 10px;
+    background-color: var(--brand-green);
+    border-radius: 50%;
+    position: relative;
+}
+.pulse-dot::after {
+    content: '';
+    position: absolute;
+    top: -4px; left: -4px; right: -4px; bottom: -4px;
+    border-radius: 50%;
+    border: 2px solid var(--brand-green);
+    animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+@keyframes pulse-ring {
+    0% { transform: scale(0.5); opacity: 1; }
+    100% { transform: scale(2); opacity: 0; }
+}
+
+/* --- Заголовок Візії --- */
+.hero-title { 
+    font-size: clamp(1.8rem, 4vw, 3rem); /* Адаптивний розмір шрифту */
+    font-weight: 800; 
+    color: var(--primary-navy); 
+    line-height: 1.3; 
+    margin: 0 0 20px 0;
+    letter-spacing: -0.5px;
+}
+
+/* Градієнтний текст, який переливається */
+.text-gradient {
+    background: linear-gradient(135deg, var(--brand-blue) 0%, var(--brand-pink) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+    background-size: 200% auto;
+    animation: gradient-shift 4s ease infinite;
+}
+
+@keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.hero-subtitle { 
+    font-size: 1.1rem; 
+    color: var(--text-light); 
+    max-width: 700px; 
+    margin: 0 auto 50px; 
+    line-height: 1.6;
+}
+/* ==========================================================================
+   ІНТЕРАКТИВНІ КАРТКИ ШВИДКОГО ДОСТУПУ (Заміна старих qa-card)
+   ========================================================================== */
+.interactive-card {
+    position: relative;
+    background: white;
+    border-radius: var(--radius-md);
+    padding: 35px 25px;
+    text-decoration: none !important;
+    color: var(--text-dark);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Важливо: ховає хвилю за межами картки */
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+    z-index: 1;
+}
+
+/* Приховане коло, яке створює ефект заливки */
+.card-bg-fill {
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 100px;
+    height: 100px;
+    background: var(--primary-navy);
+    border-radius: 50%;
+    z-index: -1;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.interactive-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+    border-color: transparent;
+}
+
+/* МАГІЯ: Розтягуємо коло на всю картку при наведенні */
+.interactive-card:hover .card-bg-fill {
+    transform: scale(10); 
+}
+
+/* --- Оформлення іконки --- */
+.interactive-card .icon-wrapper {
+    width: 60px;
+    height: 60px;
+    background: rgba(27, 54, 93, 0.05); /* Легкий синій фон */
+    color: var(--primary-navy);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    transition: all 0.4s ease;
+}
+
+.interactive-card .icon-wrapper .material-symbols-outlined {
+    font-size: 2.2rem;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* --- Оформлення тексту --- */
+.interactive-card .card-content {
+    flex-grow: 1;
+}
+
+.interactive-card h3 {
+    font-size: 1.15rem;
+    color: var(--primary-navy);
+    margin-bottom: 8px;
+    transition: color 0.3s ease;
+}
+
+.interactive-card p {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-bottom: 20px;
+    transition: color 0.3s ease;
+}
+
+/* --- Стрілочка внизу --- */
+.card-arrow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--accent-pink);
+    font-weight: 600;
+    font-size: 0.9rem;
+    opacity: 0; /* Прихована за замовчуванням */
+    transform: translateX(-15px); /* Зсунута вліво */
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ==========================================================================
+   АЛІМАЦІЇ ПРИ НАВЕДЕННІ (HOVER STATES)
+   ========================================================================== */
+.interactive-card:hover .icon-wrapper {
+    background: rgba(255, 255, 255, 0.15); /* Фон іконки стає напівпрозорим білим */
+    color: white;
+    border-radius: 50%; /* Квадрат перетворюється на коло */
+}
+
+.interactive-card:hover .icon-wrapper .material-symbols-outlined {
+    transform: scale(1.15) rotate(5deg); /* Іконка підстрибує */
+}
+
+.interactive-card:hover h3, 
+.interactive-card:hover p {
+    color: white; /* Текст читається на темно-синьому фоні */
+}
+
+.interactive-card:hover .card-arrow {
+    opacity: 1; /* З'являється */
+    transform: translateX(0); /* Стає на своє місце */
+    color: white;
+}
+
+
+/* ==========================================================================
+   5. КАРУСЕЛЬ (Expanding Carousel)
+   ========================================================================== */
+.expanding-carousel { display: flex; width: 100%; height: 450px; gap: 15px; }
+.carousel-panel { background-size: cover; background-position: center; border-radius: var(--radius-md); cursor: pointer; flex: 0.5; position: relative; transition: flex 0.6s cubic-bezier(0.25, 1, 0.5, 1); overflow: hidden; }
+.carousel-panel.active, .carousel-panel:hover { flex: 4; }
+.carousel-panel::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%); opacity: 0.6; }
+.panel-content { position: absolute; bottom: 30px; left: 30px; right: 30px; color: white; z-index: 2; opacity: 0; transform: translateY(20px); transition: all 0.4s ease; }
+.carousel-panel.active .panel-content, .carousel-panel:hover .panel-content { opacity: 1; transform: translateY(0); }
+.panel-content h3 { font-size: 1.8rem; margin-bottom: 5px; }
+
+/* ==========================================================================
+   6. СТАТИСТИКА ТА БЕНТО-БЛОКИ
+   ========================================================================== */
+.stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 30px; }
+.stat-box { background: white; padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-color); transition: var(--transition); }
+.stat-box:hover { transform: scale(1.03); border-color: var(--primary-navy); box-shadow: var(--shadow-md); }
+.stat-number { font-size: 2.5rem; font-weight: 800; margin-bottom: 5px; }
+.stat-text { font-size: 0.85rem; font-weight: 600; color: var(--text-light); }
+
+.announcements-card { border-radius: var(--radius-md); padding: 30px; display: flex; flex-direction: column; }
+.card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+.announcements-list { display: flex; flex-direction: column; gap: 15px; flex-grow: 1; }
+.announcement-item { padding: 15px; border-left: 5px solid; background: rgba(255,255,255,0.5); border-radius: 0 12px 12px 0; }
+.announcement-item .date { font-size: 0.75rem; font-weight: 700; color: var(--text-light); }
+.announcement-item h4 { font-size: 1rem; margin: 5px 0; color: var(--primary-navy); }
+.announcement-item p { font-size: 0.85rem; color: var(--text-light); }
+.btn-link { margin-top: 20px; text-decoration: none; font-weight: 700; color: var(--primary-navy); font-size: 0.9rem; }
+
+/* ==========================================================================
+   7. FACEBOOK SECTION (ВИПРАВЛЕНО)
+   ========================================================================== */
+.fb-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: stretch;
+    background: white;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.fb-info { 
+    padding: 40px; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+}
+
+.fb-widget {
+    display: flex;
+    justify-content: center; /* Центрує Facebook всередині колонки */
+    align-items: center;
+    background: transparent; /* Прибирає сіру полоску */
+    min-height: 500px;
+}
+
+/* ==========================================================================
+   8. СТИЛЬ ПОСИЛАНЬ (DOC-LINKS) ТА МЕНЮ
+   ========================================================================== */
+/* Посилання на сторінці прозорості (те, що ти просив зробити гарним) */
+main a {
+    display: block;
+    text-decoration: none;
+    color: var(--primary-navy);
+    font-weight: 500;
+    padding: 10px 15px;
+    border-radius: 10px;
+    transition: var(--transition);
+    position: relative;
+}
+main a:hover {
+    background: rgba(216, 27, 96, 0.05);
+    color: var(--accent-pink);
+    padding-left: 20px;
+}
+
+/* Захист меню та кнопок від блочного стилю */
+.desktop-nav a, .sidebar-menu a, .logo a, .btn, .qa-card a {
+    display: inline-block !important;
+    padding: 0 !important;
+    margin-bottom: 0 !important;
+    text-decoration: none;
+}
+.desktop-nav a:hover, .sidebar-menu a:hover {
+    background: none !important;
+    padding: 0 !important;
+}
+main a:not([class]) {
+    display: block;
+    text-decoration: none;
+    color: var(--primary-navy);
+    font-weight: 500;
+    padding: 10px 15px;
+    border-radius: 10px;
+    transition: var(--transition);
+    margin-bottom: 5px;
+}
+
+main a:not([class]):hover {
+    background: rgba(216, 27, 96, 0.05);
+    color: var(--accent-pink);
+    padding-left: 20px;
+}
+
+/* ЗАХИСТ: гарантуємо, що кнопки та меню залишаються на своїх місцях */
+.desktop-nav a, 
+.sidebar-menu a, 
+.logo a, 
+.btn, 
+.qa-card a,
+.announcement-item a {
+    display: inline-block !important;
+    padding: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+/* Виправлення для кнопок всередині блоків (як "Усі контакти") */
+.btn-primary {
+    display: inline-block !important;
+    width: fit-content !important;
+    padding: 14px 28px !important;
+}
+/* ==========================================================================
+   9. ФУТЕР, МЕНЮ ТА АНІМАЦІЇ
+   ========================================================================== */
+.main-footer { background: var(--primary-navy); color: white; padding: 40px 0; }
+.footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+.footer-inner a { color: white; text-decoration: none; margin-right: 20px; opacity: 0.8; }
+.footer-inner span { opacity: 0.6; font-size: 0.85rem; }
+
+.sidebar-overlay { 
+    position: fixed; inset: 0; background: rgba(27, 54, 93, 0.6); /* Темно-синій overlay замість чорного */
+    backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+    z-index: 999; opacity: 0; pointer-events: none; transition: var(--transition); 
+}
+.sidebar-overlay.active { opacity: 1; pointer-events: all; }
+
+.sidebar { 
+    position: fixed; top: 0; right: -340px; width: 320px; height: 100vh; 
+    background: #ffffff; z-index: 1000; transition: var(--transition); 
+    padding: 25px 20px; 
+    box-shadow: -10px 0 30px rgba(0,0,0,0.15);
+    border-radius: 24px 0 0 24px; /* М'яке заокруглення лівого краю, як у додатках */
+    display: flex; flex-direction: column;
+}
+.sidebar.active { right: 0; }
+
+.sidebar-header { 
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; 
+}
+.sidebar-logo { 
+    display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--primary-navy); font-size: 1.1rem; 
+}
+
+.close-btn { 
+    background: rgba(27, 54, 93, 0.05); border: none; width: 40px; height: 40px; 
+    border-radius: 50%; display: flex; justify-content: center; align-items: center; 
+    cursor: pointer; color: var(--text-light); transition: var(--transition);
+}
+.close-btn:hover { 
+    background: rgba(216, 27, 96, 0.1); color: var(--accent-pink); transform: rotate(90deg); 
+}
+
+.sidebar-menu { 
+    list-style: none; flex-grow: 1; display: flex; flex-direction: column; gap: 5px; overflow-y: auto; 
+}
+
+/* Дизайн посилань меню */
+.sidebar-menu a { 
+    display: flex !important; align-items: center; gap: 15px; padding: 14px 18px !important; 
+    color: var(--text-dark); text-decoration: none; font-weight: 600; font-size: 0.95rem;
+    border-radius: 16px; transition: var(--transition);
+    border: none !important; margin: 0 !important;
+}
+
+.sidebar-menu a .icon {
+    font-size: 1.5rem; color: var(--text-light); transition: var(--transition);
+}
+
+/* Стан при наведенні */
+.sidebar-menu a:hover { 
+    background: rgba(27, 54, 93, 0.04) !important; color: var(--primary-navy); transform: translateX(5px);
+}
+.sidebar-menu a:hover .icon { color: var(--primary-navy); }
+
+/* Активна сторінка (де знаходиться користувач) */
+.sidebar-menu a.active { 
+    background: rgba(216, 27, 96, 0.08) !important; /* Легкий рожевий фон */
+    color: var(--accent-pink) !important; /* Рожевий текст */
+}
+.sidebar-menu a.active .icon { color: var(--accent-pink); }
+
+.sidebar-footer {
+    margin-top: auto; padding-top: 20px; border-top: 1px solid var(--border-color);
+}
+
+.btn { display: inline-block; padding: 14px 28px; border-radius: var(--radius-pill); font-weight: 700; text-decoration: none; cursor: pointer; border: none; transition: var(--transition); }
+.btn-primary { background: var(--primary-navy); color: white; }
+.btn-primary:hover { background: var(--accent-pink); transform: translateY(-3px); }
+
+.reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+.reveal.active { opacity: 1; transform: translateY(0); }
+
+/* Адаптивність */
+@media (max-width: 992px) {
+    /* Додано .expanding-header-menu та !important для 100% приховування на мобільних */
+    .desktop-nav.expanding-header-menu { display: none !important; }
+    .menu-toggle { display: block; }
+    .grid-2, .grid-4 { grid-template-columns: 1fr; }
+    .fb-container { grid-template-columns: 1fr; }
+    .expanding-carousel { flex-direction: column; height: 800px; }
+}
+}
+/* ==========================================================================
+   10. ПЛАВАЮЧЕ МЕНЮ (EXPANDING HOVER DOCK)
+   ========================================================================== */
+.expanding-menu {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    padding: 10px;
+    background: rgba(27, 54, 93, 0.85); /* Використовуємо ваш --primary-navy з прозорістю */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+    box-shadow: var(--shadow-lg);
+    z-index: 1000;
+}
+
+.expanding-menu .menu-item {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    text-decoration: none !important;
+    transition: width .45s cubic-bezier(.22, 1, .36, 1), background .3s ease, transform .2s ease;
+    padding: 0 !important; /* Захист від стилів main a */
+    margin-bottom: 0 !important;
+}
+
+.expanding-menu .menu-item:hover {
+    width: 145px; /* Ширина розкриття (залежить від довжини слів) */
+    background: var(--accent-pink); /* Ваш рожевий акцент */
+    transform: translateY(-3px);
+}
+
+.expanding-menu .icon {
+    min-width: 52px; /* Фіксуємо ширину, щоб іконка не стискалась */
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+}
+
+.expanding-menu .menu-label {
+    opacity: 0;
+    white-space: nowrap;
+    transform: translateX(-10px);
+    transition: all .35s ease;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: white;
+}
+
+.expanding-menu .menu-item:hover .menu-label {
+    opacity: 1;
+    transform: translateX(0);
+}
+  <!-- Стилі спеціально для макета з боковим підменю -->
+        /* Макет сторінки */
+        .page-layout {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+            padding-top: 40px;
+            padding-bottom: 80px;
+        }
+
+        /* Липке бокове меню */
+        .page-sidebar {
+            flex: 0 0 280px;
+            position: sticky;
+            top: 100px; /* Відступ від верхньої шапки */
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .page-sidebar h3 {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 15px;
+            padding-left: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.8rem;
+        }
+
+        .in-page-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .in-page-nav a {
+            display: flex !important;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            padding: 12px 15px !important;
+            border-radius: 12px;
+            transition: var(--transition);
+            margin: 0 !important;
+        }
+
+        .in-page-nav a:hover, 
+        .in-page-nav a.active {
+            background: rgba(0, 114, 188, 0.08); /* Фірмовий синій з прозорістю */
+            color: var(--brand-blue);
+            transform: translateX(5px);
+        }
+
+        .in-page-nav a .icon {
+            font-size: 1.2rem;
+        }
+
+        /* Контентна частина */
+        .page-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 40px; /* Відстань між секціями (Історія, Цінності тощо) */
+        }
+
+        /* Оформлення блоків контенту */
+        .content-section {
+            background: white;
+            border-radius: var(--radius-md);
+            padding: 40px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            scroll-margin-top: 120px; /* Щоб при кліку на меню якір не ховався під шапку */
+        }
+
+        .content-section h2 {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: var(--primary-navy);
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            border-bottom: 2px solid rgba(0, 114, 188, 0.1);
+            padding-bottom: 15px;
+        }
+
+        /* Стилі для списку цінностей */
+        .values-list {
+            list-style-type: none;
+            margin-top: 20px;
+            display: grid;
+            gap: 15px;
+        }
+        .values-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 15px;
+            background: var(--bg-main);
+            border-radius: 12px;
+        }
+        .values-list li strong {
+            color: var(--primary-navy);
+        }
+
+        /* Фотографії адміністрації */
+        .admin-avatar {
+            width: 120px; 
+            height: 120px; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            margin: 0 auto 15px; 
+            border: 4px solid var(--bg-main);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Героїчний банер для внутрішньої сторінки */
+        .page-hero {
+            position: relative;
+            padding: 100px 0;
+            background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            border-radius: 0 0 var(--radius-md) var(--radius-md);
+            margin-bottom: 40px;
+        }
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, rgba(27, 54, 93, 0.9), rgba(27, 54, 93, 0.6));
+            border-radius: 0 0 var(--radius-md) var(--radius-md);
+        }
+        .page-hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+        }
+.page-layout {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    padding-top: 40px;
+    padding-bottom: 80px;
+}
+
+/* Легкий контейнер без фону та рамок */
+.page-sidebar {
+    flex: 0 0 220px; /* Зробили меню трохи вужчим */
+    position: sticky;
+    top: 100px;
+    align-self: flex-start;
+    z-index: 10;
+    padding: 10px 0;
+    background: transparent; /* Прибрали білий фон */
+    border: none; /* Прибрали рамку */
+    box-shadow: none; /* Прибрали тінь */
+}
+
+.page-sidebar h3 {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    margin-bottom: 15px;
+    padding-left: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.in-page-nav {
+    display: flex;
+    flex-direction: column;
+}
+/* ==========================================================================
+   БЛОК СИМВОЛІКИ (Сторінка "Про ліцей")
+   ========================================================================== */
+.symbol-grid {
+    display: grid;
+    /* auto - розмір картинки (220px), 1fr - текст займає решту місця */
+    grid-template-columns: auto 1fr; 
+    gap: 40px;
+    align-items: center;
+}
+
+/* Обгортка: прибрали синій фон та відступи */
+.symbol-image-wrapper {
+    width: 220px; 
+    height: 220px; 
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0; 
+}
+
+/* Сама картинка: робимо її круглою з фірмовою рамкою (як у шапці) */
+.symbol-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Логотип ідеально заповнює коло */
+    border-radius: 50%; /* Обрізає краї картинки у форму кола */
+    border: 4px solid var(--brand-blue); /* Фірмова синя рамка */
+    box-shadow: var(--shadow-md); /* Легка тінь для об'єму */
+}
+
+/* Список кольорів поруч із логотипом */
+.color-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.color-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: var(--bg-main);
+    border-radius: 12px;
+}
+
+.color-dot {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+/* Адаптивність для мобільних телефонів */
+@media (max-width: 768px) {
+    .symbol-grid { 
+        grid-template-columns: 1fr; 
+        text-align: center; 
+    }
+    .symbol-image-wrapper { 
+        width: 180px; 
+        height: 180px; 
+        margin: 0 auto;
+    }
+    .color-item {
+        text-align: left; 
+    }
+}
+/* Дизайн посилань: спокійний сірий колір */
+.in-page-nav a {
+    display: flex !important;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--text-light) !important; 
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding: 10px 15px !important;
+    border-radius: 0 12px 12px 0;
+    transition: var(--transition);
+    margin: 0 0 5px 0 !important;
+    border-left: 2px solid transparent; 
+}
+
+/* При наведенні */
+.in-page-nav a:hover {
+    color: var(--primary-navy) !important;
+    background: rgba(0, 114, 188, 0.03) !important;
+}
+
+/* Активний стан: акцентна лінія зліва і плавний градієнт */
+.in-page-nav a.active {
+    color: var(--brand-blue) !important;
+    font-weight: 700;
+    border-left: 3px solid var(--brand-blue);
+    background: linear-gradient(90deg, rgba(0, 114, 188, 0.06) 0%, transparent 100%) !important;
+}
+
+.in-page-nav a .icon {
+    font-size: 1.1rem;
+}
+        /* Адаптивність для мобільних */
+        @media (max-width: 992px) {
+            .page-layout { flex-direction: column; }
+            .page-sidebar { position: static; width: 100%; margin-bottom: 20px; }
+            .content-section { padding: 25px; }
+            .grid-4 { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 576px) {
+            .grid-4 { grid-template-columns: 1fr; }
+        }
